@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Restaurante FAS - Panel de Empleado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #f5f0e8;
+            color: #2B3B00;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+
+        .app-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(135deg, #2B3B00 0%, #4B7001 100%);
+            color: white;
+            padding: 2rem 1.5rem;
+            position: fixed;
+            height: 100vh;
+            overflow-y: auto;
+            transition: all 0.3s ease;
+            z-index: 100;
+            box-shadow: 4px 0 20px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .logo h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #F7B91A, #EB6C0C);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .logo p {
+            font-size: 0.8rem;
+            color: #F7B91A;
+            margin-top: 0.25rem;
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .nav-item {
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            color: #f0e6d0;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(235, 108, 12, 0.3);
+            color: #F7B91A;
+            transform: translateX(5px);
+        }
+
+        .nav-icon {
+            font-size: 1.2rem;
+        }
+
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .top-bar {
+            background: white;
+            padding: 1rem 2rem;
+            border-radius: 16px;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(100, 14, 9, 0.1);
+            border-left: 4px solid #EB6C0C;
+        }
+
+        .page-title h2 {
+            color: #640E09;
+            font-size: 1.5rem;
+        }
+
+        .page-title p {
+            color: #737F03;
+            font-size: 0.85rem;
+            margin-top: 0.25rem;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .avatar {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, #EB6C0C, #F7B91A);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1.25rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(100, 14, 9, 0.08);
+            transition: transform 0.2s;
+            border-top: 3px solid #EB6C0C;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(100, 14, 9, 0.15);
+        }
+
+        .stat-title {
+            color: #737F03;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #640E09;
+            margin: 0.5rem 0;
+        }
+
+        .stat-trend {
+            font-size: 0.75rem;
+            color: #4B7001;
+        }
+
+        .tables-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .table-card {
+            background: white;
+            border-radius: 20px;
+            padding: 1.25rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+            cursor: pointer;
+            border-left: 4px solid;
+        }
+
+        .table-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(100, 14, 9, 0.15);
+        }
+
+        .table-card.available {
+            border-left-color: #4B7001;
+            background: linear-gradient(135deg, #fff, #f8faf0);
+        }
+        .table-card.occupied {
+            border-left-color: #640E09;
+            background: linear-gradient(135deg, #fff, #fff0ee);
+        }
+        .table-card.reserved {
+            border-left-color: #EB6C0C;
+            background: linear-gradient(135deg, #fff, #fff5e8);
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .table-number {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #640E09;
+        }
+
+        .table-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .status-available {
+            background: #e8f5e9;
+            color: #4B7001;
+        }
+        .status-occupied {
+            background: #ffebee;
+            color: #640E09;
+        }
+        .status-reserved {
+            background: #fff3e0;
+            color: #EB6C0C;
+        }
+
+        .table-capacity {
+            color: #737F03;
+            font-size: 0.85rem;
+            margin: 0.5rem 0;
+        }
+
+        .table-detail {
+            font-size: 0.8rem;
+            color: #992410;
+            margin-top: 0.5rem;
+            padding-top: 0.5rem;
+            border-top: 1px solid #f0e0c0;
+        }
+
+        .data-section {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            overflow-x: auto;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .section-header h3 {
+            font-size: 1.3rem;
+            color: #640E09;
+        }
+
+        .btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #EB6C0C, #F7B91A);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #992410, #EB6C0C);
+            transform: scale(0.98);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 1rem 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #f0e0c0;
+        }
+
+        th {
+            background: linear-gradient(135deg, #2B3B00, #4B7001);
+            color: white;
+            font-weight: 600;
+        }
+
+        .badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .badge-active {
+            background: #e8f5e9;
+            color: #4B7001;
+        }
+        .badge-descanso {
+            background: #fff3e0;
+            color: #EB6C0C;
+        }
+        .badge-ausente {
+            background: #ffebee;
+            color: #640E09;
+        }
+
+        .stars {
+            color: #F7B91A;
+            letter-spacing: 2px;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(100, 14, 9, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            border-top: 4px solid #EB6C0C;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #640E09;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #F7B91A;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                position: fixed;
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main-content {
+                margin-left: 0;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f0e6d0;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #EB6C0C;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                <h1>🍽️ Restaurante FAS</h1>
+                <p>Panel de Empleado</p>
+                <h2>Bienvenido, {{ nombre }}</h2>
+                <p>Nivel de acceso: <strong>{{ rol }}</strong></p>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link active" data-page="mesas"><span class="nav-icon">🍽️</span> Mesas</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-page="empleados"><span class="nav-icon">👥</span> Empleados</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-page="clientes"><span class="nav-icon">📋</span> Clientes</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-page="reservas"><span class="nav-icon">📅</span> Reservas</a></li>
+                <li class="nav-item" style="margin-top: auto;"><a href="{% url 'logout' %}" class="nav-link" style="color: #ff4d4d;"><span class="nav-icon">🚪</span> Cerrar Sesión</a></li>    
+            </ul>
+        </aside>
+
+        <main class="main-content" id="mainContent"></main>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Título</h3>
+            <form id="modalForm">
+                <div id="modalFields"></div>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+                <button type="button" class="btn" onclick="closeModal()">Cancelar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let tables = [
+            { id: 1, number: "M1", capacity: "2", status: "available", waiter: null, time: null },
+            { id: 2, number: "M2", capacity: "4", status: "occupied", waiter: "Carlos López", time: "12:30", currentGuests: 4 },
+            { id: 3, number: "M3", capacity: "2", status: "occupied", waiter: "Ana García", time: "13:15", currentGuests: 2 },
+            { id: 4, number: "M4", capacity: "6", status: "available", waiter: null, time: null },
+            { id: 5, number: "M5", capacity: "4", status: "reserved", waiter: "María Rodríguez", time: "14:00", currentGuests: 0 },
+            { id: 6, number: "M6", capacity: "2", status: "available", waiter: null, time: null },
+            { id: 7, number: "M7", capacity: "4", status: "available", waiter: null, time: null }
+        ];
+
+        let employees = [
+            { id: 1, name: "Carlos López", role: "Mesero", email: "carlos.lopez@restaurante.com", phone: "+34 612 345 678", shift: "Mañana", schedule: "09:00 - 17:00", status: "Activo" },
+            { id: 2, name: "Ana García", role: "Mesera", email: "ana.garcia@restaurante.com", phone: "+34 623 456 789", shift: "Tarde", schedule: "14:00 - 22:00", status: "Activo" },
+            { id: 3, name: "María Rodríguez", role: "Mesera", email: "maria.rodriguez@restaurante.com", phone: "+34 634 567 890", shift: "Mañana", schedule: "09:00 - 17:00", status: "Descanso" },
+            { id: 4, name: "José Martínez", role: "Chef Principal", email: "jose.martinez@restaurante.com", phone: "+34 645 678 901", shift: "Completo", schedule: "08:00 - 16:00", status: "Activo" },
+            { id: 5, name: "Laura Sánchez", role: "Sous Chef", email: "laura.sanchez@restaurante.com", phone: "+34 656 789 012", shift: "Completo", schedule: "08:00 - 16:00", status: "Activo" },
+            { id: 6, name: "Pedro Fernández", role: "Cocinero", email: "pedro.fernandez@restaurante.com", phone: "+34 667 890 123", shift: "Tarde", schedule: "15:00 - 23:00", status: "Activo" },
+            { id: 7, name: "Carmen Torres", role: "Bartender", email: "carmen.torres@restaurante.com", phone: "+34 678 901 234", shift: "Tarde", schedule: "16:00 - 00:00", status: "Activo" },
+            { id: 8, name: "Antonio Ruiz", role: "Ayudante de Cocina", email: "antonio.ruiz@restaurante.com", phone: "+34 689 012 345", shift: "Mañana", schedule: "07:00 - 15:00", status: "Ausente" }
+        ];
+
+        let customers = [
+            { id: 1, name: "Roberto Díaz", email: "roberto.diaz@email.com", phone: "+34 611 111 111", visits: 15, lastVisit: "10/03/2026", preferences: "Mesa junto a ventana", rating: 5, status: "Presente" },
+            { id: 2, name: "Isabel Moreno", email: "isabel.moreno@email.com", phone: "+34 622 222 222", visits: 8, lastVisit: "08/03/2026", preferences: "Sin gluten", rating: 3, status: "Regular" },
+            { id: 3, name: "Miguel Ángel Castro", email: "miguel.castro@email.com", phone: "+34 633 333 333", visits: 23, lastVisit: "12/03/2026", preferences: "Zona tranquila", rating: 4, status: "Presente" },
+            { id: 4, name: "Elena Vargas", email: "elena.vargas@email.com", phone: "+34 644 444 444", visits: 3, lastVisit: "05/03/2026", preferences: "Vegetariana", rating: 4, status: "Regular" },
+            { id: 5, name: "Francisco Jiménez", email: "francisco.jimenez@email.com", phone: "+34 655 555 555", visits: 1, lastVisit: "12/03/2026", preferences: "Primera vez", rating: 3, status: "Presente" },
+            { id: 6, name: "Patricia Navarro", email: "patricia.navarro@email.com", phone: "+34 666 666 666", visits: 12, lastVisit: "11/03/2026", preferences: "Alergias: mariscos", rating: 5, status: "Reserva" },
+            { id: 7, name: "Javier Romero", email: "javier.romero@email.com", phone: "+34 677 777 777", visits: 6, lastVisit: "09/03/2026", preferences: "Terraza", rating: 3, status: "Regular" },
+            { id: 8, name: "Raquel Herrera", email: "raquel.herrera@email.com", phone: "+34 688 888 888", visits: 19, lastVisit: "12/03/2026", preferences: "Menú degustación", rating: 5, status: "Presente" },
+            { id: 9, name: "Alberto Méndez", email: "alberto.mendez@email.com", phone: "+34 699 999 999", visits: 4, lastVisit: "07/03/2026", preferences: "Vinos premium", rating: 4, status: "Reserva" },
+            { id: 10, name: "Sofía Ortiz", email: "sofia.ortiz@email.com", phone: "+34 600 000 000", visits: 31, lastVisit: "11/03/2026", preferences: "Mesa para 4, zona VIP", rating: 5, status: "Regular" }
+        ];
+
+        let reservations = [
+            { id: 1, customer: "Patricia Navarro", table: "M5", date: "2026-03-23", time: "20:00", guests: 4, status: "confirmada" },
+            { id: 2, customer: "Alberto Méndez", table: "M2", date: "2026-03-23", time: "21:30", guests: 2, status: "pendiente" }
+        ];
+
+        let currentPage = "mesas";
+
+        function renderStars(rating) {
+            let stars = "";
+            for(let i = 1; i <= 5; i++) {
+                stars += i <= rating ? "★" : "☆";
+            }
+            return `<span class="stars">${stars}</span>`;
+        }
+
+        function renderMesas() {
+            const availableCount = tables.filter(t => t.status === "available").length;
+            const occupiedCount = tables.filter(t => t.status === "occupied").length;
+            const reservedCount = tables.filter(t => t.status === "reserved").length;
+
+            return `
+                <div class="top-bar">
+                    <div class="page-title">
+                        <h2>Mesas del Restaurante</h2>
+                        <p>Gestiona el estado de las mesas en tiempo real</p>
+                    </div>
+                    
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-title">Disponibles</div><div class="stat-number">${availableCount}</div><div class="stat-trend">✅ Libres</div></div>
+                    <div class="stat-card"><div class="stat-title">Ocupadas</div><div class="stat-number">${occupiedCount}</div><div class="stat-trend">🔴 En servicio</div></div>
+                    <div class="stat-card"><div class="stat-title">Reservadas</div><div class="stat-number">${reservedCount}</div><div class="stat-trend">🕐 Próximamente</div></div>
+                </div>
+
+                <div class="tables-grid">
+                    ${tables.map(table => `
+                        <div class="table-card ${table.status}" onclick="changeTableStatus(${table.id})">
+                            <div class="table-header">
+                                <span class="table-number">${table.number}</span>
+                                <span class="table-status status-${table.status === 'available' ? 'available' : table.status === 'occupied' ? 'occupied' : 'reserved'}">
+                                    ${table.status === 'available' ? 'Disponible' : table.status === 'occupied' ? 'Ocupada' : 'Reservada'}
+                                </span>
+                            </div>
+                            <div class="table-capacity">Capacidad: ${table.capacity} personas</div>
+                            ${table.currentGuests ? `<div class="table-capacity">👥 Ocupan: ${table.currentGuests}/${table.capacity} personas</div>` : ''}
+                            ${table.waiter ? `<div class="table-detail">👨‍🍳 Mesero: ${table.waiter}</div>` : ''}
+                            ${table.time ? `<div class="table-detail">⏰ ${table.time}</div>` : ''}
+                        </div>
+                    `).join('')}
+                </div>
+
+                <div class="data-section">
+                    <div class="section-header"><h3>📊 Resumen de Ocupación</h3></div>
+                    <p>🔹 Haz clic en cualquier mesa para cambiar su estado (Disponible → Ocupada → Reservada).</p>
+                    <p>🔹 Sistema actualizado en tiempo real.</p>
+                </div>
+            `;
+        }
+
+        function renderEmpleados() {
+            const enServicio = employees.filter(e => e.status === "Activo").length;
+            const enDescanso = employees.filter(e => e.status === "Descanso").length;
+            const ausentes = employees.filter(e => e.status === "Ausente").length;
+
+            return `
+                <div class="top-bar">
+                    <div class="page-title"><h2>Empleados del Restaurante</h2><p>Información del personal en servicio</p></div>
+                    <div class="user-info"><div class="avatar">👥</div><span>Total: ${employees.length}</span></div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-title">👨‍🍳 En Servicio</div><div class="stat-number">${enServicio}</div></div>
+                    <div class="stat-card"><div class="stat-title">☕ En Descanso</div><div class="stat-number">${enDescanso}</div></div>
+                    <div class="stat-card"><div class="stat-title">❌ Ausentes</div><div class="stat-number">${ausentes}</div></div>
+                </div>
+
+                <div class="data-section">
+                    <div class="section-header"><h3>📋 Lista de Personal</h3><button class="btn btn-primary" onclick="openAddEmployeeModal()">+ Agregar Empleado</button></div>
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead><tr><th>EMPLEADO</th><th>CONTACTO</th><th>TURNO</th><th>HORARIO</th><th>ESTADO</th><th>ACCIONES</th></tr></thead>
+                            <tbody>
+                                ${employees.map(emp => `
+                                    <tr>
+                                        <td><strong>${emp.name}</strong><br><small>${emp.role}</small></td>
+                                        <td>📧 ${emp.email}<br>📞 ${emp.phone}</td>
+                                        <td>${emp.shift}</td>
+                                        <td>${emp.schedule}</td>
+                                        <td><span class="badge ${emp.status === 'Activo' ? 'badge-active' : emp.status === 'Descanso' ? 'badge-descanso' : 'badge-ausente'}">${emp.status}</span></td>
+                                        <td><button class="btn btn-primary" onclick="toggleEmployeeStatus(${emp.id})">Cambiar</button></td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderClientes() {
+            const presentes = customers.filter(c => c.status === "Presente").length;
+            const conReserva = customers.filter(c => c.status === "Reserva").length;
+            const regulares = customers.filter(c => c.visits >= 10).length;
+
+            return `
+                <div class="top-bar">
+                    <div class="page-title"><h2>Clientes del Restaurante</h2><p>Base de datos de clientes y preferencias</p></div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card"><div class="stat-title">👥 Presentes Hoy</div><div class="stat-number">${presentes}</div></div>
+                    <div class="stat-card"><div class="stat-title">📅 Con Reserva</div><div class="stat-number">${conReserva}</div></div>
+                    <div class="stat-card"><div class="stat-title">⭐ Clientes Regulares</div><div class="stat-number">${regulares}</div></div>
+                </div>
+
+                <div class="data-section">
+                    <div class="section-header"><h3>📋 Base de Datos de Clientes</h3><button class="btn btn-primary" onclick="openAddCustomerModal()">+ Agregar Cliente</button></div>
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead><tr><th>CLIENTE</th><th>CONTACTO</th><th>VISITAS</th><th>PREFERENCIAS</th><th>CALIFICACIÓN</th><th>ESTADO</th></tr></thead>
+                            <tbody>
+                                ${customers.map(c => `
+                                    <tr>
+                                        <td><strong>${c.name}</strong><br><small>Última visita: ${c.lastVisit}</small></td>
+                                        <td>📧 ${c.email}<br>📞 ${c.phone}</td>
+                                        <td>${c.visits} veces</td>
+                                        <td>${c.preferences}</td>
+                                        <td>${renderStars(c.rating)}</td>
+                                        <td><span class="badge ${c.status === 'Presente' ? 'badge-active' : 'badge-descanso'}">${c.status}</span></td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderReservas() {
+            return `
+                <div class="top-bar">
+                    <div class="page-title"><h2>Reservas</h2><p>Gestión de reservas activas</p></div>
+                </div>
+
+                <div class="data-section">
+                    <div class="section-header"><h3>📅 Reservas Activas</h3><button class="btn btn-primary" onclick="openAddReservationModal()">+ Nueva Reserva</button></div>
+                    <div style="overflow-x: auto;">
+                        <table>
+                            <thead><tr><th>Cliente</th><th>Mesa</th><th>Fecha</th><th>Hora</th><th>Personas</th><th>Estado</th><th>Acciones</th></tr></thead>
+                            <tbody>
+                                ${reservations.map(r => `
+                                    <tr>
+                                        <td>${r.customer}</td>
+                                        <td>${r.table}</td>
+                                        <td>${r.date}</td>
+                                        <td>${r.time}</td>
+                                        <td>${r.guests}</td>
+                                        <td><span class="badge ${r.status === 'confirmada' ? 'badge-active' : 'badge-descanso'}">${r.status}</span></td>
+                                        <td><button class="btn btn-primary" onclick="confirmReservation(${r.id})">Confirmar</button> <button class="btn" style="background:#640E09;color:white;" onclick="cancelReservation(${r.id})">Cancelar</button></td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            `;
+        }
+
+        function changeTableStatus(id) {
+            const table = tables.find(t => t.id === id);
+            const statuses = ['available', 'occupied', 'reserved'];
+            let nextIndex = (statuses.indexOf(table.status) + 1) % statuses.length;
+            table.status = statuses[nextIndex];
+            renderPage();
+            alert(`Mesa ${table.number} ahora está ${table.status === 'available' ? 'disponible' : table.status === 'occupied' ? 'ocupada' : 'reservada'}`);
+        }
+
+        function toggleEmployeeStatus(id) {
+            const emp = employees.find(e => e.id === id);
+            if(emp.status === "Activo") emp.status = "Descanso";
+            else if(emp.status === "Descanso") emp.status = "Ausente";
+            else emp.status = "Activo";
+            renderPage();
+        }
+
+        function confirmReservation(id) {
+            const res = reservations.find(r => r.id === id);
+            res.status = "confirmada";
+            renderPage();
+            alert("Reserva confirmada");
+        }
+
+        function cancelReservation(id) {
+            reservations = reservations.filter(r => r.id !== id);
+            renderPage();
+            alert("Reserva cancelada");
+        }
+
+        function openAddEmployeeModal() {
+            showModal("Agregar Empleado", [
+                {name:"name", label:"Nombre", type:"text"},
+                {name:"role", label:"Rol", type:"text"},
+                {name:"email", label:"Email", type:"email"},
+                {name:"phone", label:"Teléfono", type:"text"},
+                {name:"shift", label:"Turno", type:"text"},
+                {name:"schedule", label:"Horario", type:"text"}
+            ], (data) => {
+                const newId = Math.max(...employees.map(e=>e.id),0)+1;
+                employees.push({id:newId, ...data, status:"Activo"});
+                renderPage();
+                alert("Empleado agregado");
+            });
+        }
+
+        function openAddCustomerModal() {
+            showModal("Agregar Cliente", [
+                {name:"name", label:"Nombre", type:"text"},
+                {name:"email", label:"Email", type:"email"},
+                {name:"phone", label:"Teléfono", type:"text"},
+                {name:"preferences", label:"Preferencias", type:"text"}
+            ], (data) => {
+                const newId = Math.max(...customers.map(c=>c.id),0)+1;
+                customers.push({id:newId, ...data, visits:0, lastVisit:"Hoy", rating:3, status:"Regular"});
+                renderPage();
+                alert("Cliente agregado");
+            });
+        }
+
+        function openAddReservationModal() {
+            showModal("Nueva Reserva", [
+                {name:"customer", label:"Cliente", type:"text"},
+                {name:"table", label:"Mesa", type:"text"},
+                {name:"date", label:"Fecha", type:"date"},
+                {name:"time", label:"Hora", type:"time"},
+                {name:"guests", label:"Personas", type:"number"}
+            ], (data) => {
+                const newId = Math.max(...reservations.map(r=>r.id),0)+1;
+                reservations.push({id:newId, ...data, status:"pendiente"});
+                renderPage();
+                alert("Reserva creada");
+            });
+        }
+
+        function showModal(title, fields, onSubmit) {
+            const modal = document.getElementById('modal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalFields = document.getElementById('modalFields');
+            modalTitle.textContent = title;
+            modalFields.innerHTML = fields.map(f => `
+                <div class="form-group">
+                    <label>${f.label}</label>
+                    <input type="${f.type}" name="${f.name}" required>
+                </div>
+            `).join('');
+            const form = document.getElementById('modalForm');
+            form.onsubmit = (e) => {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const data = {};
+                fields.forEach(f => { data[f.name] = formData.get(f.name); });
+                onSubmit(data);
+                closeModal();
+            };
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('modal').style.display = 'none';
+        }
+
+        function renderPage() {
+            const container = document.getElementById('mainContent');
+            if(currentPage === "mesas") container.innerHTML = renderMesas();
+            else if(currentPage === "empleados") container.innerHTML = renderEmpleados();
+            else if(currentPage === "clientes") container.innerHTML = renderClientes();
+            else if(currentPage === "reservas") container.innerHTML = renderReservas();
+        }
+
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                currentPage = link.dataset.page;
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                renderPage();
+            });
+        });
+
+        renderPage();
+    </script>
+</body>
+</html>

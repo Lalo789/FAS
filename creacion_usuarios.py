@@ -1,5 +1,6 @@
 import psycopg2
 import os
+import getpass 
 
 os.environ['PGMESSAGES'] = 'en_US.UTF-8'
 
@@ -12,7 +13,6 @@ def validar_admin(correo_admin, pass_admin):
             database="FAS_DB", 
             host="127.0.0.1"
         )
-    
         cursor = conexion.cursor()
         query = "SELECT rol_id FROM usuarios WHERE LOWER(correo) = LOWER(%s) AND contrasena = %s;"
         cursor.execute(query, (correo_admin, pass_admin))
@@ -32,7 +32,8 @@ def registrar_nuevo_usuario():
         
         admin_user = input("Tu correo de Admin: ").strip()
         if admin_user.lower() == 'salir': break
-        admin_pass = input("Tu contraseña de Admin: ").strip()
+        
+        admin_pass = getpass.getpass("Tu contraseña de Admin: ").strip()
 
         if validar_admin(admin_user, admin_pass):
             print("\n Acceso concedido.")
@@ -41,16 +42,19 @@ def registrar_nuevo_usuario():
             ap_materno = input("Apellido Materno: ")
             correo = input("Correo electrónico: ")
             tel = input("Teléfono: ")
-            password = input("Contraseña: ")
-            rol = input("Asignar Rol (1:Admin, 2:Emp, 3:Cli): ")
+            
+            password = getpass.getpass("Contraseña para el nuevo usuario: ")
+            
+            print("Roles: 1: Admin, 2: Empleado, 3: Cliente")
+            rol = input("Asignar Rol (ID): ")
 
-            conexion_reg = None 
+            conexion_reg = None
             try:
                 conexion_reg = psycopg2.connect(
                     user="postgres", 
                     password="12345", 
                     database="FAS_DB",
-                    client_encoding='utf-8' 
+                    client_encoding='utf-8'
                 )
                 cursor = conexion_reg.cursor()
                 sql = """
@@ -63,7 +67,6 @@ def registrar_nuevo_usuario():
                 break 
 
             except Exception as e:
-                # Limpiamos el mensaje de error de caracteres extraños
                 error_limpio = str(e).encode('ascii', 'replace').decode('ascii')
                 print(f"\n Error al insertar: {error_limpio}")
             finally:

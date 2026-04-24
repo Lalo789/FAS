@@ -16,7 +16,7 @@ def insertar_primer_platillo():
         datos = ("Tacos de Pastor", 15, "Pastor en su forma tradicional, servido con piña y cilantro.")
         
         cursor.execute(sql, datos)
-        conexion.commit() # No olvides hacer commit para que los cambios se guarden en la base de datos
+        conexion.commit() 
         
         print("Platillo insertado con éxito.")
         
