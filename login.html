@@ -4,407 +4,33 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
   <title>FAS Restaurant · Acceso</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background: linear-gradient(125deg, rgba(43, 59, 0, 0.3) 0%, rgba(115, 127, 3, 0.15) 100%), 
-                  url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center fixed;
-      background-size: cover;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Inter', sans-serif;
-      padding: 1.5rem;
-      margin: 0;
-      color: #1e1e1e;
-      backdrop-filter: blur(1px);
-    }
-
-    .auth-container {
-      width: 100%;
-      max-width: 460px;
-      margin: 0 auto;
-    }
-
-    .auth-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: 36px;
-      box-shadow: 0 25px 40px -12px rgba(100, 14, 9, 0.25), 0 8px 18px rgba(0,0,0,0.05);
-      padding: 2.4rem 2.2rem 2.8rem;
-      transition: all 0.2s ease;
-      border: 1px solid rgba(247, 185, 26, 0.25);
-    }
-
-    h1, .fas-restaurant-title {
-      font-size: 2.3rem;
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: #640E09;
-      margin-bottom: 0.2rem;
-      line-height: 1.15;
-      text-shadow: 0 2px 4px rgba(153, 36, 16, 0.08);
-    }
-
-    .welcome-text {
-      font-size: 1.05rem;
-      color: #992410;
-      margin-bottom: 2.2rem;
-      font-weight: 500;
-      border-left: 4px solid #F7B91A;
-      padding-left: 1rem;
-      letter-spacing: -0.01em;
-    }
-
-    .input-group {
-      margin-bottom: 1.5rem;
-    }
-
-    label {
-      display: block;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #4B7001;
-      margin-bottom: 0.4rem;
-      text-transform: uppercase;
-      letter-spacing: 0.3px;
-    }
-
-    .input-field {
-      width: 100%;
-      padding: 0.95rem 1.3rem;
-      font-size: 1rem;
-      background: #ffffff;
-      border: 2px solid #e2e8dd;
-      border-radius: 28px;
-      outline: none;
-      transition: border 0.2s, box-shadow 0.2s;
-      font-family: 'Inter', sans-serif;
-      color: #2B3B00;
-      font-weight: 500;
-      box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
-    }
-
-    .input-field:focus {
-      border-color: #EB6C0C;
-      box-shadow: 0 0 0 4px rgba(235, 108, 12, 0.15), inset 0 1px 3px #fff;
-      background: #fffcf7;
-    }
-
-    .input-field::placeholder {
-      color: #9e9f8e;
-      font-weight: 400;
-    }
-
-    .input-field[value="*********"] {
-      letter-spacing: 2.5px;
-      font-weight: 600;
-    }
-
-    .flex-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin: 1.3rem 0 2rem;
-    }
-
-    .checkbox-label {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-      font-size: 0.95rem;
-      color: #4B7001;
-      font-weight: 500;
-      cursor: pointer;
-    }
-
-    .checkbox-label input[type="checkbox"] {
-      width: 1.2rem;
-      height: 1.2rem;
-      accent-color: #EB6C0C;
-      border-radius: 6px;
-      margin: 0;
-      cursor: pointer;
-    }
-
-    .link-forgot {
-      color: #992410;
-      font-size: 0.95rem;
-      font-weight: 600;
-      text-decoration: none;
-      border-bottom: 1.5px solid transparent;
-      transition: border 0.15s, color 0.15s;
-    }
-
-    .link-forgot:hover {
-      border-bottom: 1.5px solid #EB6C0C;
-      color: #640E09;
-    }
-
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 1rem 1.8rem;
-      font-size: 1.1rem;
-      font-weight: 700;
-      text-align: center;
-      border: none;
-      border-radius: 50px;
-      background: #640E09;
-      color: white;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      font-family: 'Inter', sans-serif;
-      margin-bottom: 1.8rem;
-      box-shadow: 0 10px 18px -8px rgba(100, 14, 9, 0.4);
-      letter-spacing: 0.3px;
-      border: 1px solid rgba(247, 185, 26, 0.2);
-    }
-
-    .btn:hover {
-      background: #992410;
-      box-shadow: 0 12px 22px -8px #640E09;
-      transform: scale(1.01);
-    }
-
-    .btn:active {
-      transform: scale(0.98);
-      background: #4e0a06;
-    }
-
-    .divider {
-      display: flex;
-      align-items: center;
-      text-align: center;
-      color: #737F03;
-      font-size: 0.85rem;
-      font-weight: 500;
-      margin: 1.8rem 0 1.6rem;
-    }
-
-    .divider::before,
-    .divider::after {
-      content: '';
-      flex: 1;
-      border-bottom: 2px solid #F7B91A;
-      opacity: 0.4;
-    }
-
-    .divider span {
-      margin: 0 1rem;
-      background: transparent;
-      color: #2B3B00;
-    }
-
-    .social-buttons {
-      display: flex;
-      gap: 1.2rem;
-      justify-content: center;
-    }
-
-    .social-btn {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.7rem;
-      background: rgba(255, 255, 255, 0.9);
-      border: 2px solid #737F03;
-      border-radius: 60px;
-      padding: 0.85rem 0.2rem;
-      font-weight: 600;
-      color: #4B7001;
-      font-size: 1rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      backdrop-filter: blur(4px);
-    }
-
-    .social-btn i {
-      font-size: 1.3rem;
-      color: #640E09;
-    }
-
-    .social-btn:hover {
-      background: #F7B91A;
-      border-color: #EB6C0C;
-      color: #2B3B00;
-    }
-
-    .social-btn:hover i {
-      color: #2B3B00;
-    }
-
-    .footer-text {
-      text-align: center;
-      margin-top: 2.2rem;
-      color: #4B7001;
-      font-size: 0.98rem;
-      font-weight: 500;
-    }
-
-    .footer-text a {
-      color: #EB6C0C;
-      font-weight: 700;
-      text-decoration: none;
-      margin-left: 0.3rem;
-      border-bottom: 2px solid transparent;
-      transition: border 0.15s, color 0.15s;
-    }
-
-    .footer-text a:hover {
-      border-bottom: 2px solid #F7B91A;
-      color: #640E09;
-    }
-
-    .back-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: #992410;
-      font-size: 1rem;
-      margin-bottom: 1.8rem;
-      text-decoration: none;
-      font-weight: 600;
-      transition: color 0.15s;
-      background: rgba(247, 185, 26, 0.1);
-      padding: 0.3rem 1rem 0.3rem 0.8rem;
-      border-radius: 40px;
-    }
-
-    .back-link i {
-      font-size: 1rem;
-      color: #EB6C0C;
-    }
-
-    .back-link:hover {
-      color: #640E09;
-      background: rgba(235, 108, 12, 0.08);
-    }
-
-    .title-page {
-      font-size: 2rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: #640E09;
-      margin-bottom: 0.5rem;
-    }
-
-    .subhead {
-      color: #737F03;
-      margin-bottom: 2.2rem;
-      font-size: 1rem;
-      font-weight: 500;
-    }
-
-    .terms-check {
-      display: flex;
-      align-items: flex-start;
-      gap: 0.8rem;
-      margin: 1.4rem 0 2rem;
-      font-size: 0.92rem;
-      color: #2B3B00;
-      font-weight: 500;
-    }
-
-    .terms-check input {
-      margin-top: 0.2rem;
-      width: 1.2rem;
-      height: 1.2rem;
-      accent-color: #EB6C0C;
-      flex-shrink: 0;
-    }
-
-    .terms-check label {
-      text-transform: none;
-      letter-spacing: normal;
-      font-weight: 500;
-      color: #4B7001;
-    }
-
-    .card-view {
-      display: block;
-    }
-
-    .hidden {
-      display: none !important;
-    }
-
-    .fas-restaurant-title i {
-      color: #F7B91A;
-      margin-right: 6px;
-    }
-
-    .auth-card {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .auth-card::after {
-      content: "🍽️";
-      position: absolute;
-      bottom: -10px;
-      right: 10px;
-      font-size: 5rem;
-      opacity: 0.04;
-      transform: rotate(-5deg);
-      pointer-events: none;
-      color: #2B3B00;
-    }
-
-    @media (max-width: 480px) {
-      .auth-card {
-        padding: 1.8rem 1.5rem 2.2rem;
-      }
-      h1, .fas-restaurant-title {
-        font-size: 2rem;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="login-body">
 <div class="auth-container">
-  <div id="loginCard" class="auth-card card-view">
-    <h1 class="fas-restaurant-title">FAS Restaurant</h1>
+  
+  <div id="loginCard" class="auth-card">
+    <h1 class="fas-restaurant-title"><i class="fas fa-utensils"></i> FAS Restaurant</h1>
     <div class="welcome-text">Bienvenido de nuevo</div>
-
     <div class="input-group">
       <label>Correo Electrónico</label>
       <input class="input-field" type="email" placeholder="tu@email.com">
     </div>
-
     <div class="input-group">
       <label>Contraseña</label>
       <input class="input-field" type="password" placeholder="*********">
     </div>
-
     <div class="flex-row">
-      <label class="checkbox-label">
-        <input type="checkbox"> Recordarme
-      </label>
+      <label class="checkbox-label"><input type="checkbox"> Recordarme</label>
       <a href="#" class="link-forgot" id="goToRecoverLink">¿Olvidaste tu contraseña?</a>
     </div>
-
-    <button class="btn" id="loginBtn">Iniciar Sesión</button>
-
+    <button class="btn-login" id="loginBtn">Iniciar Sesión</button>
     <div class="divider"><span>O continuar con:</span></div>
-
     <div class="social-buttons">
-      <button class="social-btn" id="googleLoginBtn"><i class="fab fa-google"></i> Google</button>
-      <button class="social-btn" id="facebookLoginBtn"><i class="fab fa-facebook-f"></i> Facebook</button>
+      <button class="social-btn" id="googleLoginBtn"><i class="fab fa-google" style="color:#640E09;"></i> Google</button>
+      <button class="social-btn" id="facebookLoginBtn"><i class="fab fa-facebook-f" style="color:#640E09;"></i> Facebook</button>
     </div>
-
     <div class="footer-text">
       ¿No tienes una cuenta? <a href="#" id="goToRegisterLink">Regístrate aquí</a>
     </div>
@@ -414,135 +40,40 @@
     <a href="#" class="back-link" id="backToLoginFromRecover"><i class="fas fa-arrow-left"></i> Volver al inicio de sesión</a>
     <h2 class="title-page">Recuperar Contraseña</h2>
     <div class="subhead">Ingresa tu correo para restablecer tu contraseña</div>
-
     <div class="input-group">
       <label>Correo Electrónico</label>
       <input class="input-field" type="email" placeholder="tu@email.com">
     </div>
-
-    <button class="btn" id="sendRecoveryBtn">Enviar enlace de recuperación</button>
+    <button class="btn-login" id="sendRecoveryBtn">Enviar enlace de recuperación</button>
   </div>
 
   <div id="registerCard" class="auth-card hidden">
     <h1 class="fas-restaurant-title" style="font-size: 2rem;">Crear Cuenta</h1>
     <div class="welcome-text" style="margin-bottom: 1.8rem;">Únete a FAS Restaurant</div>
-
     <div class="input-group">
       <label>Nombre Completo</label>
       <input class="input-field" type="text" placeholder="Juan Pérez">
     </div>
-
     <div class="input-group">
       <label>Correo Electrónico</label>
       <input class="input-field" type="email" placeholder="tu@email.com">
     </div>
-
-    <div class="input-group">
-      <label>Teléfono</label>
-      <input class="input-field" type="tel" placeholder="+52 123 456 7890">
-    </div>
-
     <div class="input-group">
       <label>Contraseña</label>
       <input class="input-field" type="password" placeholder="*********">
     </div>
-
-    <div class="input-group">
-      <label>Confirmar Contraseña</label>
-      <input class="input-field" type="password" placeholder="*********">
-    </div>
-
     <div class="terms-check">
       <input type="checkbox" id="termsCheck">
-      <label for="termsCheck">Acepto los términos y condiciones y la política de privacidad</label>
+      <label for="termsCheck">Acepto los términos y condiciones</label>
     </div>
-
-    <button class="btn" id="createAccountBtn">Crear Cuenta</button>
-
+    <button class="btn-login" id="createAccountBtn">Crear Cuenta</button>
     <div class="footer-text" style="margin-top: 0.5rem;">
       ¿Ya tienes una cuenta? <a href="#" id="goToLoginFromRegister">Inicia sesión aquí</a>
     </div>
   </div>
+
 </div>
 
-<script>
-  (function() {
-    "use strict";
-
-    const loginCard = document.getElementById('loginCard');
-    const recoverCard = document.getElementById('recoverCard');
-    const registerCard = document.getElementById('registerCard');
-
-    const goToRecoverLink = document.getElementById('goToRecoverLink');
-    const goToRegisterLink = document.getElementById('goToRegisterLink');
-    const backToLoginFromRecover = document.getElementById('backToLoginFromRecover');
-    const goToLoginFromRegister = document.getElementById('goToLoginFromRegister');
-
-    const loginBtn = document.getElementById('loginBtn');
-    const sendRecoveryBtn = document.getElementById('sendRecoveryBtn');
-    const createAccountBtn = document.getElementById('createAccountBtn');
-    const googleBtn = document.getElementById('googleLoginBtn');
-    const fbBtn = document.getElementById('facebookLoginBtn');
-
-    function showCard(card) {
-      loginCard.classList.add('hidden');
-      recoverCard.classList.add('hidden');
-      registerCard.classList.add('hidden');
-      card.classList.remove('hidden');
-    }
-
-    if (goToRecoverLink) {
-      goToRecoverLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        showCard(recoverCard);
-      });
-    }
-    if (goToRegisterLink) {
-      goToRegisterLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        showCard(registerCard);
-      });
-    }
-    if (backToLoginFromRecover) {
-      backToLoginFromRecover.addEventListener('click', (e) => {
-        e.preventDefault();
-        showCard(loginCard);
-      });
-    }
-    if (goToLoginFromRegister) {
-      goToLoginFromRegister.addEventListener('click', (e) => {
-        e.preventDefault();
-        showCard(loginCard);
-      });
-    }
-
-    function demoMsg(msg) {
-      return (e) => {
-        e.preventDefault();
-        alert(`🍽️ FAS Restaurant · ${msg}`);
-      };
-    }
-
-    if (loginBtn) loginBtn.addEventListener('click', demoMsg('Inicio de sesión (simulación)'));
-    if (sendRecoveryBtn) sendRecoveryBtn.addEventListener('click', demoMsg('Te hemos enviado un enlace de recuperación'));
-    if (createAccountBtn) createAccountBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const terms = document.getElementById('termsCheck');
-      if (terms && !terms.checked) {
-        alert('Debes aceptar los términos para continuar.');
-      } else {
-        alert('¡Cuenta creada! Bienvenido a FAS Restaurant.');
-      }
-    });
-    if (googleBtn) googleBtn.addEventListener('click', demoMsg('Continuar con Google'));
-    if (fbBtn) fbBtn.addEventListener('click', demoMsg('Continuar con Facebook'));
-
-    document.querySelectorAll('a[href="#"]').forEach(link => {
-      link.addEventListener('click', (e) => e.preventDefault());
-    });
-
-    showCard(loginCard);
-  })();
-</script>
+<script src="main.js"></script>
 </body>
 </html>
