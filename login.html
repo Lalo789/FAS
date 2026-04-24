@@ -8,71 +8,82 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="login-body">
-<div class="auth-container">
   
-  <div id="loginCard" class="auth-card">
-    <h1 class="fas-restaurant-title"><i class="fas fa-utensils"></i> FAS Restaurant</h1>
-    <div class="welcome-text">Bienvenido de nuevo</div>
-    <div class="input-group">
-      <label>Correo Electrónico</label>
-      <input class="input-field" type="email" placeholder="tu@email.com">
+  <div class="auth-container">
+    
+    <div class="auth-card login-card">
+      <h1 class="fas-restaurant-title"><i class="fas fa-utensils"></i> FAS Restaurant</h1>
+      <div class="welcome-text">Bienvenido de nuevo</div>
+      
+      <form id="customerLoginForm">
+        <div class="input-group">
+          <label>Correo Electrónico</label>
+          <input class="input-field" type="email" placeholder="tu@email.com" required>
+        </div>
+        <div class="input-group">
+          <label>Contraseña</label>
+          <input class="input-field" type="password" placeholder="*********" required>
+        </div>
+        <div class="flex-row">
+          <label class="checkbox-label"><input type="checkbox"> Recordarme</label>
+          <a href="#" class="link-forgot" id="openRecoverModal">¿Olvidaste tu contraseña?</a>
+        </div>
+        <button type="submit" class="btn-login" id="customerLoginBtn">Iniciar Sesión</button>
+      </form>
+
+      <div class="divider"><span>O ingresar con</span></div>
+      <div class="social-buttons">
+        <button class="social-btn"><i class="fab fa-google" style="color:#640E09;"></i> Google</button>
+        <button class="social-btn"><i class="fab fa-facebook-f" style="color:#640E09;"></i> Facebook</button>
+      </div>
     </div>
-    <div class="input-group">
-      <label>Contraseña</label>
-      <input class="input-field" type="password" placeholder="*********">
-    </div>
-    <div class="flex-row">
-      <label class="checkbox-label"><input type="checkbox"> Recordarme</label>
-      <a href="#" class="link-forgot" id="goToRecoverLink">¿Olvidaste tu contraseña?</a>
-    </div>
-    <button class="btn-login" id="loginBtn">Iniciar Sesión</button>
-    <div class="divider"><span>O continuar con:</span></div>
-    <div class="social-buttons">
-      <button class="social-btn" id="googleLoginBtn"><i class="fab fa-google" style="color:#640E09;"></i> Google</button>
-      <button class="social-btn" id="facebookLoginBtn"><i class="fab fa-facebook-f" style="color:#640E09;"></i> Facebook</button>
-    </div>
-    <div class="footer-text">
-      ¿No tienes una cuenta? <a href="#" id="goToRegisterLink">Regístrate aquí</a>
+
+  </div> <button id="openRegisterModal" class="floating-btn">
+    <i class="fas fa-user-plus"></i> Crear Cuenta
+  </button>
+
+  <div id="registerModal" class="modal-overlay hidden">
+    <div class="modal-auth-card">
+      <button class="close-modal-btn" id="closeRegisterModal"><i class="fas fa-times"></i></button>
+      <div style="text-align: center; margin-bottom: 1.5rem;">
+        <i class="fas fa-user-circle" style="font-size: 3rem; color: #EB6C0C; margin-bottom: 0.5rem;"></i>
+        <h2 style="color: #640E09;">Únete a FAS</h2>
+        <p style="color: #737F03; font-size: 0.85rem;">Regístrate y reserva tu mesa favorita</p>
+      </div>
+      <form id="customerRegisterForm">
+        <div class="input-group">
+          <label>Nombre Completo</label>
+          <input class="input-field" type="text" placeholder="Ej. Juan Pérez" required>
+        </div>
+        <div class="input-group">
+          <label>Correo Electrónico</label>
+          <input class="input-field" type="email" placeholder="tu@email.com" required>
+        </div>
+        <div class="input-group">
+          <label>Contraseña</label>
+          <input class="input-field" type="password" placeholder="*********" required>
+        </div>
+        <div class="terms-check">
+          <input type="checkbox" id="termsCheck" required>
+          <label for="termsCheck">Acepto los términos y condiciones</label>
+        </div>
+        <button type="submit" class="btn-login" style="background: linear-gradient(135deg, #EB6C0C, #F7B91A); border:none; color:#640E09; margin-top: 1rem;">Crear Mi Cuenta</button>
+      </form>
     </div>
   </div>
 
-  <div id="recoverCard" class="auth-card hidden">
-    <a href="#" class="back-link" id="backToLoginFromRecover"><i class="fas fa-arrow-left"></i> Volver al inicio de sesión</a>
-    <h2 class="title-page">Recuperar Contraseña</h2>
-    <div class="subhead">Ingresa tu correo para restablecer tu contraseña</div>
-    <div class="input-group">
-      <label>Correo Electrónico</label>
-      <input class="input-field" type="email" placeholder="tu@email.com">
-    </div>
-    <button class="btn-login" id="sendRecoveryBtn">Enviar enlace de recuperación</button>
-  </div>
-
-  <div id="registerCard" class="auth-card hidden">
-    <h1 class="fas-restaurant-title" style="font-size: 2rem;">Crear Cuenta</h1>
-    <div class="welcome-text" style="margin-bottom: 1.8rem;">Únete a FAS Restaurant</div>
-    <div class="input-group">
-      <label>Nombre Completo</label>
-      <input class="input-field" type="text" placeholder="Juan Pérez">
-    </div>
-    <div class="input-group">
-      <label>Correo Electrónico</label>
-      <input class="input-field" type="email" placeholder="tu@email.com">
-    </div>
-    <div class="input-group">
-      <label>Contraseña</label>
-      <input class="input-field" type="password" placeholder="*********">
-    </div>
-    <div class="terms-check">
-      <input type="checkbox" id="termsCheck">
-      <label for="termsCheck">Acepto los términos y condiciones</label>
-    </div>
-    <button class="btn-login" id="createAccountBtn">Crear Cuenta</button>
-    <div class="footer-text" style="margin-top: 0.5rem;">
-      ¿Ya tienes una cuenta? <a href="#" id="goToLoginFromRegister">Inicia sesión aquí</a>
+  <div id="recoverModal" class="modal-overlay hidden">
+    <div class="modal-auth-card">
+      <button class="close-modal-btn" id="closeRecoverModal"><i class="fas fa-times"></i></button>
+      <h2 class="title-page" style="font-size: 1.6rem; color:#640E09;">Recuperar Contraseña</h2>
+      <div class="subhead" style="margin-bottom: 1.5rem; color:#737F03;">Ingresa tu correo para restablecer tu acceso</div>
+      <div class="input-group">
+        <label>Correo Electrónico</label>
+        <input class="input-field" type="email" placeholder="tu@email.com">
+      </div>
+      <button class="btn-login" id="sendRecoveryBtn" style="background: #640E09;">Enviar enlace</button>
     </div>
   </div>
-
-</div>
 
 <script src="main.js"></script>
 </body>

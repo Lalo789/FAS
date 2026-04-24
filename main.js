@@ -1,22 +1,41 @@
 document.addEventListener("DOMContentLoaded", () => {
     
     // ==========================================
-    // LÓGICA DE LOGIN
+    // LÓGICA DE LOGIN (CLIENTES Y REGISTRO)
     // ==========================================
-    if (document.getElementById('loginCard')) {
-        const showCard = (id) => {
-            ['loginCard', 'recoverCard', 'registerCard'].forEach(c => document.getElementById(c).classList.add('hidden'));
-            document.getElementById(id).classList.remove('hidden');
-        };
-
-        document.getElementById('goToRecoverLink')?.addEventListener('click', (e) => { e.preventDefault(); showCard('recoverCard'); });
-        document.getElementById('goToRegisterLink')?.addEventListener('click', (e) => { e.preventDefault(); showCard('registerCard'); });
-        document.getElementById('backToLoginFromRecover')?.addEventListener('click', (e) => { e.preventDefault(); showCard('loginCard'); });
-        document.getElementById('goToLoginFromRegister')?.addEventListener('click', (e) => { e.preventDefault(); showCard('loginCard'); });
-
-        document.getElementById('loginBtn')?.addEventListener('click', (e) => {
+    const loginBody = document.querySelector('.login-body');
+    if (loginBody) {
+        
+        // Modal Recuperar Contraseña
+        const recoverModal = document.getElementById('recoverModal');
+        document.getElementById('openRecoverModal')?.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.href = "empleado.html"; 
+            recoverModal.classList.remove('hidden');
+        });
+        document.getElementById('closeRecoverModal')?.addEventListener('click', () => {
+            recoverModal.classList.add('hidden');
+        });
+
+        // Modal Registro de Cliente (Botón Flotante)
+        const registerModal = document.getElementById('registerModal');
+        document.getElementById('openRegisterModal')?.addEventListener('click', () => {
+            registerModal.classList.remove('hidden');
+        });
+        document.getElementById('closeRegisterModal')?.addEventListener('click', () => {
+            registerModal.classList.add('hidden');
+        });
+
+        // Submit Formulario Login Cliente
+        document.getElementById('customerLoginForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            window.location.href = "panelprincipal.html"; 
+        });
+
+        // Submit Formulario Registro Cliente
+        document.getElementById('customerRegisterForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert("Cuenta de cliente creada exitosamente. ¡Bienvenido a FAS Restaurant!");
+            registerModal.classList.add('hidden');
         });
     }
 
@@ -56,7 +75,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // --- 2. RENDERIZADO DE VISTAS ---
 
-        // VISTA DE MESAS CON PLANO
         window.renderMesas = function() {
             const availableCount = tables.filter(t => t.status === "available").length;
             const occupiedCount = tables.filter(t => t.status === "occupied").length;
@@ -115,7 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         };
 
-        // VISTA DEL PERFIL
         window.renderPerfil = function() {
             return `
                 <div class="top-bar">
@@ -138,7 +155,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         };
 
-        // VISTA DE EMPLEADOS
         window.renderEmpleados = function() {
             return `
                 <div class="top-bar"><div class="page-title"><h2>Empleados</h2><p>Gestión de personal</p></div></div>
@@ -164,7 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         };
 
-        // VISTA DE CLIENTES
         window.renderClientes = function() {
             return `
                 <div class="top-bar"><div class="page-title"><h2>Clientes</h2><p>Base de datos</p></div></div>
@@ -189,7 +204,6 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         };
 
-        // VISTA DE RESERVAS
         window.renderReservas = function() {
             return `
                 <div class="top-bar"><div class="page-title"><h2>Reservas</h2><p>Gestión activa</p></div></div>
