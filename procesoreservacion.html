@@ -5,103 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¡Reservación Exitosa! | FAS</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f4f7f1; }
-        .brand-bg { background-color: #8b2514; }
-        .success-animation { animation: bounce 1s infinite; }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
 </head>
 <body class="antialiased text-slate-900">
-
     <header class="brand-bg text-white shadow-md">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <span class="text-2xl">🍴</span>
-                <h1 class="font-extrabold text-xl tracking-tight">FAS <span class="text-orange-400 font-medium">Restaurante</span></h1>
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="bg-orange-500 p-1 rounded-lg">🍴</div>
+            <div>
+                <h1 class="font-bold text-lg leading-tight">Restaurante FAS</h1>
+                <p class="text-xs opacity-80">Panel de Cliente</p>
             </div>
-            <div class="w-10 h-10 bg-orange-700 rounded-full border-2 border-orange-500 flex items-center justify-center font-bold">R</div>
         </div>
-    </header>
-
+        <div class="flex items-center gap-3">
+            <span class="text-sm font-medium">Hola, Roberto Díaz</span>
+            <a href="historial.html" class="w-10 h-10 bg-orange-700 rounded-full flex items-center justify-center border-2 border-orange-500 hover:scale-105 transition">
+                <span class="font-bold">R</span>
+            </a>
+        </div>
+    </div>
+    <div class="bg-white text-slate-600">
+        <div class="max-w-7xl mx-auto px-4 flex gap-8 text-sm font-medium">
+            <a href="panelprincipal.html" class="py-3 border-b-2 border-orange-700 text-orange-700">🏠 Inicio</a>
+            <a href="historial.html" class="py-3 border-b-2 border-transparent hover:border-slate-300">📅 Mis Reservas</a>
+        </div>
+    </div>
+</header>
     <main class="max-w-3xl mx-auto px-6 py-16">
-        
-        <div class="bg-white rounded-[2.5rem] shadow-2xl shadow-slate-200 overflow-hidden border border-slate-100">
-            
-            <div class="bg-emerald-500 p-10 text-center text-white relative">
+        <div class="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border border-slate-100">
+            <div class="bg-emerald-500 p-10 text-center text-white">
                 <div class="text-6xl mb-4 success-animation">✅</div>
-                <h2 class="text-3xl font-extrabold mb-2">¡Todo listo, Roberto!</h2>
-                <p class="text-emerald-100 font-medium">Tu reservación ha sido confirmada con éxito.</p>
-                
-                <div class="absolute -bottom-4 left-0 right-0 flex justify-around">
-                    <div class="w-8 h-8 bg-white rounded-full"></div>
-                    <div class="w-8 h-8 bg-white rounded-full"></div>
-                    <div class="w-8 h-8 bg-white rounded-full"></div>
-                    <div class="w-8 h-8 bg-white rounded-full"></div>
-                    <div class="w-8 h-8 bg-white rounded-full"></div>
-                </div>
+                <h2 class="text-3xl font-extrabold mb-2">¡Todo listo!</h2>
+                <p>Tu reservación ha sido confirmada.</p>
             </div>
-
-            <div class="p-10 pt-14 flex flex-col md:flex-row gap-10">
-                
-                <div class="flex-1 space-y-6">
-                    <div>
-                        <p class="text-[10px] text-slate-400 uppercase font-extrabold tracking-widest mb-1">Código de Reserva</p>
-                        <p class="text-xl font-mono font-bold text-slate-800">#FAS-99284</p>
-                    </div>
-
-                    <div class="grid grid-cols-2 gap-6">
-                        <div>
-                            <p class="text-[10px] text-slate-400 uppercase font-extrabold tracking-widest mb-1">Fecha</p>
-                            <p class="font-bold text-slate-700">14 Mar 2026</p>
-                        </div>
-                        <div>
-                            <p class="text-[10px] text-slate-400 uppercase font-extrabold tracking-widest mb-1">Hora</p>
-                            <p class="font-bold text-slate-700">20:00 PM</p>
-                        </div>
-                        <div>
-                            <p class="text-[10px] text-slate-400 uppercase font-extrabold tracking-widest mb-1">Mesa</p>
-                            <p class="font-bold text-slate-700">Mesa M5</p>
-                        </div>
-                        <div>
-                            <p class="text-[10px] text-slate-400 uppercase font-extrabold tracking-widest mb-1">Invitados</p>
-                            <p class="font-bold text-slate-700">4 Personas</p>
-                        </div>
-                    </div>
-
-                    <div class="pt-6 border-t border-dashed border-slate-200">
-                        <p class="text-sm text-slate-500 italic leading-relaxed">
-                            "Recuerda que guardamos tu mesa por un máximo de 15 minutos. ¡Estamos ansiosos por servirte!"
-                        </p>
-                    </div>
-                </div>
-
-                <div class="flex flex-col items-center justify-center p-6 bg-slate-50 rounded-3xl border-2 border-slate-100">
-                    <div class="w-40 h-40 bg-white p-2 rounded-xl mb-4 shadow-inner flex items-center justify-center border-2 border-slate-200">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=FAS-99284" alt="QR Code">
-                    </div>
-                    <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Muestra este código al llegar</p>
-                </div>
-            </div>
-
-            <div class="p-10 pt-0 flex flex-col sm:flex-row gap-4">
-                <button class="flex-1 bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-slate-800 transition shadow-lg">
+            <div class="p-10 flex flex-col sm:flex-row gap-4">
+                <button id="btn-download-pdf" class="flex-1 bg-slate-900 text-white py-4 rounded-2xl font-bold hover:bg-slate-800 transition">
                     📥 Descargar PDF
                 </button>
-                <a href="dashboard-cliente.html" class="flex-1 bg-orange-600 text-center text-white py-4 rounded-2xl font-bold hover:bg-orange-700 transition shadow-lg shadow-orange-900/20">
+                <a href="panelprincipal.html" class="flex-1 bg-orange-600 text-center text-white py-4 rounded-2xl font-bold hover:bg-orange-700 transition shadow-lg">
                     🏠 Volver al Inicio
                 </a>
             </div>
         </div>
-
-        <p class="text-center mt-10 text-slate-400 text-sm">
-            ¿Necesitas ayuda? Contacta a soporte al <span class="text-orange-600 font-bold"></span>
-        </p>
     </main>
-
 </body>
 </html>

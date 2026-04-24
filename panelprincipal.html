@@ -5,14 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cliente | Restaurante FAS</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f4f7f1; }
-        .brand-bg { background-color: #8b2514; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
 </head>
 <body>
-
 <header class="brand-bg text-white shadow-md">
     <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         <div class="flex items-center gap-2">
@@ -24,141 +20,45 @@
         </div>
         <div class="flex items-center gap-3">
             <span class="text-sm font-medium">Hola, Roberto Díaz</span>
-            <div class="w-10 h-10 bg-orange-700 rounded-full flex items-center justify-center border-2 border-orange-500">
+            <a href="historial.html" class="w-10 h-10 bg-orange-700 rounded-full flex items-center justify-center border-2 border-orange-500 hover:scale-105 transition">
                 <span class="font-bold">R</span>
-            </div>
+            </a>
         </div>
     </div>
-
     <div class="bg-white text-slate-600">
         <div class="max-w-7xl mx-auto px-4 flex gap-8 text-sm font-medium">
-            <button class="py-3 border-b-2 border-orange-700 text-orange-700">🏠 Inicio</button>
-            <button class="py-3 border-b-2 border-transparent hover:border-slate-300">📅 Mis Reservas</button>
-            <button class="py-3 border-b-2 border-transparent hover:border-slate-300">⭐ Favoritos</button>
+            <a href="panelprincipal.html" class="py-3 border-b-2 border-orange-700 text-orange-700">🏠 Inicio</a>
+            <a href="historial.html" class="py-3 border-b-2 border-transparent hover:border-slate-300">📅 Mis Reservas</a>
         </div>
     </div>
 </header>
-
 <main class="max-w-7xl mx-auto px-4 py-8">
-    
     <h2 class="text-2xl font-bold text-slate-800 mb-1">Bienvenido de nuevo</h2>
     <p class="text-slate-500 mb-8">¿Qué se te antoja para hoy?</p>
-
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
-        
         <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-orange-600 flex justify-between items-center">
-            <div>
-                <p class="text-slate-500 text-sm font-medium uppercase tracking-wider">Próxima Cita</p>
-                <h3 class="text-2xl font-bold text-slate-800">Mañana</h3>
-                <p class="text-xs text-slate-400">14 de Marzo, 20:00h</p>
-            </div>
-            <div class="bg-orange-50 p-3 rounded-full text-orange-600 font-bold">📅</div>
+            <div><p class="text-slate-500 text-sm uppercase">Próxima Cita</p><h3 class="text-2xl font-bold">Mañana</h3></div>
+            <div class="bg-orange-50 p-3 rounded-full text-orange-600">📅</div>
         </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-emerald-600 flex justify-between items-center">
-            <div>
-                <p class="text-slate-500 text-sm font-medium uppercase tracking-wider">Visitas</p>
-                <h3 class="text-2xl font-bold text-slate-800">15 veces</h3>
-                <p class="text-xs text-emerald-600 font-bold uppercase">Cliente VIP</p>
-            </div>
-            <div class="bg-emerald-50 p-3 rounded-full text-emerald-600 font-bold">⭐</div>
-        </div>
-
-        <div class="bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-600 flex justify-between items-center">
-            <div>
-                <p class="text-slate-500 text-sm font-medium uppercase tracking-wider">Puntos FAS</p>
-                <h3 class="text-2xl font-bold text-slate-800">450 pts</h3>
-                <p class="text-xs text-slate-400">Faltan 50 para un postre gratis</p>
-            </div>
-            <div class="bg-blue-50 p-3 rounded-full text-blue-600 font-bold">💰</div>
-        </div>
-
     </div>
-
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        
-        <div class="lg:col-span-2 space-y-6">
-
-            <!-- RESERVACIÓN -->
-            <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex flex-col md:flex-row items-center gap-8 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
-                <div class="flex-1">
-                    <h3 class="text-3xl font-extrabold text-slate-800 mb-4">¿Vienes con nosotros?</h3>
-                    <p class="text-slate-600 mb-6">Reserva tu mesa favorita ahora y evita las filas. ¡Te esperamos con el mejor servicio!</p>
-                    <button class="bg-orange-700 text-white px-8 py-3 rounded-xl font-bold shadow-lg shadow-orange-900/20 hover:bg-orange-800 transition transform hover:-translate-y-1">
-                        Nueva Reservación 🚀
-                    </button>
-                </div>
-                <div class="w-48 h-48 bg-orange-100 rounded-2xl flex items-center justify-center text-8xl">🥩</div>
+    <div class="lg:col-span-2 space-y-6">
+        <div class="bg-white p-8 rounded-3xl shadow-sm border border-slate-100 flex flex-col md:flex-row items-center gap-8">
+            <div class="flex-1">
+                <h3 class="text-3xl font-extrabold text-slate-800 mb-4">¿Vienes con nosotros?</h3>
+                <a href="selectormesas.html" class="inline-block bg-orange-700 text-white px-8 py-3 rounded-xl font-bold shadow-lg hover:bg-orange-800 transition transform hover:-translate-y-1">
+                    Nueva Reservación 🚀
+                </a>
             </div>
-
-            <!-- NUEVO: MENÚ -->
-            <a href="menu.html" class="block bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition group">
-                <div class="flex flex-col md:flex-row items-center gap-6 p-6">
-
-                    <div class="w-full md:w-40 h-32 bg-[url('https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=800')] bg-cover bg-center rounded-xl group-hover:scale-105 transition"></div>
-
-                    <div class="flex-1">
-                        <h3 class="text-xl font-bold text-slate-800 mb-1">Explorar Menú</h3>
-                        <p class="text-slate-500 text-sm">Descubre hamburguesas, pizzas, bebidas y más</p>
-                    </div>
-
-                    <div class="bg-orange-100 text-orange-600 w-12 h-12 flex items-center justify-center rounded-xl text-xl font-bold group-hover:bg-orange-600 group-hover:text-white transition">
-                        →
-                    </div>
-
-                </div>
-            </a>
-
-            <!-- FAVORITOS -->
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                <h3 class="font-bold text-lg mb-4 text-slate-800">Tus favoritos de siempre</h3>
-                <div class="space-y-4">
-                    <div class="flex items-center gap-4 p-3 hover:bg-slate-50 rounded-lg transition border border-transparent hover:border-slate-100">
-                        <div class="w-16 h-16 bg-slate-200 rounded-lg bg-[url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=150')] bg-cover"></div>
-                        <div class="flex-1">
-                            <h4 class="font-bold">FAS Burger Pro</h4>
-                            <p class="text-sm text-slate-500">Has pedido esto 8 veces.</p>
-                        </div>
-                        <span class="font-bold text-orange-600">$180</span>
-                    </div>
-                </div>
-            </div>
-
+            <div class="w-48 h-48 bg-orange-100 rounded-2xl flex items-center justify-center text-8xl">🥩</div>
         </div>
-
-        <!-- SIDEBAR -->
-        <div class="space-y-6">
-
-            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-100">
-                <h3 class="font-bold text-lg mb-4 text-slate-800">Tus Preferencias</h3>
-                <div class="space-y-3">
-                    <span class="bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-xs font-bold">Mesa junto a la ventana</span>
-                    <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full text-xs font-bold">Sin gluten</span>
-
-                    <p class="text-xs text-slate-400 mt-4 italic">Esta información ayuda a nuestro staff a darte un mejor servicio.</p>
-
-                    <button class="w-full mt-2 py-2 border-2 border-slate-200 text-slate-600 rounded-lg text-sm font-bold hover:bg-slate-50 transition">
-                        Editar perfil
-                    </button>
-                </div>
+        <a href="menuprincipal.html" class="block bg-white rounded-3xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-xl transition group">
+            <div class="flex flex-col md:flex-row items-center gap-6 p-6">
+                <div class="w-full md:w-40 h-32 bg-slate-200 rounded-xl"></div>
+                <div class="flex-1"><h3 class="text-xl font-bold">Explorar Menú</h3><p class="text-slate-500">Descubre nuestros platillos</p></div>
+                <div class="bg-orange-100 text-orange-600 w-12 h-12 flex items-center justify-center rounded-xl font-bold">→</div>
             </div>
-
-            <div class="bg-emerald-700 p-6 rounded-xl text-white shadow-lg relative overflow-hidden">
-                <div class="relative z-10">
-                    <h4 class="font-bold text-lg mb-2 text-emerald-200">¡Happy Hour!</h4>
-                    <p class="text-sm opacity-90">2x1 en cócteles seleccionados todos los jueves de 18:00 a 20:00.</p>
-                </div>
-                <span class="absolute -right-4 -bottom-4 text-8xl opacity-20">🍸</span>
-            </div>
-
-        </div>
-
+        </a>
     </div>
 </main>
-
-<footer class="py-8 text-center text-slate-400 text-xs">
-    © 2026 FAS Gestión de Restaurante. Todo bajo control.
-</footer>
-
 </body>
 </html>

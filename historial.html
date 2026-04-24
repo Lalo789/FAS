@@ -3,135 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Perfil y Preferencias | FAS</title>
+    <title>Mi Perfil | FAS</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #f4f7f1; }
-        .brand-bg { background-color: #640E09; }
-        .accent-border { border-color: #f97316; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
 </head>
 <body class="antialiased text-slate-900">
-
     <header class="brand-bg text-white shadow-md">
-        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <span class="text-2xl">🍴</span>
-                <h1 class="font-extrabold text-xl tracking-tight">FAS <span class="text-orange-400 font-medium">Restaurante</span></h1>
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+        <div class="flex items-center gap-2">
+            <div class="bg-orange-500 p-1 rounded-lg">🍴</div>
+            <div>
+                <h1 class="font-bold text-lg leading-tight">Restaurante FAS</h1>
+                <p class="text-xs opacity-80">Panel de Cliente</p>
             </div>
-            <a href="dashboard.html" class="text-sm font-semibold hover:text-orange-300 transition">← Volver al Panel</a>
         </div>
-    </header>
-
+        <div class="flex items-center gap-3">
+            <span class="text-sm font-medium">Hola, Roberto Díaz</span>
+            <a href="historial.html" class="w-10 h-10 bg-orange-700 rounded-full flex items-center justify-center border-2 border-orange-500 hover:scale-105 transition">
+                <span class="font-bold">R</span>
+            </a>
+        </div>
+    </div>
+    <div class="bg-white text-slate-600">
+        <div class="max-w-7xl mx-auto px-4 flex gap-8 text-sm font-medium">
+            <a href="panelprincipal.html" class="py-3 border-b-2 border-orange-700 text-orange-700">🏠 Inicio</a>
+            <a href="historial.html" class="py-3 border-b-2 border-transparent hover:border-slate-300">📅 Mis Reservas</a>
+        </div>
+    </div>
+</header>
     <main class="max-w-5xl mx-auto px-6 py-12">
         <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            
             <aside class="space-y-4">
                 <div class="bg-white p-6 rounded-3xl shadow-sm border border-slate-200 text-center">
-                    <div class="w-24 h-24 bg-orange-100 text-orange-700 rounded-full mx-auto flex items-center justify-center text-3xl font-bold mb-4 border-4 border-orange-50">
-                        RD
-                    </div>
-                    <h2 class="text-xl font-bold text-slate-800">Roberto Díaz</h2>
-                    <p class="text-sm text-slate-500 mb-6">Cliente VIP desde 2025</p>
-                    <button class="w-full py-2 bg-slate-100 hover:bg-slate-200 rounded-xl text-sm font-bold transition">Cambiar Foto</button>
+                    <div class="w-24 h-24 bg-orange-100 text-orange-700 rounded-full mx-auto flex items-center justify-center text-3xl font-bold mb-4">RD</div>
+                    <h2 class="text-xl font-bold">Roberto Díaz</h2>
+                    <p class="text-sm text-slate-500">Cliente VIP desde 2025</p>
                 </div>
-
-                <nav class="bg-white rounded-3xl shadow-sm border border-slate-200 overflow-hidden">
-                    <button class="w-full flex items-center gap-3 px-6 py-4 text-orange-700 font-bold bg-orange-50 border-r-4 border-orange-600">
-                        👤 Datos Personales
-                    </button>
-                    <button class="w-full flex items-center gap-3 px-6 py-4 text-slate-600 hover:bg-slate-50 transition border-r-4 border-transparent">
-                        ✨ Preferencias
-                    </button>
-                    <button class="w-full flex items-center gap-3 px-6 py-4 text-slate-600 hover:bg-slate-50 transition border-r-4 border-transparent">
-                        📜 Historial de Visitas
-                    </button>
-                </nav>
             </aside>
-
-            <div class="lg:col-span-2 space-y-8">
-                
-                <section class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
-                    <h3 class="text-xl font-extrabold mb-6 flex items-center gap-2">
-                        <span class="text-orange-600">■</span> Información de la Cuenta
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Nombre Completo</label>
-                            <input type="text" value="Roberto Díaz" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-orange-500 outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Correo Electrónico</label>
-                            <input type="email" value="roberto.diaz@email.com" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-orange-500 outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-xs font-bold text-slate-400 uppercase mb-2">Teléfono</label>
-                            <input type="text" value="+52 555 123 4567" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-orange-500 outline-none">
-                        </div>
-                    </div>
-                    <button class="mt-8 bg-orange-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-orange-700 transition">Guardar Cambios</button>
-                </section>
-
-                <section class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
-                    <h3 class="text-xl font-extrabold mb-6 flex items-center gap-2">
-                        <span class="text-orange-600">■</span> Mis Preferencias
-                    </h3>
-                    <div class="space-y-6">
-                        <div>
-                            <p class="text-sm font-bold text-slate-700 mb-3">Zona preferida del restaurante:</p>
-                            <div class="flex flex-wrap gap-3">
-                                <button class="px-4 py-2 rounded-full border-2 border-orange-600 bg-orange-50 text-orange-700 text-sm font-bold">🪟 Cerca de la Ventana</button>
-                                <button class="px-4 py-2 rounded-full border-2 border-slate-200 text-slate-500 text-sm font-bold hover:border-orange-400">🌿 Terraza</button>
-                                <button class="px-4 py-2 rounded-full border-2 border-slate-200 text-slate-500 text-sm font-bold hover:border-orange-400">🍷 Interior</button>
-                            </div>
-                        </div>
-                        <div>
-                            <p class="text-sm font-bold text-slate-700 mb-3">Restricciones Alimenticias:</p>
-                            <textarea class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-orange-500 outline-none" rows="3" placeholder="Ej: Alérgico a los mariscos, dieta vegana..."></textarea>
-                        </div>
-                    </div>
-                </section>
-
-                <section class="bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
-                    <h3 class="text-xl font-extrabold mb-6 flex items-center gap-2">
-                        <span class="text-orange-600">■</span> Historial de Visitas
-                    </h3>
-                    <div class="overflow-hidden border border-slate-100 rounded-2xl">
-                        <table class="w-full text-left border-collapse">
-                            <thead class="bg-slate-50 text-slate-400 text-[10px] font-extrabold uppercase tracking-widest">
-                                <tr>
-                                    <th class="px-6 py-4">Fecha</th>
-                                    <th class="px-6 py-4">Mesa</th>
-                                    <th class="px-6 py-4">Consumo</th>
-                                    <th class="px-6 py-4">Estado</th>
-                                </tr>
-                            </thead>
-                            <tbody class="text-sm divide-y divide-slate-100">
-                                <tr class="hover:bg-slate-50 transition">
-                                    <td class="px-6 py-4 font-bold text-slate-700">12/02/2026</td>
-                                    <td class="px-6 py-4">Mesa M5</td>
-                                    <td class="px-6 py-4 text-orange-600 font-bold">$450.00</td>
-                                    <td class="px-6 py-4"><span class="bg-emerald-100 text-emerald-700 px-2 py-1 rounded-md text-[10px] font-bold uppercase">Finalizada</span></td>
-                                </tr>
-                                <tr class="hover:bg-slate-50 transition">
-                                    <td class="px-6 py-4 font-bold text-slate-700">01/01/2026</td>
-                                    <td class="px-6 py-4">Mesa M1</td>
-                                    <td class="px-6 py-4 text-orange-600 font-bold">$1,200.00</td>
-                                    <td class="px-6 py-4"><span class="bg-emerald-100 text-emerald-700 px-2 py-1 rounded-md text-[10px] font-bold uppercase">Finalizada</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-
-            </div>
+            <section class="lg:col-span-2 bg-white p-8 rounded-3xl shadow-sm border border-slate-200">
+                <h3 class="text-xl font-extrabold mb-6">Historial de Visitas</h3>
+                <table class="w-full text-left">
+                    <thead class="bg-slate-50 text-[10px] uppercase font-extrabold">
+                        <tr><th class="px-6 py-4">Fecha</th><th class="px-6 py-4">Mesa</th><th class="px-6 py-4">Estado</th></tr>
+                    </thead>
+                    <tbody class="text-sm">
+                        <tr><td class="px-6 py-4">12/02/2026</td><td class="px-6 py-4">Mesa M5</td><td class="px-6 py-4 text-emerald-600 font-bold">Finalizada</td></tr>
+                    </tbody>
+                </table>
+            </section>
         </div>
     </main>
-
-    <footer class="py-10 text-center text-slate-400 text-xs">
-        © 2026 FAS - Sistema de Gestión de Restaurante
-    </footer>
-
 </body>
-</html>

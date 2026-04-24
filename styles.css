@@ -1,0 +1,29 @@
+/* Importación de fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap');
+
+/* Estilos Generales */
+body { font-family: 'Inter', sans-serif; background-color: #f4f7f1; }
+.brand-bg { background-color: #8b2514; }
+.brand-bg-alt { background-color: #640E09; }
+
+/* Selector de Mesas */
+.mesa-selected { 
+    border-color: #f97316 !important; 
+    background-color: #fff7ed !important; 
+    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.2); 
+}
+
+/* Animaciones de Éxito */
+.success-animation { animation: bounce 1s infinite; }
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Menú Digital */
+.menu-body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #f8fafc; }
+.category-pill:hover { transform: translateY(-2px); }
+.food-card:hover img { transform: scale(1.1); }
+
+/* Perfil e Historial */
+.accent-border { border-color: #f97316; }
