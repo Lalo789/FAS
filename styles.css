@@ -19,36 +19,36 @@
     box-shadow: 0 25px 40px -12px rgba(100, 14, 9, 0.3); padding: 2.5rem; 
     border: 1px solid rgba(247, 185, 26, 0.3); position: relative; overflow: hidden;
 }
-.login-card { border-top: 6px solid #640E09; }
+.login-card { border-top: 6px solid #fbfbfb00; }
 
 .hidden { display: none !important; }
-h1, .fas-restaurant-title { font-size: 2.1rem; font-weight: 800; color: #640E09; margin-bottom: 0.2rem; }
+h1, .fas-restaurant-title { font-size: 2.1rem; font-weight: 800; color: #204400; margin-bottom: 0.2rem; }
 .fas-restaurant-title i { color: #F7B91A; margin-right: 6px; }
-.welcome-text { font-size: 1.05rem; color: #992410; margin-bottom: 2rem; font-weight: 600; border-left: 4px solid #F7B91A; padding-left: 1rem; }
+.welcome-text { font-size: 1.05rem; color: #204400; margin-bottom: 2rem; font-weight: 600;}
 .input-group { margin-bottom: 1.2rem; }
-.input-group label { display: block; font-size: 0.85rem; font-weight: 700; color: #4B7001; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.input-group label { display: block; font-size: 0.85rem; font-weight: 700; color: #204400; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
 .input-field {
     width: 100%; padding: 0.9rem 1.2rem; font-size: 1rem; background: #fdfdfc;
     border: 2px solid #e2e8dd; border-radius: 20px; outline: none; transition: all 0.3s ease;
-    font-family: 'Inter', sans-serif; color: #2B3B00; font-weight: 500;
+    font-family: 'Inter', sans-serif; color: #000000; font-weight: 500;
 }
 .input-field:focus { border-color: #EB6C0C; box-shadow: 0 0 0 4px rgba(235, 108, 12, 0.15); background: #fff; }
 .flex-row { display: flex; align-items: center; justify-content: space-between; margin: 1rem 0 1.5rem; }
-.checkbox-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: #4B7001; font-weight: 600; cursor: pointer; }
-.link-forgot { color: #EB6C0C; font-size: 0.9rem; font-weight: 700; text-decoration: none; }
+.checkbox-label { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: #204400; font-weight: 600; cursor: pointer; }
+.link-forgot { color: #a64800; font-size: 0.9rem; font-weight: 700; text-decoration: none; }
 .btn-login {
     display: block; width: 100%; padding: 1rem; font-size: 1.1rem; font-weight: 800; text-align: center; text-transform: uppercase; letter-spacing: 1px;
-    border: none; border-radius: 30px; background: #640E09; color: white; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 15px rgba(100, 14, 9, 0.2);
+    border: none; border-radius: 30px; background: linear-gradient(135deg, #EB6C0C, #F7B91A); color: #640E09;  cursor: pointer; transition: all 0.3s ease; box-shadow: 0 8px 15px rgba(100, 14, 9, 0.2);
 }
-.btn-login:hover { background: #992410; transform: translateY(-2px); box-shadow: 0 12px 20px rgba(100, 14, 9, 0.3); }
+.btn-login:hover {transform: translateY(-2px); box-shadow: 0 12px 20px rgba(100, 14, 9, 0.3); }
 
-.divider { display: flex; align-items: center; text-align: center; color: #737F03; font-size: 0.85rem; font-weight: 600; margin: 1.5rem 0; }
+.divider { display: flex; align-items: center; text-align: center; color: #204400; font-size: 0.85rem; font-weight: 600; margin: 1.5rem 0; }
 .divider::before, .divider::after { content: ''; flex: 1; border-bottom: 2px solid #e2e8dd; }
-.divider span { margin: 0 1rem; color: #4B7001; }
+.divider span { margin: 0 1rem; color: #204400; }
 .social-buttons { display: flex; gap: 1rem; justify-content: center; }
 .social-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.5rem; border: 2px solid #e2e8dd; border-radius: 20px; padding: 0.8rem; font-weight: 700; color: #2B3B00; cursor: pointer; background: white; transition: all 0.2s; }
 .social-btn:hover { border-color: #F7B91A; background: #fffcf7; }
-.terms-check { display: flex; align-items: flex-start; gap: 0.6rem; margin: 1rem 0 1.5rem; font-size: 0.85rem; color: #4B7001; font-weight: 600; }
+.terms-check { display: flex; align-items: flex-start; gap: 0.6rem; margin: 1rem 0 1.5rem; font-size: 0.85rem; color: #204400; font-weight: 600; }
 
 /* Botón Flotante para Crear Cuenta */
 .floating-btn {
