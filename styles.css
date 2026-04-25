@@ -28,9 +28,9 @@ h1, .fas-restaurant-title { font-size: 2.1rem; font-weight: 800; color: #b0c4bf;
 .input-group { margin-bottom: 1.2rem; }
 .input-group label { display: block; font-size: 0.85rem; font-weight: 700; color: #b0c4bf; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.5px; }
 .input-field {
-    width: 100%; padding: 0.9rem 1.2rem; font-size: 1rem; background: #fdfdfc;
-    border: 2px solid #e2e8dd; border-radius: 20px; outline: none; transition: all 0.3s ease;
-    font-family: 'Inter', sans-serif; color: #000000; font-weight: 500;
+    width: 100%; padding: 0.9rem 1.2rem; font-size: 1rem; background: #e6ebeb;
+    border: 2px solid #e2e8dd00; border-radius: 20px; outline: none; transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif; color: #1c6449; font-weight: 500;
 }
 .input-field:focus { border-color: #EB6C0C; box-shadow: 0 0 0 4px rgba(235, 108, 12, 0.15); background: #fff; }
 .flex-row { display: flex; align-items: center; justify-content: space-between; margin: 1rem 0 1.5rem; }
@@ -44,11 +44,11 @@ h1, .fas-restaurant-title { font-size: 2.1rem; font-weight: 800; color: #b0c4bf;
 
 .divider { display: flex; align-items: center; text-align: center; color: #204400; font-size: 0.85rem; font-weight: 600; margin: 1.5rem 0; }
 .divider::before, .divider::after { content: ''; flex: 1; border-bottom: 2px solid #e2e8dd; }
-.divider span { margin: 0 1rem; color: #204400; }
+.divider span { margin: 0 1rem; color: #b0c4bf; }
 .social-buttons { display: flex; gap: 1rem; justify-content: center; }
 .social-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.5rem; border: 2px solid #e2e8dd; border-radius: 20px; padding: 0.8rem; font-weight: 700; color: #2B3B00; cursor: pointer; background: white; transition: all 0.2s; }
 .social-btn:hover { border-color: #F7B91A; background: #fffcf7; }
-.terms-check { display: flex; align-items: flex-start; gap: 0.6rem; margin: 1rem 0 1.5rem; font-size: 0.85rem; color: #204400; font-weight: 600; }
+.terms-check { display: flex; align-items: flex-start; gap: 0.6rem; margin: 1rem 0 1.5rem; font-size: 0.85rem; color: #b0c4bf; font-weight: 600; }
 
 /* Botón Flotante para Crear Cuenta */
 .floating-btn {
