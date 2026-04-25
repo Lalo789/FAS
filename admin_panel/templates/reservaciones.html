@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestión de Reservaciones | FAS{% endblock %}
+
+{% block content %}
+<div class="reservations-container fade-in">
+    <h2 class="page-title">Gestión de Reservaciones</h2>
+
+    <div class="stats-grid">
+        <div class="stat-card card-blue">
+            <span class="stat-label">Reservas Hoy</span>
+            <span class="stat-value">12</span>
+            <span class="stat-trend">Para el turno actual</span>
+        </div>
+        <div class="stat-card card-green">
+            <span class="stat-label">Confirmadas</span>
+            <span class="stat-value">8</span>
+            <span class="stat-status-alert">✅ Listas para recibir</span>
+        </div>
+        <div class="stat-card card-yellow">
+            <span class="stat-label">Pendientes</span>
+            <span class="stat-value">4</span>
+            <span class="stat-status-alert">⏳ Por confirmar</span>
+        </div>
+    </div>
+
+    <div class="header-flex" style="display: flex; justify-content: space-between; margin-bottom: 25px;">
+        <div class="search-bar" style="margin-bottom: 0;">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Buscar por cliente o mesa..." id="reservationSearch">
+        </div>
+        <div class="filter-options">
+            <input type="date" class="date-input" value="2026-04-13">
+        </div>
+    </div>
+
+    <div class="content-card table-wrapper">
+        <table class="fas-table" id="reservationsTable">
+            <thead>
+                <tr>
+                    <th>Cliente</th>
+                    <th>Mesa</th>
+                    <th>Fecha</th>
+                    <th>Hora</th>
+                    <th>Personas</th>
+                    <th>Estado</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for reserva in reservaciones %}
+                <tr id="res-row-{{ reserva.id }}">
+                    <td><strong>{{ reserva.cliente }}</strong></td>
+                    <td>{{ reserva.mesa }}</td>
+                    <td>{{ reserva.fecha }}</td>
+                    <td>{{ reserva.hora }}</td>
+                    <td class="text-center">{{ reserva.personas }}</td>
+                    <td>
+                        <span class="badge {% if reserva.estado == 'Confirmada' %}badge-ok{% elif reserva.estado == 'Pendiente' %}badge-low{% else %}badge-out{% endif %}">
+                            {{ reserva.estado }}
+                        </span>
+                    </td>
+                    <td class="actions-cell">
+                        <div class="row-actions">
+                            <a href="{% url 'editar_reservacion' reserva.id %}" class="action-icon">📝</a>
+                            <a href="#!" class="action-icon" onclick="handleDelete('reservacion', {{ reserva.id }})">🚫</a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                    <tr>
+                        <td><strong>Luis Hernández</strong></td>
+                        <td>M4</td>
+                        <td>13/04/2026</td>
+                        <td>15:00</td>
+                        <td class="text-center">4</td>
+                        <td><span class="badge badge-ok">Confirmada</span></td>
+                        <td class="actions-cell">
+                            <div class="row-actions"><span>📝</span> <span style="cursor:pointer" onclick="handleDelete('reservacion', 1)">🚫</span></div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pill-buttons-group">
+        <a href="{% url 'agregar_reservacion' %}" class="pill-btn btn-add">
+            <span class="icon">+</span> Nueva Reservación
+        </a>
+    </div>
+</div>
+{% endblock %}

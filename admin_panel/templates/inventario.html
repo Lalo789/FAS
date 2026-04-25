@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}Inventario | FAS Admin{% endblock %}
+
+{% block content %}
+<div class="inventory-container fade-in">
+    <div class="header-flex" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px;">
+        <h2 class="page-title">Gestión de Almacén</h2>
+        <a href="{% url 'agregar_inventario' %}" class="pill-btn btn-add">
+            <span class="icon">+</span> Agregar Insumo
+        </a>
+    </div>
+
+    <div class="search-section">
+        <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="inventorySearch" placeholder="Buscar insumo o categoría...">
+        </div>
+    </div>
+
+    <div class="content-card table-wrapper">
+        <table class="fas-table" id="inventoryTable">
+            <thead>
+                <tr>
+                    <th>Insumo</th>
+                    <th>Categoría</th>
+                    <th>Stock</th>
+                    <th>Precio Unit.</th>
+                    <th>Estatus</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in inventario %}
+                <tr id="inv-row-{{ item.id }}">
+                    <td><strong>{{ item.nombre }}</strong></td>
+                    <td>{{ item.categoria }}</td>
+                    <td>{{ item.cantidad }} {{ item.unidad }}</td>
+                    <td class="price-format">{{ item.precio }}</td>
+                    <td>
+                        {% if item.cantidad > 10 %}
+                            <span class="badge success">En Stock</span>
+                        {% elif item.cantidad > 0 %}
+                            <span class="badge warning">Bajo Stock</span>
+                        {% else %}
+                            <span class="badge danger">Agotado</span>
+                        {% endif %}
+                    </td>
+                    <td class="actions-cell">
+                        <div class="row-actions">
+                            <a href="{% url 'editar_inventario' item.id %}" class="action-icon" title="Editar">📝</a>
+                            <a href="#!" class="action-icon" onclick="handleDelete('inventario', {{ item.id }})" title="Eliminar">🗑️</a>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="text-center" style="padding: 40px; color: var(--text-muted);">
+                        No hay insumos en el almacén.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestión de Mesas | FAS{% endblock %}
+
+{% block content %}
+<div class="tables-management-container fade-in">
+    
+    <div class="tables-header">
+        <h2 class="page-title">Gestión de Mesas</h2>
+        
+        <div class="search-bar" style="margin-bottom: 0;">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Buscar mesa (M1, M2...)" id="tableSearch">
+        </div>
+
+        <div class="summary-badges">
+            <div class="badge-item badge-green"><span>✓</span> <strong>5</strong> <small>Libres</small></div>
+            <div class="badge-item badge-red"><span>×</span> <strong>3</strong> <small>Ocupadas</small></div>
+            <div class="badge-item badge-yellow"><span>📅</span> <strong>3</strong> <small>Reserva</small></div>
+        </div>
+    </div>
+
+    <div class="tables-grid">
+        {% for mesa in mesas %}
+        <div class="table-card">
+            <div class="card-quick-actions">
+                <a href="{% url 'editar_mesa' mesa.id %}" title="Editar">📝</a>
+            </div>
+            <h3>{{ mesa.numero }}</h3>
+            <p class="status-text {% if mesa.estado == 'Disponible' %}status-available{% elif mesa.estado == 'Ocupada' %}status-occupied{% else %}status-reserved{% endif %}">
+                <span class="dot {% if mesa.estado == 'Disponible' %}green{% elif mesa.estado == 'Ocupada' %}red{% else %}yellow{% endif %}"></span> 
+                {{ mesa.estado }}
+            </p>
+            <p class="table-detail">Capacidad: {{ mesa.capacidad }} personas</p>
+            {% if mesa.mesero %}
+                <p class="table-detail">Atiende: {{ mesa.mesero }}</p>
+            {% endif %}
+        </div>
+        {% empty %}
+            <div class="table-card"><div class="card-quick-actions"><a href="#!">📝</a></div><h3>M1</h3><p class="status-text status-available"><span class="dot green"></span> Disponible</p><p class="table-detail">Capacidad: 4</p></div>
+            <div class="table-card"><div class="card-quick-actions"><a href="#!">📝</a></div><h3>M4</h3><p class="status-text status-occupied"><span class="dot red"></span> Ocupada</p><p class="table-detail">Mesero: Ana</p></div>
+        {% endfor %}
+    </div>
+
+    <div class="tables-actions">
+        <div class="pill-buttons-group">
+            <a href="{% url 'agregar_mesa' %}" class="pill-btn btn-add">
+                <span class="icon">+</span> Agregar Mesa
+            </a>
+            <button class="pill-btn btn-delete" onclick="handleDelete('mesa', 'seleccionada')">
+                <span class="icon">🗑️</span> Eliminar Mesa
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}

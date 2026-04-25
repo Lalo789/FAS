@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block title %}Reportes de Ventas | FAS Admin{% endblock %}
+
+{% block content %}
+<div class="reports-container fade-in">
+    
+    <div class="reports-header">
+        <h2 class="page-title">Reportes de Negocio</h2>
+        <div class="period-selector">
+            <div class="btn-group">
+                <button class="btn-period active">Hoy</button>
+                <button class="btn-period">Sem</button>
+                <button class="btn-period">Mes</button>
+            </div>
+            <div class="date-picker date-input">
+                <input type="text" value="13/03/2026" readonly style="border:none; outline:none; font-size:0.8rem; background:transparent;">
+                <span class="filter-icon">⚙️</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card card-green">
+            <span class="stat-label">Ventas Totales</span>
+            <span class="stat-value">7120</span>
+            <span class="stat-trend">🟢 +11% vs. semana pasada</span>
+        </div>
+
+        <div class="stat-card card-yellow">
+            <span class="stat-label">Mesas Utilizadas</span>
+            <div class="value-with-icon" style="display:flex; align-items:center; gap:10px;">
+                <span style="font-size:1.5rem;">📈</span>
+                <span class="stat-value" style="border:none;">20</span>
+            </div>
+            <span class="stat-trend">🟢 +10% de ocupación</span>
+        </div>
+
+        <div class="stat-card card-blue">
+            <span class="stat-label">Pedidos Totales</span>
+            <span class="stat-value">75</span>
+            <span class="stat-trend">🟢 +8% vs. semana pasada</span>
+        </div>
+    </div>
+
+    <div class="main-chart-container">
+        <div class="chart-header">
+            <h3>Rendimiento Semanal</h3>
+            <span class="chart-growth">+21% <small style="color:#666">vs semana anterior</small></span>
+        </div>
+        <div class="svg-wrapper">
+            <svg viewBox="0 0 800 250" class="report-svg">
+                <line x1="50" y1="50" x2="750" y2="50" stroke="#f0f0f0" />
+                <line x1="50" y1="100" x2="750" y2="100" stroke="#f0f0f0" />
+                <line x1="50" y1="150" x2="750" y2="150" stroke="#f0f0f0" />
+                <line x1="50" y1="200" x2="750" y2="200" stroke="#f0f0f0" />
+
+                <text x="10" y="55" class="svg-text">4.5k</text>
+                <text x="10" y="155" class="svg-text">2.5k</text>
+
+                <polyline fill="none" stroke="#8B1A1A" stroke-width="4" stroke-linejoin="round" 
+                    points="50,180 160,110 270,140 380,60 490,50 600,70" />
+                
+                <text x="50" y="230" class="svg-text">Ma</text>
+                <text x="160" y="230" class="svg-text">Mi</text>
+                <text x="270" y="230" class="svg-text">Ju</text>
+                <text x="380" y="230" class="svg-text">Vi</text>
+                <text x="490" y="230" class="svg-text">Sa</text>
+                <text x="600" y="230" class="svg-text">Do</text>
+            </svg>
+        </div>
+    </div>
+
+    <div class="top-dishes-container">
+        <div class="table-header">
+            <h3>Platillos más vendidos</h3>
+            <div class="header-columns">
+                <span>Pedidos</span>
+                <span>Ingresos</span>
+            </div>
+        </div>
+        <div class="dish-item">
+            <span class="dish-name">Hamburguesa FAS</span>
+            <span class="dish-count">20</span>
+            <span class="dish-income">1600</span>
+        </div>
+        <div class="dish-item">
+            <span class="dish-name">Pizza Ibérica</span>
+            <span class="dish-count">18</span>
+            <span class="dish-income">3240</span>
+        </div>
+    </div>
+</div>
+{% endblock %}

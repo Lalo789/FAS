@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard | FAS Admin{% endblock %}
+
+{% block content %}
+<div class="dashboard-container fade-in">
+    <h2 class="page-title">Panel de Control</h2>
+
+    <div class="stats-grid">
+        <div class="stat-card card-green">
+            <span class="stat-label">Ventas de Hoy</span>
+            <span class="stat-value">$7,120.00</span>
+            <span class="stat-trend">↑ 1% vs ayer</span>
+        </div>
+
+        <div class="stat-card card-yellow">
+            <span class="stat-label">Mesas Ocupadas</span>
+            <span class="stat-value">5/11</span>
+            <span class="stat-status">🟢 DISPONIBLES</span>
+        </div>
+
+        <div class="stat-card card-blue">
+            <span class="stat-label">Reservaciones</span>
+            <span class="stat-value">8</span>
+            <span class="stat-subtitle">Programadas hoy</span>
+        </div>
+
+        <div class="stat-card card-red">
+            <span class="stat-label">Alertas de Stock</span>
+            <span class="stat-value">3</span>
+            <span class="stat-status-alert" style="color: red; font-size: 0.75rem; font-weight: bold;">🔴 Faltantes</span>
+        </div>
+    </div>
+
+    <div class="dashboard-lower-grid">
+        
+        <div class="content-card chart-box">
+            <div class="card-header"><h3>Ventas Semanales</h3></div>
+            <div class="chart-wrapper">
+                <svg viewBox="0 0 500 200" class="line-chart">
+                    <line x1="0" y1="40" x2="500" y2="40" stroke="#f0f0f0" />
+                    <line x1="0" y1="80" x2="500" y2="80" stroke="#f0f0f0" />
+                    <line x1="0" y1="120" x2="500" y2="120" stroke="#f0f0f0" />
+                    <line x1="0" y1="160" x2="500" y2="160" stroke="#f0f0f0" />
+                    <polyline fill="none" stroke="#8B1A1A" stroke-width="3" points="0,180 80,140 160,160 240,100 320,120 400,60 500,80" />
+                    <circle cx="80" cy="140" r="4" fill="#8B1A1A" />
+                    <circle cx="240" cy="100" r="4" fill="#8B1A1A" />
+                    <circle cx="400" cy="60" r="4" fill="#8B1A1A" />
+                </svg>
+                <div class="chart-days">
+                    <span>Lu</span><span>Ma</span><span>Mi</span><span>Ju</span><span>Vi</span><span>Sa</span><span>Do</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-card activity-box">
+            <div class="card-header"><h3>Actividad Reciente</h3></div>
+            <ul class="activity-list">
+                <li>
+                    <div class="act-icon">🔔</div>
+                    <div class="act-info">
+                        <p>Nueva reservación creada</p>
+                        <small>hace 2 min</small>
+                    </div>
+                </li>
+                <li>
+                    <div class="act-icon">🪑</div>
+                    <div class="act-info">
+                        <p>Mesa M4 ocupada</p>
+                        <small>hace 5 min</small>
+                    </div>
+                </li>
+                <li>
+                    <div class="act-icon">📦</div>
+                    <div class="act-info">
+                        <p>Inventario bajo: queso</p>
+                        <small>hace 10 min</small>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

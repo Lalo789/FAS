@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ modo }} {{ entidad }} | FAS Admin{% endblock %}
+
+{% block content %}
+<div class="form-container fade-in">
+    <div class="form-card">
+        <div class="form-header">
+            <h2 class="page-title">{{ modo }} {{ entidad }}</h2>
+            <p class="section-subtitle">Por favor, ingresa los datos correspondientes en el sistema.</p>
+        </div>
+
+        <form method="POST" class="fas-form" id="universalForm">
+            {% csrf_token %}
+            
+            <div class="form-fields">
+                {% if form %}
+                    {{ form.as_p }}
+                {% else %}
+                    <p class="form-group">
+                        <label>Nombre / Identificador</label>
+                        <input type="text" name="nombre" placeholder="Ej. Mesa 5 o Juan Pérez">
+                    </p>
+                    <p class="form-group">
+                        <label>Descripción / Detalles</label>
+                        <textarea name="descripcion" rows="3"></textarea>
+                    </p>
+                {% endif %}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="pill-btn btn-add">
+                    <span class="icon">💾</span> Guardar {{ entidad }}
+                </button>
+                <a href="{{ url_cancelar|default:'javascript:history.back()' }}" class="pill-btn btn-delete" style="background-color: #f1f1f1; color: #666;">
+                    Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
