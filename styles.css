@@ -48,7 +48,7 @@ h1, .fas-restaurant-title { font-size: 2.1rem; font-weight: 800; color: #b0c4bf;
 .social-buttons { display: flex; gap: 1rem; justify-content: center; }
 .social-btn { flex: 1; display: flex; align-items: center; justify-content: center; gap: 0.5rem; border: 2px solid #e2e8dd; border-radius: 20px; padding: 0.8rem; font-weight: 700; color: #2B3B00; cursor: pointer; background: white; transition: all 0.2s; }
 .social-btn:hover { border-color: #F7B91A; background: #fffcf7; }
-.terms-check { display: flex; align-items: flex-start; gap: 0.6rem; margin: 1rem 0 1.5rem; font-size: 0.85rem; color: #b0c4bf; font-weight: 600; }
+.terms-check { display: flex; align-items: flex-start; gap: 0.6rem; margin: 1rem 0 1.5rem; font-size: 0.85rem; color: #465652; font-weight: 600; }
 
 /* Botón Flotante para Crear Cuenta */
 .floating-btn {
@@ -67,10 +67,10 @@ h1, .fas-restaurant-title { font-size: 2.1rem; font-weight: 800; color: #b0c4bf;
 }
 .modal-auth-card {
     background: white; padding: 2.5rem; border-radius: 30px; width: 100%; max-width: 420px;
-    position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.4); border-top: 6px solid #EB6C0C;
+    position: relative; box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 .close-modal-btn {
-    position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 1.5rem; color: #992410; cursor: pointer; transition: transform 0.2s;
+    position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 1.5rem; color: #b0c4bf; cursor: pointer; transition: transform 0.2s;
 }
 .close-modal-btn:hover { transform: scale(1.2); }
 
