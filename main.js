@@ -295,6 +295,25 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
+
+        // Lógica para colapsar/expandir la Sidebar
+const btnToggle = document.getElementById('toggleSidebar');
+const sidebar = document.getElementById('sidebar');
+
+if (btnToggle && sidebar) {
+    btnToggle.addEventListener('click', () => {
+        sidebar.classList.toggle('collapsed');
+        
+        // Opcional: Cambiar el icono de 'bars' a 'times' cuando está colapsado
+        const icon = btnToggle.querySelector('i');
+        if (sidebar.classList.contains('collapsed')) {
+            icon.classList.replace('fa-bars', 'fa-indent');
+        } else {
+            icon.classList.replace('fa-indent', 'fa-bars');
+        }
+    });
+}
+
         // Iniciar app
         renderPage();
     }

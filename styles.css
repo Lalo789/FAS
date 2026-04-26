@@ -201,7 +201,7 @@ h1, .fas-restaurant-title { font-size: 2.1rem; font-weight: 800; color: #b0c4bf;
 /* HEADER SUPERIOR FIJO */
 .header-empleado {
     position: fixed; top: 0; left: 0; width: 100%; height: 70px;
-    background: rgba(32, 98, 72, 0.95); backdrop-filter: blur(10px);
+    background: rgba(32, 98, 72, 0.647); backdrop-filter: blur(10px);
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 2rem; z-index: 1001; border-bottom: 1px solid rgba(255,255,255,0.1);
 }
@@ -211,7 +211,7 @@ h1, .fas-restaurant-title { font-size: 2.1rem; font-weight: 800; color: #b0c4bf;
 /* SIDEBAR ESTÁTICA Y COLAPSABLE */
 .sidebar { 
     width: 280px; 
-    background: linear-gradient(135deg, rgba(43, 59, 0, 0.95) 0%, rgba(75, 112, 1, 0.95) 100%); 
+    background: linear-gradient(135deg, rgb(7, 80, 46) 0%, rgba(75, 112, 1, 0.95) 100%); 
     color: white; padding: 2rem 1.5rem; 
     position: fixed; top: 70px; left: 0; height: calc(100vh - 70px); 
     overflow-y: auto; z-index: 100; box-shadow: 4px 0 20px rgba(0,0,0,0.1); 
@@ -221,6 +221,33 @@ h1, .fas-restaurant-title { font-size: 2.1rem; font-weight: 800; color: #b0c4bf;
 /* Estado de la barra cuando se añade la clase .collapsed vía JS */
 .sidebar.collapsed { width: 80px; padding: 2rem 0.5rem; }
 .sidebar.collapsed .logo, .sidebar.collapsed .nav-link span, .sidebar.collapsed .logo p { display: none; }
+
+.menu-toggle {
+    background: transparent;
+    border: none;
+    color: #F7B91A;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s;
+}
+
+.menu-toggle:hover {
+    transform: scale(1.1);
+    color: white;
+}
+
+.header-project-name {
+    color: white;
+    font-weight: 700;
+    margin-left: 1rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
 
 .logo { margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 2px solid rgba(255,255,255,0.2); }
 .logo h1 { font-size: 1.8rem; font-weight: 700; background: linear-gradient(135deg, #F7B91A, #EB6C0C); -webkit-background-clip: text; color: transparent; }
