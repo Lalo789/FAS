@@ -6,13 +6,33 @@
     <title>Restaurante FAS - Panel de Empleado</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
+<header class="header-empleado">
+    <div class="header-left">
+        </div>
+    
+    <div class="header-right-actions">
+        <button class="header-btn" onclick="goToProfile()" title="Mi Perfil">
+            <i class="fas fa-user-circle"></i>
+            <span>Perfil</span>
+        </button>
+
+        <div class="header-divider"></div>
+
+        <button class="header-btn logout" onclick="cerrarSesion()" title="Cerrar Sesión">
+            <i class="fas fa-sign-out-alt"></i>
+            <span>Salir</span>
+        </button>
+    </div>
+</header>
+
 <body class="empleado-body">
     <div class="app-container">
         
         <aside class="sidebar" id="sidebar">
             <div class="logo">
                 <h1>🍽️ Restaurante FAS</h1>
-                <p>Panel de Empleado</p>
+                <p>Empleado</p>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#" class="nav-link active" data-page="mesas">🍽️ Mesas</a></li>
