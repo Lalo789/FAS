@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Menú | FAS</title>
+    <title>Bebidas | FAS</title>
 
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -34,8 +34,7 @@
         </div>
 
     </div>
-
-    <!-- MENÚ -->
+ <!-- MENÚ -->
    <div class="max-w-7xl mx-auto px-4 pb-3 flex gap-6 text-sm font-semibold text-slate-600">
         <button onclick="window.location.href='historial.html'" class="hover:text-orange-500">🏠 Inicio</button>
         <button onclick="window.location.href='menuprincipal.html'" class="hover:text-orange-500">🍔 Menú</button>
@@ -48,75 +47,41 @@
 
 <main class="max-w-7xl mx-auto px-6 py-10">
 
-<h2 class="text-3xl font-extrabold mb-8">🍔 Comidas</h2>
+<h2 class="text-3xl font-extrabold mb-8">🥤 Bebidas</h2>
 
 <div class="grid md:grid-cols-3 gap-6">
 
-<!-- CARD -->
 <div class="bg-white p-6 rounded-3xl shadow food-card">
-<h3 class="font-bold">Hamburguesa</h3>
-<p class="text-orange-600 font-bold">$120</p>
+<h3 class="font-bold">Refresco</h3>
+<p class="text-orange-600 font-bold">$35</p>
 
-<button onclick="toggle('burger', this)" class="mt-3 w-full bg-orange-500 text-white py-2 rounded-xl">
+<button onclick="toggle('refresco', this)" class="mt-3 w-full bg-orange-500 text-white py-2 rounded-xl">
 Ver Detalles
 </button>
 
-<ul id="burger" class="hidden mt-3 space-y-1"></ul>
+<ul id="refresco" class="hidden mt-3"></ul>
 </div>
 
 <div class="bg-white p-6 rounded-3xl shadow food-card">
-<h3 class="font-bold">Pizza</h3>
-<p class="text-orange-600 font-bold">$150</p>
+<h3 class="font-bold">Jugo</h3>
+<p class="text-orange-600 font-bold">$40</p>
 
-<button onclick="toggle('pizza', this)" class="mt-3 w-full bg-orange-500 text-white py-2 rounded-xl">
+<button onclick="toggle('jugo', this)" class="mt-3 w-full bg-orange-500 text-white py-2 rounded-xl">
 Ver Detalles
 </button>
 
-<ul id="pizza" class="hidden mt-3 space-y-1"></ul>
+<ul id="jugo" class="hidden mt-3"></ul>
 </div>
 
 <div class="bg-white p-6 rounded-3xl shadow food-card">
-<h3 class="font-bold">Hot Dog</h3>
-<p class="text-orange-600 font-bold">$80</p>
+<h3 class="font-bold">Malteada</h3>
+<p class="text-orange-600 font-bold">$65</p>
 
-<button onclick="toggle('hotdog', this)" class="mt-3 w-full bg-orange-500 text-white py-2 rounded-xl">
+<button onclick="toggle('malteada', this)" class="mt-3 w-full bg-orange-500 text-white py-2 rounded-xl">
 Ver Detalles
 </button>
 
-<ul id="hotdog" class="hidden mt-3 space-y-1"></ul>
-</div>
-
-<div class="bg-white p-6 rounded-3xl shadow food-card">
-<h3 class="font-bold">Papas</h3>
-<p class="text-orange-600 font-bold">$70</p>
-
-<button onclick="toggle('papas', this)" class="mt-3 w-full bg-orange-500 text-white py-2 rounded-xl">
-Ver Detalles
-</button>
-
-<ul id="papas" class="hidden mt-3 space-y-1"></ul>
-</div>
-
-<div class="bg-white p-6 rounded-3xl shadow food-card">
-<h3 class="font-bold">Burger Vegana</h3>
-<p class="text-orange-600 font-bold">$110</p>
-
-<button onclick="toggle('veganburger', this)" class="mt-3 w-full bg-orange-500 text-white py-2 rounded-xl">
-Ver Detalles
-</button>
-
-<ul id="veganburger" class="hidden mt-3 space-y-1"></ul>
-</div>
-
-<div class="bg-white p-6 rounded-3xl shadow food-card">
-<h3 class="font-bold">Ensalada</h3>
-<p class="text-orange-600 font-bold">$90</p>
-
-<button onclick="toggle('ensalada', this)" class="mt-3 w-full bg-orange-500 text-white py-2 rounded-xl">
-Ver Detalles
-</button>
-
-<ul id="ensalada" class="hidden mt-3 space-y-1"></ul>
+<ul id="malteada" class="hidden mt-3"></ul>
 </div>
 
 </div>
