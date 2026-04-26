@@ -2,127 +2,48 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Menú | FAS</title>
-
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Digital | FAS</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
     <script src="main.js" defer></script>
 </head>
-
-<body class="menu-body">
-
-<header class="bg-white/80 backdrop-blur-md shadow-md border-b border-slate-200">
-
+<body class="antialiased menu-body">
+    <header class="brand-bg text-white shadow-md">
     <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
-
-        <div class="flex items-center gap-3">
-            <div class="bg-orange-500 p-2 rounded-xl shadow-md">🍴</div>
+        <div class="flex items-center gap-2">
+            <div class="bg-orange-500 p-1 rounded-lg">🍴</div>
             <div>
-                <h1 class="font-bold text-lg">Restaurante FAS</h1>
-                <p class="text-xs text-slate-500">Panel de Cliente</p>
+                <h1 class="font-bold text-lg leading-tight">Restaurante FAS</h1>
+                <p class="text-xs opacity-80">Panel de Cliente</p>
             </div>
         </div>
-
         <div class="flex items-center gap-3">
             <span class="text-sm font-medium">Hola, Roberto Díaz</span>
-
-            <!-- BOTÓN PERFIL -->
-            <div id="btnPerfil"
-                 class="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold shadow cursor-pointer">
-                R
+            <a href="historial.html" class="w-10 h-10 bg-orange-700 rounded-full flex items-center justify-center border-2 border-orange-500 hover:scale-105 transition">
+                <span class="font-bold">R</span>
+            </a>
+        </div>
+    </div>
+    <div class="bg-white text-slate-600">
+        <div class="max-w-7xl mx-auto px-4 flex gap-8 text-sm font-medium">
+            <a href="panelprincipal.html" class="py-3 border-b-2 border-orange-700 text-orange-700">🏠 Inicio</a>
+            <a href="historial.html" class="py-3 border-b-2 border-transparent hover:border-slate-300">📅 Mis Reservas</a>
+        </div>
+    </div>
+</header>
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        <h2 class="text-3xl font-extrabold text-slate-900 mb-10">Nuestra Carta</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white rounded-[2rem] shadow-sm border border-slate-100 overflow-hidden food-card transition">
+                <div class="h-56 bg-slate-200"></div>
+                <div class="p-6">
+                    <h3 class="text-lg font-bold">FAS Burger Deluxe</h3>
+                    <p class="text-slate-500 text-xs mb-6">Doble carne angus y pan brioche.</p>
+                    <button class="w-full py-3 border-2 border-slate-100 rounded-xl text-sm font-bold hover:bg-orange-600 hover:text-white transition">Ver Detalles</button>
+                </div>
             </div>
         </div>
-
-    </div>
-
-    <!-- MENÚ -->
-   <div class="max-w-7xl mx-auto px-4 pb-3 flex gap-6 text-sm font-semibold text-slate-600">
-        <button onclick="window.location.href='historial.html'" class="hover:text-orange-500">🏠 Inicio</button>
-        <button onclick="window.location.href='menuprincipal.html'" class="hover:text-orange-500">🍔 Menú</button>
-        <button onclick="window.location.href='bebidas.html'" class="hover:text-orange-500">🥤 Bebidas </button>
-        <button onclick="window.location.href='selectormesas.html'" class="hover:text-orange-500">📅 Reservación</button>
-        <button onclick="window.location.href='procesoreservacion.html'" class="hover:text-orange-500">🧾 Ticket de Reserva</button>
-    </div>
-
-</header>
-
-<main class="max-w-7xl mx-auto px-6 py-10">
-
-<h2 class="text-3xl font-extrabold mb-8">🍔 Comidas</h2>
-
-<div class="grid md:grid-cols-3 gap-6">
-
-<!-- CARD -->
-<div class="bg-white p-6 rounded-3xl shadow food-card">
-<h3 class="font-bold">Hamburguesa</h3>
-<p class="text-orange-600 font-bold">$120</p>
-
-<button onclick="toggle('burger', this)" class="mt-3 w-full bg-orange-500 text-white py-2 rounded-xl">
-Ver Detalles
-</button>
-
-<ul id="burger" class="hidden mt-3 space-y-1"></ul>
-</div>
-
-<div class="bg-white p-6 rounded-3xl shadow food-card">
-<h3 class="font-bold">Pizza</h3>
-<p class="text-orange-600 font-bold">$150</p>
-
-<button onclick="toggle('pizza', this)" class="mt-3 w-full bg-orange-500 text-white py-2 rounded-xl">
-Ver Detalles
-</button>
-
-<ul id="pizza" class="hidden mt-3 space-y-1"></ul>
-</div>
-
-<div class="bg-white p-6 rounded-3xl shadow food-card">
-<h3 class="font-bold">Hot Dog</h3>
-<p class="text-orange-600 font-bold">$80</p>
-
-<button onclick="toggle('hotdog', this)" class="mt-3 w-full bg-orange-500 text-white py-2 rounded-xl">
-Ver Detalles
-</button>
-
-<ul id="hotdog" class="hidden mt-3 space-y-1"></ul>
-</div>
-
-<div class="bg-white p-6 rounded-3xl shadow food-card">
-<h3 class="font-bold">Papas</h3>
-<p class="text-orange-600 font-bold">$70</p>
-
-<button onclick="toggle('papas', this)" class="mt-3 w-full bg-orange-500 text-white py-2 rounded-xl">
-Ver Detalles
-</button>
-
-<ul id="papas" class="hidden mt-3 space-y-1"></ul>
-</div>
-
-<div class="bg-white p-6 rounded-3xl shadow food-card">
-<h3 class="font-bold">Burger Vegana</h3>
-<p class="text-orange-600 font-bold">$110</p>
-
-<button onclick="toggle('veganburger', this)" class="mt-3 w-full bg-orange-500 text-white py-2 rounded-xl">
-Ver Detalles
-</button>
-
-<ul id="veganburger" class="hidden mt-3 space-y-1"></ul>
-</div>
-
-<div class="bg-white p-6 rounded-3xl shadow food-card">
-<h3 class="font-bold">Ensalada</h3>
-<p class="text-orange-600 font-bold">$90</p>
-
-<button onclick="toggle('ensalada', this)" class="mt-3 w-full bg-orange-500 text-white py-2 rounded-xl">
-Ver Detalles
-</button>
-
-<ul id="ensalada" class="hidden mt-3 space-y-1"></ul>
-</div>
-
-</div>
-
-
-
-</main>
+    </main>
 </body>
 </html>
