@@ -2,113 +2,173 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Perfil | FAS</title>
 
-    <!-- IMPORTANTE -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- TU CSS -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- TU JS -->
+    <script src="main.js" defer></script>
+
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 </head>
 
-<body>
+<body class="bg-gradient-to-br from-orange-50 via-white to-orange-100 text-slate-800">
 
-<header class="brand-bg" style="color:white; padding:15px;">
-    <h1>🍴 Restaurante FAS</h1>
-    <p>Panel de Cliente</p>
+<header class="bg-white/80 backdrop-blur-md shadow-md border-b border-slate-200">
+
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+
+        <div class="flex items-center gap-3">
+            <div class="bg-orange-500 p-2 rounded-xl shadow-md">🍴</div>
+            <div>
+                <h1 class="font-bold text-lg">Restaurante FAS</h1>
+                <p class="text-xs text-slate-500">Panel de Cliente</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <span class="text-sm font-medium">Hola, Roberto Díaz</span>
+
+            <!-- BOTÓN PERFIL -->
+            <div id="btnPerfil"
+                 class="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold shadow cursor-pointer">
+                R
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MENÚ -->
+    <div class="max-w-7xl mx-auto px-4 pb-3 flex gap-6 text-sm font-semibold text-slate-600">
+        <button onclick="window.location.href='historial.html'" class="hover:text-orange-500">🏠 Inicio</button>
+        <button onclick="window.location.href='menuprincipal.html'" class="hover:text-orange-500">🍔 Menú</button>
+        <button onclick="window.location.href='selectormesas.html'" class="hover:text-orange-500">📅 Reservación</button>
+    </div>
 </header>
 
-<nav class="brand-bg-alt" style="padding:10px;">
-    <a href="#" style="color:white;">Inicio</a> |
-    <a href="#" style="color:white;">Mis Reservas</a>
-</nav>
+<main class="max-w-6xl mx-auto px-6 py-12">
 
-<main style="padding:20px; max-width:900px; margin:auto;">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
 
-    <!-- PERFIL -->
-    <section>
-        <h2>Perfil</h2>
-        <p>Nombre: Roberto Díaz</p>
-        <p>Cliente desde: 2025</p>
-    </section>
+        <!-- PERFIL -->
+        <aside>
+            <div class="bg-white/80 p-6 rounded-3xl shadow-xl border text-center">
 
-    <br>
+                <div class="relative w-28 h-28 mx-auto mb-4">
+                    <div class="w-28 h-28 bg-gradient-to-br from-orange-400 to-orange-600 text-white rounded-full flex items-center justify-center text-4xl font-bold shadow">
+                        RD
+                    </div>
+                </div>
 
-    <!-- EDITAR DATOS -->
-    <section>
-        <h2>Editar Datos</h2>
+                <h2 class="text-xl font-bold">Roberto Díaz</h2>
+                <p class="text-sm text-slate-500 mb-4">Cliente VIP desde 2025</p>
 
-        <form>
-            <label>Nombre:</label>
-            <input type="text" value="Roberto Díaz">
+                <span class="bg-orange-100 text-orange-700 text-xs px-3 py-1 rounded-full font-semibold">
+                    ⭐ Cliente Frecuente
+                </span>
+            </div>
+        </aside>
 
-            <label>Correo:</label>
-            <input type="email" value="roberto@email.com">
+        <!-- CONTENIDO -->
+        <section class="lg:col-span-2 space-y-8">
 
-            <label>Teléfono:</label>
-            <input type="text" value="4431234567">
+            <!-- EDITAR DATOS -->
+            <div class="bg-white/80 p-8 rounded-3xl shadow-xl border">
+                <h3 class="text-2xl font-extrabold mb-6">Editar Mis Datos</h3>
 
-            <br><br>
-            <button type="submit">Guardar Cambios</button>
-        </form>
-    </section>
+                <form class="space-y-4">
+                    <input type="text" value="Roberto Díaz" class="w-full p-3 rounded-xl border">
+                    <input type="email" value="roberto@email.com" class="w-full p-3 rounded-xl border">
+                    <input type="text" value="4431234567" class="w-full p-3 rounded-xl border">
 
-    <br>
+                    <button class="w-full bg-orange-500 text-white py-3 rounded-xl font-bold">
+                        Guardar Cambios
+                    </button>
+                </form>
+            </div>
 
-    <!-- PREFERENCIAS -->
-    <section>
-        <h2>Preferencias</h2>
+            <!-- PREFERENCIAS -->
+            <div class="bg-white/80 p-8 rounded-3xl shadow-xl border">
+                <h3 class="text-2xl font-extrabold mb-6">Preferencias</h3>
 
-        <form>
+                <form class="space-y-6">
 
-            <label>Tipo de comida favorita:</label>
-            <select>
-                <option>Mexicana</option>
-                <option>Italiana</option>
-                <option>Vegetariana</option>
-                <option>Rápida</option>
-            </select>
+                    <div>
+                        <label class="font-semibold text-sm">🍽️ Tipo de comida favorita</label>
+                        <select class="w-full mt-2 p-3 rounded-xl border">
+                            <option>Vegetariana</option>
+                            <option>Rápida</option>
+                        </select>
+                    </div>
 
-            <br><br>
+                    <div>
+                        <label class="font-semibold text-sm">⚠️ Restricciones</label>
+                        <div class="mt-2 flex gap-3">
+                            <label><input type="checkbox"> Sin gluten</label>
+                            <label><input type="checkbox"> Vegano</label>
+                            <label><input type="checkbox"> Sin lactosa</label>
+                        </div>
+                    </div>
 
-            <label>Restricciones:</label><br>
-            <input type="checkbox"> Sin gluten<br>
-            <input type="checkbox"> Vegano<br>
-            <input type="checkbox"> Sin lactosa<br>
+                    <button class="w-full bg-orange-500 text-white py-3 rounded-xl font-bold">
+                        Guardar Preferencias
+                    </button>
 
-            <br>
+                </form>
+            </div>
 
-            <label>Preferencia de mesa:</label><br>
-            <input type="radio" name="mesa"> Terraza<br>
-            <input type="radio" name="mesa"> Interior<br>
+        </section>
+    </div>
 
-            <br>
+    <!-- ============================= -->
+    <!-- 🔥 AQUÍ SE INSERTA EL OTRO CÓDIGO -->
+    <!-- ============================= -->
 
-            <label>Notas:</label>
-            <textarea rows="3"></textarea>
+    <div class="mt-16 max-w-3xl mx-auto">
 
-            <br><br>
-            <button type="submit">Guardar Preferencias</button>
+        <div class="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border">
 
-        </form>
-    </section>
+            <!-- ÉXITO -->
+            <div class="bg-emerald-500 p-10 text-center text-white">
+                <div class="text-6xl mb-4">✅</div>
+                <h2 class="text-3xl font-extrabold">¡Todo listo!</h2>
+                <p>Tu reservación ha sido confirmada.</p>
+            </div>
 
-    <br>
+            <!-- DETALLES -->
+            <div class="px-8 pb-8">
 
-    <!-- HISTORIAL -->
-    <section>
-        <h2>Historial de Visitas</h2>
+                <h3 class="text-lg font-bold mb-4 text-orange-600">📋 Detalles de tu Reservación</h3>
 
-        <table border="1" width="100%">
-            <tr>
-                <th>Fecha</th>
-                <th>Mesa</th>
-                <th>Estado</th>
-            </tr>
-            <tr>
-                <td>12/02/2026</td>
-                <td>Mesa M5</td>
-                <td><strong style="color:green;">Finalizada</strong></td>
-            </tr>
-        </table>
-    </section>
+                <div class="space-y-2 text-sm bg-slate-50 p-6 rounded-2xl border">
+
+                    <p>👤 <strong>Cliente:</strong> <span id="clienteNombre">---</span></p>
+                    <p>📧 <strong>Correo:</strong> <span id="clienteCorreo">---</span></p>
+                    <p>📞 <strong>Teléfono:</strong> <span id="clienteTelefono">---</span></p>
+
+                    <hr class="my-3">
+
+                    <p>🪑 <strong>Mesa:</strong> <span id="resMesa">---</span></p>
+                    <p>📍 <strong>Zona:</strong> <span id="resZona">---</span></p>
+                    <p>👥 <strong>Capacidad:</strong> <span id="resCapacidad">---</span></p>
+                    <p>📅 <strong>Fecha:</strong> <span id="resFecha">---</span></p>
+                    <p>⏰ <strong>Hora:</strong> <span id="resHora">---</span></p>
+
+                </div>
+
+                <div class="mt-10 text-center">
+                    <div id="qrContainer" class="flex justify-center mt-4"></div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
 
 </main>
 
