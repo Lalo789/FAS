@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil | FAS</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- TU CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- TU JS -->
+    <script src="main.js" defer></script>
+</head>
+
+<body class="bg-gradient-to-br from-orange-50 via-white to-orange-100 text-slate-800">
+
+<header class="bg-white/80 backdrop-blur-md shadow-md border-b border-slate-200">
+
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+
+        <div class="flex items-center gap-3">
+            <div class="bg-orange-500 p-2 rounded-xl shadow-md">🍴</div>
+            <div>
+                <h1 class="font-bold text-lg">Restaurante FAS</h1>
+                <p class="text-xs text-slate-500">Panel de Cliente</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <span class="text-sm font-medium">Hola, Roberto Díaz</span>
+
+            <!-- BOTÓN PERFIL -->
+            <div id="btnPerfil"
+                 class="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold shadow cursor-pointer">
+                R
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MENÚ -->
+   <div class="max-w-7xl mx-auto px-4 pb-3 flex gap-6 text-sm font-semibold text-slate-600">
+        <button onclick="window.location.href='historial.html'" class="hover:text-orange-500">🏠 Inicio</button>
+        <button onclick="window.location.href='menuprincipal.html'" class="hover:text-orange-500">🍔 Menú</button>
+        <button onclick="window.location.href='bebidas.html'" class="hover:text-orange-500">🥤 Bebidas </button>
+        <button onclick="window.location.href='selectormesas.html'" class="hover:text-orange-500">📅 Reservación</button>
+        <button onclick="window.location.href='procesoreservacion.html'" class="hover:text-orange-500">🧾 Ticket de Reserva</button>
+    </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-6 py-12">
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+
+        <!-- PERFIL -->
+        <aside>
+            <div class="bg-white/80 p-6 rounded-3xl shadow-xl border text-center">
+
+                <div class="relative w-28 h-28 mx-auto mb-4">
+                    <div class="w-28 h-28 bg-gradient-to-br from-orange-400 to-orange-600 text-white rounded-full flex items-center justify-center text-4xl font-bold shadow">
+                        RD
+                    </div>
+                </div>
+
+                <h2 class="text-xl font-bold">Roberto Díaz</h2>
+                <p class="text-sm text-slate-500 mb-4">Cliente VIP desde 2025</p>
+
+                <span class="bg-orange-100 text-orange-700 text-xs px-3 py-1 rounded-full font-semibold">
+                    ⭐ Cliente Frecuente
+                </span>
+            </div>
+        </aside>
+
+        <!-- CONTENIDO -->
+        <section class="lg:col-span-2 space-y-8">
+
+            <!-- EDITAR DATOS -->
+            <div class="bg-white/80 p-8 rounded-3xl shadow-xl border">
+                <h3 class="text-2xl font-extrabold mb-6">Editar Mis Datos</h3>
+
+                <form class="space-y-4">
+                    <input type="text" value="Roberto Díaz" class="w-full p-3 rounded-xl border">
+                    <input type="email" value="roberto@email.com" class="w-full p-3 rounded-xl border">
+                    <input type="text" value="4431234567" class="w-full p-3 rounded-xl border">
+
+                    <button class="w-full bg-orange-500 text-white py-3 rounded-xl font-bold">
+                        Guardar Cambios
+                    </button>
+                </form>
+            </div>
+
+            <!-- PREFERENCIAS -->
+            <div class="bg-white/80 p-8 rounded-3xl shadow-xl border">
+                <h3 class="text-2xl font-extrabold mb-6">Preferencias</h3>
+
+                <form class="space-y-6">
+
+                    <div>
+                        <label class="font-semibold text-sm">🍽️ Tipo de comida favorita</label>
+                        <select class="w-full mt-2 p-3 rounded-xl border">
+                            <option>Vegetariana</option>
+                            <option>Rápida</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="font-semibold text-sm">⚠️ Restricciones</label>
+                        <div class="mt-2 flex gap-3">
+                            <label><input type="checkbox"> Sin gluten</label>
+                            <label><input type="checkbox"> Vegano</label>
+                            <label><input type="checkbox"> Sin lactosa</label>
+                        </div>
+                    </div>
+
+                    <button class="w-full bg-orange-500 text-white py-3 rounded-xl font-bold">
+                        Guardar Preferencias
+                    </button>
+
+                </form>
+            </div>
+
+        </section>
+    </div>
+
+  
+
+    <div class="mt-16">
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+
+            
+            <div class="mt-6 bg-gradient-to-br from-orange-50 to-white border border-orange-200 p-10 rounded-2xl shadow-lg md:col-span-3">
+
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-bold text-orange-600">📅 Próxima Reserva</h3>
+                    <span class="text-xs bg-orange-100 text-orange-700 px-3 py-1 rounded-full font-semibold">
+                        Activa
+                    </span>
+                </div>
+
+                <div class="space-y-3">
+
+                    <!-- FECHA -->
+                    <div class="flex items-center gap-3 bg-white p-3 rounded-xl shadow-sm border">
+                        <span class="text-xl">🗓️</span>
+                        <div>
+                            <p class="text-xs text-slate-400">Fecha</p>
+                            <p id="fechaPerfil" class="font-semibold text-slate-700">Sin reserva</p>
+                        </div>
+                    </div>
+
+                    <!-- MESA -->
+                    <div class="flex items-center gap-3 bg-white p-3 rounded-xl shadow-sm border">
+                        <span class="text-xl">🪑</span>
+                        <div>
+                            <p class="text-xs text-slate-400">Mesa</p>
+                            <p id="mesaPerfil" class="font-semibold text-slate-700">---</p>
+                        </div>
+                    </div>
+
+                    <!-- ZONA -->
+                    <div class="flex items-center gap-3 bg-white p-3 rounded-xl shadow-sm border">
+                        <span class="text-xl">📍</span>
+                        <div>
+                            <p class="text-xs text-slate-400">Zona</p>
+                            <p id="zonaPerfil" class="font-semibold text-slate-700">---</p>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- BOTÓN -->
+                <button onclick="localStorage.removeItem('reservaFAS'); location.reload();"
+                    class="w-full mt-5 bg-red-500 text-white py-2 rounded-xl font-bold hover:bg-red-600 transition">
+                    ❌ Cancelar Reserva
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+<footer class="footer text-center py-6 text-sm text-slate-500">
+    © 2026 FAS Gestión de Restaurante
+</footer>
+
+</body>
+</html>
