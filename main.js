@@ -1,22 +1,18 @@
 document.addEventListener("DOMContentLoaded", () => {
     
     // ==========================================
-    // LÓGICA DE LOGIN (CLIENTES Y REGISTRO)
+    // LÓGICA DE LOGIN (CLIENTES Y REGISTRO) - INTACTA
     // ==========================================
     const loginBody = document.querySelector('.login-body');
     if (loginBody) {
-        
-        // Modal Recuperar Contraseña
         const recoverModal = document.getElementById('recoverModal');
         document.getElementById('openRecoverModal')?.addEventListener('click', (e) => {
-            e.preventDefault();
-            recoverModal.classList.remove('hidden');
+            e.preventDefault(); recoverModal.classList.remove('hidden');
         });
         document.getElementById('closeRecoverModal')?.addEventListener('click', () => {
             recoverModal.classList.add('hidden');
         });
 
-        // Modal Registro de Cliente (Botón Flotante)
         const registerModal = document.getElementById('registerModal');
         document.getElementById('openRegisterModal')?.addEventListener('click', () => {
             registerModal.classList.remove('hidden');
@@ -25,13 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
             registerModal.classList.add('hidden');
         });
 
-        // Submit Formulario Login Cliente
         document.getElementById('customerLoginForm')?.addEventListener('submit', (e) => {
-            e.preventDefault();
-            window.location.href = "panelprincipal.html"; 
+            e.preventDefault(); window.location.href = "panelprincipal.html"; 
         });
 
-        // Submit Formulario Registro Cliente
         document.getElementById('customerRegisterForm')?.addEventListener('submit', (e) => {
             e.preventDefault();
             alert("Cuenta de cliente creada exitosamente. ¡Bienvenido a FAS Restaurant!");
@@ -46,13 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
         
         // --- 1. BASE DE DATOS LOCAL ---
         window.tables = [
-            { id: 1, number: "M1", capacity: "2", status: "available", waiter: null, location: "Salón", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80" },
-            { id: 2, number: "M2", capacity: "4", status: "occupied", waiter: "Carlos López", location: "Salón", image: "https://images.unsplash.com/photo-1550966871-3ed3cdb5ed0c?w=400&q=80" },
-            { id: 3, number: "M3", capacity: "2", status: "occupied", waiter: "Ana García", location: "Terraza", image: "https://images.unsplash.com/photo-1572116469696-ed7d9c661c47?w=400&q=80" },
-            { id: 4, number: "M4", capacity: "6", status: "available", waiter: null, location: "Terraza", image: "https://images.unsplash.com/photo-1537047902294-62a40c20a6ae?w=400&q=80" },
-            { id: 5, number: "M5", capacity: "4", status: "reserved", waiter: "María Rodríguez", location: "Entrada", image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400&q=80" },
-            { id: 6, number: "M6", capacity: "2", status: "available", waiter: null, location: "Salón VIP", image: "https://images.unsplash.com/photo-1544148103-0773bf10d330?w=400&q=80" },
-            { id: 7, number: "M7", capacity: "4", status: "available", waiter: null, location: "Terraza Borde", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80" }
+            { id: 1, number: "M1", capacity: 2, status: "available", waiter: null, location: "Salón Principal" },
+            { id: 2, number: "M2", capacity: 4, status: "occupied", waiter: "Carlos López", location: "Salón Principal" },
+            { id: 3, number: "M3", capacity: 2, status: "occupied", waiter: "Ana García", location: "Terraza Exterior" },
+            { id: 4, number: "M4", capacity: 6, status: "available", waiter: null, location: "Terraza Exterior" },
+            { id: 5, number: "M5", capacity: 4, status: "reserved", waiter: "María Rodríguez", location: "Área de Recepción" },
+            { id: 6, number: "M6", capacity: 2, status: "available", waiter: null, location: "Salón VIP" },
+            { id: 7, number: "M7", capacity: 4, status: "available", waiter: null, location: "Terraza Borde" }
         ];
 
         window.employees = [
@@ -73,6 +66,40 @@ document.addEventListener("DOMContentLoaded", () => {
 
         window.currentPage = "mesas";
 
+        // --- FUNCIÓN GENERADORA DE ICONOS SEGÚN CAPACIDAD ---
+        window.getTableSVG = function(capacity) {
+            // Mesa redonda para 2 personas (Silla arriba y abajo)
+            if(capacity <= 2) {
+                return `<svg viewBox="0 0 100 100">
+                    <rect x="35" y="15" width="30" height="12" rx="4" fill="currentColor"/>
+                    <rect x="35" y="73" width="30" height="12" rx="4" fill="currentColor"/>
+                    <circle cx="50" cy="50" r="22" fill="currentColor" opacity="0.85"/>
+                </svg>`;
+            } 
+            // Mesa cuadrada para 4 personas (4 Sillas)
+            else if(capacity <= 4) {
+                return `<svg viewBox="0 0 100 100">
+                    <rect x="35" y="10" width="30" height="12" rx="4" fill="currentColor"/>
+                    <rect x="35" y="78" width="30" height="12" rx="4" fill="currentColor"/>
+                    <rect x="10" y="35" width="12" height="30" rx="4" fill="currentColor"/>
+                    <rect x="78" y="35" width="12" height="30" rx="4" fill="currentColor"/>
+                    <rect x="28" y="28" width="44" height="44" rx="8" fill="currentColor" opacity="0.85"/>
+                </svg>`;
+            } 
+            // Mesa rectangular grande para 6 o más personas (6 sillas)
+            else { 
+                return `<svg viewBox="0 0 100 100">
+                    <rect x="25" y="10" width="20" height="12" rx="4" fill="currentColor"/>
+                    <rect x="55" y="10" width="20" height="12" rx="4" fill="currentColor"/>
+                    <rect x="25" y="78" width="20" height="12" rx="4" fill="currentColor"/>
+                    <rect x="55" y="78" width="20" height="12" rx="4" fill="currentColor"/>
+                    <rect x="10" y="35" width="12" height="30" rx="4" fill="currentColor"/>
+                    <rect x="78" y="35" width="12" height="30" rx="4" fill="currentColor"/>
+                    <rect x="28" y="28" width="44" height="44" rx="8" fill="currentColor" opacity="0.85"/>
+                </svg>`;
+            }
+        };
+
         // --- 2. RENDERIZADO DE VISTAS ---
 
         window.renderMesas = function() {
@@ -84,7 +111,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div class="top-bar">
                     <div class="page-title">
                         <h2>Gestión de Mesas y Zonas</h2>
-                        <p>Plano interactivo y estado en tiempo real</p>
+                        <p>Plano interactivo con distribución por capacidad</p>
                     </div>
                     <div class="user-info" onclick="goToProfile()">
                         <div class="avatar">👤</div>
@@ -100,7 +127,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 <div class="data-section">
                     <div class="section-header"><h3>🗺️ Plano General del Restaurante</h3></div>
-                    <p style="font-size: 0.85rem; color: #737F03; margin-bottom: 1rem;">Toca las mesas circulares en el plano para actualizar su estado.</p>
+                    <p style="font-size: 0.85rem; color: #737F03; margin-bottom: 1rem;">La forma de la mesa indica su capacidad (2, 4 o 6 personas). Tócalas para cambiar su estado.</p>
                     
                     <div class="restaurant-map">
                         <div class="map-zone zone-cocina">🍳 Cocina</div>
@@ -110,8 +137,9 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="map-zone zone-terraza">🌿 Terraza</div>
                         
                         ${tables.map(t => `
-                            <div class="map-table map-${t.status} map-pos-${t.id}" onclick="changeTableStatus(${t.id})" title="Mesa ${t.number}">
-                                ${t.number}
+                            <div class="map-table color-${t.status} map-pos-${t.id}" onclick="changeTableStatus(${t.id})" title="Mesa ${t.number}">
+                                ${getTableSVG(t.capacity)}
+                                <span class="map-table-label">${t.number}</span>
                             </div>
                         `).join('')}
                     </div>
@@ -119,8 +147,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 <div class="tables-grid">
                     ${tables.map(table => `
-                        <div class="table-card ${table.status}" onclick="changeTableStatus(${table.id})">
-                            <img src="${table.image}" class="table-image" alt="Zona ${table.location}">
+                        <div class="table-card color-${table.status}" onclick="changeTableStatus(${table.id})">
+                            
+                            <div class="table-icon-container color-${table.status}">
+                                ${getTableSVG(table.capacity)}
+                            </div>
+
                             <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 0.5rem;">
                                 <h3 style="color:#640E09; font-size:1.3rem;">${table.number}</h3>
                                 <span class="badge ${table.status === 'available' ? 'badge-active' : table.status === 'occupied' ? 'badge-ausente' : 'badge-descanso'}">${table.status.toUpperCase()}</span>
@@ -142,14 +174,12 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="avatar" style="width: 100px; height: 100px; font-size: 3rem; margin: 0 auto 1rem;">👨‍🍳</div>
                     <h2 style="color: #640E09; margin-bottom: 0.5rem; font-size: 1.8rem;">Carlos López</h2>
                     <p style="color: #EB6C0C; font-weight: bold; margin-bottom: 2rem; text-transform: uppercase;">Mesero Principal</p>
-
                     <div style="text-align: left; background: #f8faf0; padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; border-left: 4px solid #4B7001;">
                         <p style="margin-bottom: 0.8rem;"><strong>📧 Correo:</strong> carlos.lopez@restaurante.com</p>
                         <p style="margin-bottom: 0.8rem;"><strong>📞 Teléfono:</strong> +34 612 345 678</p>
                         <p style="margin-bottom: 0.8rem;"><strong>⏰ Turno actual:</strong> Mañana (09:00 - 17:00)</p>
                         <p><strong>⭐ Calificación:</strong> 4.8 / 5.0</p>
                     </div>
-
                     <button class="btn-danger" onclick="cerrarSesion()">🚪 Cerrar Sesión</button>
                 </div>
             `;
@@ -252,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
             if(confirm("¿Seguro que deseas cerrar sesión?")) { window.location.href = "login.html"; }
         };
 
-        // --- 4. FUNCIONES DEL MODAL ORIGINAL ---
+        // --- 4. FUNCIONES DEL MODAL ---
         window.showModal = function(title, fields, onSubmit) {
             const modal = document.getElementById('modal');
             document.getElementById('modalTitle').textContent = title;
