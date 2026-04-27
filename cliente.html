@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Restaurante FAS - Panel de Cliente</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="empleado-body">
+    <div class="app-container">
+        
+        <aside class="sidebar" id="sidebar-cliente">
+            <div class="logo">
+                <h1>🍽️ Restaurante FAS</h1>
+                <p>Panel de Cliente</p>
+            </div>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#" class="nav-link active" data-page="bienvenida">🏠 Bienvenida</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-page="menu">📜 Menú</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-page="reservacion">📅 Reservar Mesa</a></li>
+                <li class="nav-item"><a href="#" class="nav-link" data-page="perfil">👤 Mi Perfil</a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content" id="mainContentCliente"></main>
+    </div>
+
+    <div id="modal-cliente" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitleCliente" style="color:#640E09; margin-bottom: 1rem; font-size: 1.5rem;">Título</h3>
+            <form id="modalFormCliente">
+                <div id="modalFieldsCliente"></div>
+                <div style="margin-top: 1.5rem;">
+                    <button type="submit" class="btn btn-primary">Confirmar</button>
+                    <button type="button" class="btn" style="border: 1px solid #640E09; color:#640E09;" onclick="closeModalCliente()">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
