@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Reservación Exitosa! | FAS</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- JS -->
+    <script src="main.js" defer></script>
+
+    <!-- QR LIB (OBLIGATORIO) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<body class="antialiased text-slate-900 bg-slate-50">
+
+<!-- ================= HEADER ================= -->
+<header class="bg-white/80 backdrop-blur-md shadow-md border-b border-slate-200">
+
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+
+        <div class="flex items-center gap-3">
+            <div class="bg-orange-500 p-2 rounded-xl shadow-md">🍴</div>
+            <div>
+                <h1 class="font-bold text-lg">Restaurante FAS</h1>
+                <p class="text-xs text-slate-500">Panel de Cliente</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <span class="text-sm font-medium">Hola, Roberto Díaz</span>
+
+            <div class="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold shadow cursor-pointer">
+                R
+            </div>
+        </div>
+
+    </div>
+
+ <!-- MENÚ -->
+   <div class="max-w-7xl mx-auto px-4 pb-3 flex gap-6 text-sm font-semibold text-slate-600">
+        <button onclick="window.location.href='historial.html'" class="hover:text-orange-500">🏠 Inicio</button>
+        <button onclick="window.location.href='menuprincipal.html'" class="hover:text-orange-500">🍔 Menú</button>
+        <button onclick="window.location.href='bebidas.html'" class="hover:text-orange-500">🥤 Bebidas </button>
+        <button onclick="window.location.href='selectormesas.html'" class="hover:text-orange-500">📅 Reservación</button>
+        <button onclick="window.location.href='procesoreservacion.html'" class="hover:text-orange-500">🧾 Ticket de Reserva</button>
+    </div>
+
+</header>
+
+<!-- ================= MAIN ================= -->
+<main class="max-w-3xl mx-auto px-6 py-16">
+
+    <div class="bg-white rounded-[2.5rem] shadow-2xl overflow-hidden border">
+
+        <!-- ÉXITO -->
+        <div class="bg-emerald-500 p-10 text-center text-white">
+            <div class="text-6xl mb-4">✅</div>
+            <h2 class="text-3xl font-extrabold">¡Todo listo!</h2>
+            <p>Tu reservación ha sido confirmada.</p>
+        </div>
+
+        
+
+        <!-- DETALLES -->
+        <div class="px-8 pb-8">
+
+            <h3 class="text-lg font-bold mb-4 text-orange-600">📋 Detalles de tu Reservación</h3>
+
+            <div class="space-y-2 text-sm bg-slate-50 p-6 rounded-2xl border">
+
+                <p>👤 <strong>Cliente:</strong> <span id="clienteNombre">---</span></p>
+                <p>📧 <strong>Correo:</strong> <span id="clienteCorreo">---</span></p>
+                <p>📞 <strong>Teléfono:</strong> <span id="clienteTelefono">---</span></p>
+
+                <hr class="my-3">
+
+                <p>🪑 <strong>Mesa:</strong> <span id="resMesa">---</span></p>
+                <p>📍 <strong>Zona:</strong> <span id="resZona">---</span></p>
+                <p>👥 <strong>Capacidad:</strong> <span id="resCapacidad">---</span></p>
+                <p>📅 <strong>Fecha:</strong> <span id="resFecha">---</span></p>
+                <p>⏰ <strong>Hora:</strong> <span id="resHora">---</span></p>
+
+            </div>
+
+        
+            <div class="mt-10 text-center">
+        
+                <div id="qrContainer" class="flex justify-center mt-4"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</main>
+
+</body>
+</html>

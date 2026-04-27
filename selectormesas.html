@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Mesa | FAS</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CSS EXTERNO -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- JS -->
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+
+<header class="bg-white/80 backdrop-blur-md shadow-md border-b border-slate-200">
+
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+
+        <div class="flex items-center gap-3">
+            <div class="bg-orange-500 p-2 rounded-xl shadow-md">🍴</div>
+            <div>
+                <h1 class="font-bold text-lg">Restaurante FAS</h1>
+                <p class="text-xs text-slate-500">Panel de Cliente</p>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <span class="text-sm font-medium">Hola, Roberto Díaz</span>
+
+            <!-- BOTÓN PERFIL -->
+            <div id="btnPerfil"
+                 class="w-10 h-10 bg-orange-500 text-white rounded-full flex items-center justify-center font-bold shadow cursor-pointer">
+                R
+            </div>
+        </div>
+
+    </div>
+
+    <!-- MENÚ -->
+   <div class="max-w-7xl mx-auto px-4 pb-3 flex gap-6 text-sm font-semibold text-slate-600">
+        <button onclick="window.location.href='historial.html'" class="hover:text-orange-500">🏠 Inicio</button>
+        <button onclick="window.location.href='menuprincipal.html'" class="hover:text-orange-500">🍔 Menú</button>
+        <button onclick="window.location.href='selectormesas.html'" class="hover:text-orange-500">📅 Reservación</button>
+    </div>
+
+</header>
+
+<main class="max-w-7xl mx-auto px-6 py-10">
+
+    <div class="flex flex-col lg:flex-row gap-8">
+
+        <!-- MESAS -->
+        <div class="flex-1">
+            <div class="bg-white p-8 rounded-3xl shadow-sm border">
+
+                <h2 class="text-2xl font-bold mb-6">Mapa del Restaurante</h2>
+
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+
+                    <!-- MESA -->
+                    <button class="mesa disponible border-2 border-emerald-500 rounded-2xl p-6"
+                        data-mesa="M1"
+                        data-capacidad="2 personas"
+                        data-ubicacion="Terraza 🌿">
+
+                        <span class="text-xs font-bold text-emerald-600">Libre</span>
+                        <h3 class="text-xl font-bold">M1</h3>
+                        <p class="text-xs">Cap: 2</p>
+                        <p class="text-xs text-slate-400">Terraza</p>
+                    </button>
+
+                    <!-- OCUPADA -->
+                    <div class="border-2 border-slate-300 rounded-2xl p-6 opacity-50">
+                        <span class="text-xs">Ocupada</span>
+                        <h3 class="text-xl font-bold">M2</h3>
+                        <p class="text-xs">Cap: 4</p>
+                        <p class="text-xs">Interior</p>
+                    </div>
+
+                    <!-- MESA -->
+                    <button class="mesa disponible border-2 border-emerald-500 rounded-2xl p-6"
+                        data-mesa="M3"
+                        data-capacidad="4 personas"
+                        data-ubicacion="Interior 🏠">
+
+                        <span class="text-xs font-bold text-emerald-600">Libre</span>
+                        <h3 class="text-xl font-bold">M3</h3>
+                        <p class="text-xs">Cap: 4</p>
+                        <p class="text-xs text-slate-400">Interior</p>
+                    </button>
+
+                    <!-- MESA -->
+                    <button class="mesa disponible border-2 border-emerald-500 rounded-2xl p-6"
+                        data-mesa="M5"
+                        data-capacidad="4 personas"
+                        data-ubicacion="Ventana 🪟">
+
+                        <span class="text-xs font-bold text-emerald-600">Libre</span>
+                        <h3 class="text-xl font-bold">M5</h3>
+                        <p class="text-xs">Cap: 4</p>
+                        <p class="text-xs text-slate-400">Ventana</p>
+                    </button>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- RESUMEN -->
+        <aside class="w-full lg:w-96">
+            <div class="bg-slate-900 text-white rounded-3xl p-8 shadow-xl sticky top-24">
+
+                <h3 class="text-xl font-bold mb-6 text-orange-400">Resumen de Reserva</h3>
+
+                <!-- CALENDARIO -->
+                <div class="space-y-4 mb-6">
+                    <input type="date" id="inputFecha" class="w-full p-2 rounded bg-slate-800">
+                    <input type="time" id="inputHora" class="w-full p-2 rounded bg-slate-800">
+                </div>
+
+                <!-- DATOS -->
+                <div class="space-y-4">
+                    <p><strong>📅 Fecha:</strong> <span id="resumenFecha">---</span></p>
+                    <p><strong>🪑 Mesa:</strong> <span id="resumenMesa">---</span></p>
+                    <p><strong>👥 Capacidad:</strong> <span id="resumenCapacidad">---</span></p>
+                    <p><strong>📍 Zona:</strong> <span id="resumenUbicacion">---</span></p>
+                </div>
+
+                <button onclick="confirmarReserva()"
+                    class="w-full mt-6 bg-orange-600 py-3 rounded-xl font-bold">
+                    Confirmar Reservación
+                </button>
+
+            </div>
+        </aside>
+
+    </div>
+
+</main>
+
+</body>
+</html>
