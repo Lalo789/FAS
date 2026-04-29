@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Perfil | FAS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="empleado-body">
+
+<header class="header-empleado">
+    <div class="logo">
+        <h1 style="font-size: 1.5rem;">🍴 FAS</h1>
+    </div>
+
+    <div class="header-right">
+        <button class="header-btn logout">
+            <span>Cerrar Sesión</span>
+        </button>
+    </div>
+</header>
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <ul class="nav-menu">
+            <li><a href="Inicio.html" class="nav-link active">🏠 Perfil</a></li>
+            <li><a href="Menu.html" class="nav-link">🍔 Menú</a></li>
+            <li><a href="Reservacion.html" class="nav-link">📅 Reservación</a></li>
+        </ul>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="main-content">
+
+        <div class="top-bar">
+            <div class="page-title">
+                <h2>Mi Perfil</h2>
+                <p>Gestiona tu información y preferencias</p>
+            </div>
+        </div>
+
+        <!-- PERFIL + FORM -->
+        <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+
+            <div class="data-section profile-card" style="flex: 1;">
+                <div class="avatar" style="width: 100px; height: 100px; font-size: 2.5rem; margin: auto;">
+                    RD
+                </div>
+                <h3 style="color: #640E09;">Roberto Díaz</h3>
+                <p style="color: #737F03;">Cliente VIP</p>
+            </div>
+
+            <div class="data-section" style="flex: 2;">
+                <h3>Editar Mis Datos</h3>
+                <form style="display: grid; gap: 1rem;">
+                    <input type="text" value="Roberto Díaz" class="input-field">
+                    <input type="email" value="roberto@email.com" class="input-field">
+                    <input type="tel" value="+52 000 000 0000" class="input-field">
+
+                    <button type="button" class="btn btn-primary">
+                        Guardar Cambios
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- RESERVACIÓN -->
+        <div class="data-section" style="margin-top: 2rem;">
+            <h3>Información de Reservación</h3>
+
+            <div id="infoReserva">
+                <p style="color:#999;">Sin reservación activa</p>
+            </div>
+        </div>
+
+    </main>
+</div>
+
+<script src="main.js"></script>
+</body>
+</html>

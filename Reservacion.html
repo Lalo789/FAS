@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seleccionar Mesa | FAS</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
+</head>
+<body class="empleado-body">
+
+    <header class="header-empleado">
+        <div class="logo" style="margin: 0; padding: 0; border: none;">
+            <h1 style="font-size: 1.5rem;">🍴 FAS</h1>
+        </div>
+        <div class="header-right">
+            <button class="header-btn" onclick="window.location.href='Inicio.html'">
+                <span>Roberto Díaz</span>
+                <div class="avatar" style="width: 35px; height: 35px;">RD</div>
+            </button>
+        </div>
+    </header>
+
+    <div class="app-container">
+        <aside class="sidebar">
+            <ul class="nav-menu">
+                <li><a href="Inicio.html" class="nav-link"><span>🏠 Perfil</span></a></li>
+                <li><a href="Menu.html" class="nav-link"><span>🍔 Menú</span></a></li>
+                <li><a href="Reservacion.html" class="nav-link active"><span>📅 Reservación</span></a></li>
+            </ul>
+        </aside>
+
+        <main class="main-content">
+            <div class="top-bar">
+                <div class="page-title">
+                    <h2>Seleccionar Mesa</h2>
+                    <p>Elige tu lugar favorito en el mapa del restaurante</p>
+                </div>
+            </div>
+
+            <div style="display: flex; gap: 2rem; flex-wrap: wrap;">
+                
+                <div class="data-section" style="flex: 2; margin-top: 0;">
+                    <div class="section-header">
+                        <h3>Mapa del Restaurante</h3>
+                        <div>
+                            <span class="badge badge-active">Disponible</span>
+                            <span class="badge badge-ausente">Ocupada</span>
+                        </div>
+                    </div>
+
+                    <div class="restaurant-map">
+                        <div class="map-zone zone-terraza">Terraza 🌿</div>
+                        <div class="map-zone zone-salon">Salón Interior 🏠</div>
+                        <div class="map-zone zone-entrada">Entrada</div>
+                        <div class="map-zone zone-banos">Baños</div>
+                        <div class="map-zone zone-cocina">Cocina</div>
+
+                        <div class="map-table map-pos-1 map-available mesa" data-mesa="M1" data-capacidad="2" data-ubicacion="Salón Interior">M1</div>
+                        <div class="map-table map-pos-2 map-occupied">M2</div>
+                        <div class="map-table map-pos-3 map-available mesa" data-mesa="M3" data-capacidad="4" data-ubicacion="Terraza">M3</div>
+                        <div class="map-table map-pos-4 map-occupied">M4</div>
+                        <div class="map-table map-pos-5 map-available mesa" data-mesa="M5" data-capacidad="6" data-ubicacion="Salón Interior">M5</div>
+                        <div class="map-table map-pos-6 map-available mesa" data-mesa="M6" data-capacidad="2" data-ubicacion="Terraza">M6</div>
+                    </div>
+                </div>
+
+                <aside class="data-section" style="flex: 1; margin-top: 0; background: linear-gradient(135deg, #2B3B00, #4B7001); color: white;">
+                    <h3 style="color: #F7B91A; margin-bottom: 1.5rem;">Resumen de Reserva</h3>
+                    
+                    <div class="form-group">
+                        <label style="color: #e2e8dd;">📅 Fecha</label>
+                        <input type="date" id="inputFecha" style="background: rgba(255,255,255,0.9); border:none;">
+                    </div>
+                    <div class="form-group">
+                        <label style="color: #e2e8dd;">⏰ Hora</label>
+                        <input type="time" id="inputHora" style="background: rgba(255,255,255,0.9); border:none;">
+                    </div>
+
+                    <table style="margin-top: 1.5rem; color: white;">
+                        <tr><td style="border-bottom: 1px solid rgba(255,255,255,0.2);"><strong>🪑 Mesa:</strong></td><td id="resumenMesa" style="border-bottom: 1px solid rgba(255,255,255,0.2); text-align: right;">---</td></tr>
+                        <tr><td style="border-bottom: 1px solid rgba(255,255,255,0.2);"><strong>👥 Capacidad:</strong></td><td id="resumenCapacidad" style="border-bottom: 1px solid rgba(255,255,255,0.2); text-align: right;">---</td></tr>
+                        <tr><td style="border-bottom: 1px solid rgba(255,255,255,0.2);"><strong>📍 Zona:</strong></td><td id="resumenUbicacion" style="border-bottom: 1px solid rgba(255,255,255,0.2); text-align: right;">---</td></tr>
+                    </table>
+
+                    <button onclick="confirmarReserva()" class="btn-primary" style="width: 100%; padding: 1rem; margin-top: 2rem; font-size: 1.1rem;">
+                        Confirmar Reservación
+                    </button>
+                </aside>
+
+            </div>
+        </main>
+    </div>
+</body>
+</html>

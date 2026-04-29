@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Menú | FAS</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
+</head>
+
+<body class="empleado-body">
+
+<!-- HEADER -->
+<header class="header-empleado">
+    <div class="logo" style="margin: 0; padding: 0; border: none;">
+        <h1 style="font-size: 1.5rem;">🍴 FAS</h1>
+    </div>
+
+    <div class="header-right">
+        <button class="header-btn" onclick="window.location.href='Inicio.html'">
+            <span>Roberto Díaz</span>
+            <div class="avatar" style="width: 35px; height: 35px;">RD</div>
+        </button>
+    </div>
+</header>
+
+<div class="app-container">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <ul class="nav-menu">
+            <li><a href="Inicio.html" class="nav-link"><span>🏠 Perfil</span></a></li>
+            <li><a href="Menu.html" class="nav-link active"><span>🍔 Menú</span></a></li>
+            <li><a href="Reservacion.html" class="nav-link"><span>📅 Reservación</span></a></li>
+        </ul>
+    </aside>
+
+    <!-- CONTENIDO -->
+    <main class="main-content">
+
+        <!-- TOP BAR -->
+        <div class="top-bar">
+            <div class="page-title">
+                <h2>Menú</h2>
+                <p>Explora nuestros platillos disponibles</p>
+            </div>
+        </div>
+
+        <!-- COMIDAS -->
+        <div class="data-section">
+            <div class="section-header">
+                <h3>🍔 Comidas</h3>
+            </div>
+
+            <div class="tables-grid">
+
+                <div class="table-card available">
+                    <h3>Hamburguesa</h3>
+                    <p><strong>$120</strong></p>
+                    <button onclick="toggle('burger', this)" class="btn btn-primary">Ver Detalles</button>
+                    <ul id="burger" class="hidden"></ul>
+                </div>
+                
+
+                <div class="table-card available">
+                    <h3>Pizza</h3>
+                    <p><strong>$150</strong></p>
+                    <button onclick="toggle('pizza', this)" class="btn btn-primary">Ver Detalles</button>
+                    <ul id="pizza" class="hidden"></ul>
+                </div>
+
+                <div class="table-card available">
+                    <h3>Hot Dog</h3>
+                    <p><strong>$80</strong></p>
+                    <button onclick="toggle('hotdog', this)" class="btn btn-primary">Ver Detalles</button>
+                    <ul id="hotdog" class="hidden"></ul>
+                </div>
+
+                <div class="table-card available">
+                    <h3>Papas</h3>
+                    <p><strong>$70</strong></p>
+                    <button onclick="toggle('papas', this)" class="btn btn-primary">Ver Detalles</button>
+                    <ul id="papas" class="hidden"></ul>
+                </div>
+
+                <div class="table-card available">
+                    <h3>Burger Vegana</h3>
+                    <p><strong>$110</strong></p>
+                    <button onclick="toggle('veganburger', this)" class="btn btn-primary">Ver Detalles</button>
+                    <ul id="veganburger" class="hidden"></ul>
+                </div>
+
+                <div class="table-card available">
+                    <h3>Ensalada</h3>
+                    <p><strong>$90</strong></p>
+                    <button onclick="toggle('ensalada', this)" class="btn btn-primary">Ver Detalles</button>
+                    <ul id="ensalada" class="hidden"></ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- BEBIDAS -->
+        <div class="data-section">
+            <div class="section-header">
+                <h3>🥤 Bebidas</h3>
+            </div>
+
+            <div class="tables-grid">
+
+                <div class="table-card available">
+                    <h3>Refresco</h3>
+                    <p><strong>$35</strong></p>
+                    <button onclick="toggle('refresco', this)" class="btn btn-primary">Ver Detalles</button>
+                    <ul id="refresco" class="hidden"></ul>
+                </div>
+
+                <div class="table-card available">
+                    <h3>Jugo</h3>
+                    <p><strong>$40</strong></p>
+                    <button onclick="toggle('jugo', this)" class="btn btn-primary">Ver Detalles</button>
+                    <ul id="jugo" class="hidden"></ul>
+                </div>
+
+                <div class="table-card available">
+                    <h3>Malteada</h3>
+                    <p><strong>$65</strong></p>
+                    <button onclick="toggle('malteada', this)" class="btn btn-primary">Ver Detalles</button>
+                    <ul id="malteada" class="hidden"></ul>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- POSTRES -->
+        <div class="data-section">
+            <div class="section-header">
+                <h3>🥤 Postres </h3>
+            </div>
+
+            <div class="tables-grid">
+
+                <div class="table-card available">
+                    <h3>Nieve</h3>
+                    <p><strong>$30</strong></p>
+                    <button onclick="toggle('nieve', this)" class="btn btn-primary">Ver Detalles</button>
+                    <ul id="nieve" class="hidden"></ul>
+                </div>
+
+                <div class="table-card available">
+                    <h3>Crepa</h3>
+                    <p><strong>$40</strong></p>
+                    <button onclick="toggle('crepa', this)" class="btn btn-primary">Ver Detalles</button>
+                    <ul id="crepa" class="hidden"></ul>
+                </div>
+
+                <div class="table-card available">
+                    <h3>Pastel</h3>
+                    <p><strong>$70</strong></p>
+                    <button onclick="toggle('pastel', this)" class="btn btn-primary">Ver Detalles</button>
+                    <ul id="pastel" class="hidden"></ul>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+</div>
+
+</body>
+</html>
