@@ -320,3 +320,160 @@ th { background: linear-gradient(135deg, #2B3B00, #4B7001); color: white; font-w
 .map-table:hover { transform: scale(1.15); }
 .map-pos-1 { top: 30%; left: 45%; } .map-pos-2 { top: 60%; left: 55%; } .map-pos-3 { top: 20%; right: 15%; } .map-pos-4 { top: 60%; right: 15%; } .map-pos-5 { bottom: 40%; left: 45%; } .map-pos-6 { top: 15%; left: 60%; } .map-pos-7 { bottom: 10%; right: 40%; } 
 .map-available { background: #4B7001; } .map-occupied { background: #640E09; } .map-reserved { background: #EB6C0C; }
+
+
+.landing-body {
+    background-color: #f4f7f6; /* Fondo base claro de tu paleta */
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.landing-header {
+    width: 100%;
+    left: 0;
+    z-index: 1000;
+    padding: 0 2rem;
+}
+
+.login-redirect {
+    background-color: rgba(247, 185, 26, 0.1);
+    border: 1px solid #F7B91A;
+    color: #F7B91A;
+}
+
+.login-redirect:hover {
+    background-color: #F7B91A;
+    color: #2B3B00; /* Verde oscuro de tu paleta */
+}
+
+.landing-main {
+    padding-top: 60px; /* Compensa la altura del header */
+}
+
+.hero-section {
+    position: relative;
+    height: 70vh;
+    width: 100%;
+    /* Reemplaza esta URL con la imagen de fondo de tu restaurante */
+    background: url('ruta/a/tu/imagen-restaurante.jpg') center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(43, 59, 0, 0.8), rgba(100, 14, 9, 0.6)); /* Degradado con tus colores verde oscuro y vino */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 800;
+    color: #F7B91A; /* Oro FAS */
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin: 0;
+    text-shadow: 2px 4px 10px rgba(0,0,0,0.5);
+}
+
+.hero-logo {
+    width: 150px;
+    height: auto;
+    filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3));
+}
+
+.welcome-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 4rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.welcome-text {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.welcome-text h2 {
+    color: #640E09; /* Rojo Vino */
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.welcome-text p {
+    color: #2B3B00; /* Verde Oscuro para contraste en fondo claro */
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.collage-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 200px;
+    gap: 1rem;
+}
+
+.collage-item {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.collage-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(247, 185, 26, 0.3); /* Resplandor dorado */
+}
+
+.collage-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.collage-item:hover img {
+    transform: scale(1.05);
+}
+
+.collage-item-large {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+@media (max-width: 768px) {
+    .collage-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .hero-title {
+        font-size: 2.5rem;
+    }
+}
+@media (max-width: 480px) {
+    .collage-grid {
+        grid-template-columns: 1fr;
+    }
+    .collage-item-large {
+        grid-column: span 1;
+        grid-row: span 1;
+    }
+}
