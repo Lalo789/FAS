@@ -38,7 +38,9 @@
       </div>
     </div>
 
-  </div> <button id="openRegisterModal" class="floating-btn">
+  </div> 
+
+  <button id="openRegisterModal" class="floating-btn">
     <i class="fas fa-user-plus"></i> Crear Cuenta
   </button>
 
@@ -49,25 +51,48 @@
         <i class="fas fa-user-circle" style="font-size: 3rem; color: #EB6C0C; margin-bottom: 0.5rem;"></i>
         <h2 style="color: #640E09;">Únete a FAS</h2>
       </div>
+      
       <form id="customerRegisterForm">
+        
         <div class="input-group">
-          <label>Nombre Completo</label>
-          <input class="input-field" type="text" placeholder="Ej. Juan Pérez" required>
+          <label>Nombre(s)</label>
+          <input class="input-field" type="text" placeholder="Ej. Carlos" required>
         </div>
+
+        <div style="display: flex; gap: 1rem;">
+          <div class="input-group" style="flex: 1;">
+            <label>Apellido Paterno</label>
+            <input class="input-field" type="text" placeholder="Ej. López" required>
+          </div>
+          <div class="input-group" style="flex: 1;">
+            <label>Apellido Materno</label>
+            <input class="input-field" type="text" placeholder="Ej. García" required>
+          </div>
+        </div>
+
         <div class="input-group">
           <label>Correo Electrónico</label>
           <input class="input-field" type="email" placeholder="tu@email.com" required>
         </div>
+
+        <div class="input-group">
+          <label>Número de Teléfono</label>
+          <input class="input-field" type="tel" placeholder="Ej. 4431234567" pattern="[0-9]{10}" title="Debe contener 10 dígitos numéricos" required>
+        </div>
+
         <div class="input-group">
           <label>Contraseña</label>
           <input class="input-field" type="password" placeholder="*********" required>
         </div>
+
         <div class="terms-check">
           <input type="checkbox" id="termsCheck" required>
           <label for="termsCheck">Acepto los términos y condiciones</label>
         </div>
+        
         <button type="submit" class="btn-login" style="background: linear-gradient(135deg, #EB6C0C, #F7B91A); border:none; color:#640E09; margin-top: 1rem;">Crear Mi Cuenta</button>
       </form>
+
     </div>
   </div>
 
