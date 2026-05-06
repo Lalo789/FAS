@@ -477,3 +477,365 @@ th { background: linear-gradient(135deg, #2B3B00, #4B7001); color: white; font-w
         grid-row: span 1;
     }
 }
+/* =========================================
+   CONFIGURACIÓN GENERAL Y FUENTES
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
+
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* =========================================
+   HEADER UNIVERSAL (FAS SYSTEM)
+   ========================================= */
+.header-empleado {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 70px;
+    background: rgba(32, 98, 72, 0.647); 
+    backdrop-filter: blur(10px);
+    display: flex; 
+    align-items: center; 
+    justify-content: space-between;
+    padding: 0 2rem; 
+    z-index: 1001; 
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-project-name {
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+.header-right-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    height: 100%;
+}
+
+.header-btn {
+    background: transparent;
+    border: none;
+    color: #b0c4bf;
+    padding: 0.5rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    border-radius: 12px;
+    text-decoration: none;
+}
+
+.header-btn i {
+    font-size: 1.2rem;
+    color: #F7B91A;
+}
+
+.header-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* Estilo específico para el de salida / login redirect */
+.header-btn.logout:hover, .login-redirect:hover {
+    background: rgba(100, 14, 9, 0.4);
+    color: #EB6C0C;
+}
+
+/* =========================================
+   ESTILOS DE LOGIN (TU ESTRUCTURA ORIGINAL)
+   ========================================= */
+.login-body {
+    background: linear-gradient(125deg, rgba(43, 59, 0, 0.4) 0%, rgba(115, 127, 3, 0.25) 100%), 
+                url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center fixed;
+    background-size: cover; 
+    min-height: 100vh; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    padding: 2rem; 
+    backdrop-filter: blur(3px);
+}
+
+.auth-container { 
+    width: 100%; 
+    max-width: 440px; 
+    position: relative; 
+    z-index: 10; 
+}
+
+.auth-card {
+    background: rgba(32, 98, 72, 0.793); 
+    backdrop-filter: blur(12px); 
+    border-radius: 36px;
+    box-shadow: 0 25px 40px -12px rgba(100, 14, 9, 0.3); 
+    padding: 2.5rem; 
+    border: 1px solid rgba(247, 184, 26, 0); 
+    position: relative; 
+    overflow: hidden;
+}
+
+.fas-restaurant-title { 
+    font-size: 2.1rem; 
+    font-weight: 800; 
+    color: #b0c4bf; 
+    margin-bottom: 0.2rem; 
+}
+
+.input-field {
+    width: 100%; 
+    padding: 0.9rem 1.2rem; 
+    background: #e6ebeb;
+    border: 2px solid transparent; 
+    border-radius: 20px; 
+    outline: none; 
+    transition: all 0.3s ease;
+    color: #1c6449; 
+    font-weight: 500;
+}
+
+.btn-login {
+    display: block; 
+    width: 100%; 
+    padding: 1rem; 
+    font-size: 1.1rem; 
+    font-weight: 800; 
+    text-transform: uppercase; 
+    border: none; 
+    border-radius: 30px; 
+    background: linear-gradient(135deg, #EB6C0C, #F7B91A); 
+    color: #640E09; 
+    cursor: pointer; 
+    transition: all 0.3s ease;
+}
+
+/* =========================================
+   PÁGINA DE BIENVENIDA (ESTILO MODULAR RECORREGIDO)
+   ========================================= */
+.landing-body {
+    background-color: #2B3B00; /* Fondo base verde oscuro */
+    overflow-x: hidden;
+}
+
+.landing-main {
+    padding-top: 70px;
+}
+
+/* 1. Hero Section - Pantalla completa */
+.hero-full {
+    height: calc(100vh - 70px);
+    position: relative;
+    background: linear-gradient(to bottom, rgba(43, 59, 0, 0.4), rgba(100, 14, 9, 0.6)), 
+                url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-logo-large {
+    text-align: center;
+    color: #F7B91A;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.hero-logo-large i { font-size: 5rem; margin-bottom: 1rem; }
+.hero-logo-large h1 { font-size: 5rem; letter-spacing: 12px; color: white; margin: 0; }
+.hero-logo-large p { font-size: 1.2rem; letter-spacing: 8px; color: #F7B91A; font-weight: 300; }
+
+/* 2. Banner de Frase y Menú */
+.phrase-banner {
+    background-color: #2B3B00;
+    padding: 8rem 2rem;
+    text-align: center;
+}
+
+.main-phrase {
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: white;
+    max-width: 900px;
+    margin: 0 auto 2.5rem;
+    letter-spacing: 1px;
+}
+
+/* El enlace de texto que pediste (No parece botón) */
+.text-link-menu {
+    color: #F7B91A;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.3rem;
+    letter-spacing: 4px;
+    position: relative;
+    padding-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.text-link-menu::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 2px;
+    background-color: #EB6C0C;
+    transition: all 0.4s ease;
+}
+
+.text-link-menu:hover { color: #EB6C0C; }
+.text-link-menu:hover::after { width: 100%; left: 0; }
+
+/* 3. Collage Modular (SIN ESPACIOS - DE BORDE A BORDE) */
+.collage-grid-full {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 400px;
+    gap: 0;
+    width: 100%;
+}
+
+.collage-img-item {
+    overflow: hidden;
+    position: relative;
+}
+
+.collage-img-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+    filter: brightness(0.8);
+}
+
+.collage-img-item:hover img {
+    transform: scale(1.1);
+    filter: brightness(1);
+}
+
+/* 4. Sección de Reseñas Decorativa */
+.reviews-section {
+    background-color: #2B3B00;
+    padding: 10rem 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.review-card-decorated {
+    max-width: 700px;
+    position: relative;
+    padding: 5rem 3rem;
+    text-align: center;
+}
+
+.review-text {
+    font-size: 1.5rem;
+    color: #b0c4bf;
+    font-style: italic;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+}
+
+/* Esquinas decorativas de las imágenes */
+.corner-top, .corner-bottom {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 3px solid #EB6C0C;
+}
+.corner-top { top: 0; left: 0; border-right: none; border-bottom: none; }
+.corner-bottom { bottom: 0; right: 0; border-left: none; border-top: none; }
+
+.social-icons-footer {
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    font-size: 1.8rem;
+    color: #F7B91A;
+    margin-top: 2rem;
+}
+
+/* =========================================
+   DASHBOARD DE EMPLEADO (TU ESTRUCTURA FIJA)
+   ========================================= */
+.empleado-body { 
+    background: linear-gradient(125deg, rgba(43, 59, 0, 0.4) 0%, rgba(115, 127, 3, 0.25) 100%), 
+                url('https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2') no-repeat center center fixed;
+    background-size: cover;
+    overflow: hidden; 
+}
+
+.sidebar { 
+    width: 280px; 
+    background: linear-gradient(135deg, rgb(7, 80, 46) 0%, rgba(75, 112, 1, 0.95) 100%); 
+    position: fixed; 
+    top: 70px; 
+    left: 0; 
+    height: calc(100vh - 70px); 
+    transition: width 0.3s ease;
+}
+
+.main-content { 
+    flex: 1; 
+    margin-left: 280px; 
+    padding: 2rem; 
+    height: calc(100vh - 70px); 
+    overflow-y: auto;
+    background: rgba(245, 240, 232, 0.85); 
+    backdrop-filter: blur(10px);
+}
+
+/* =========================================
+   MODALES Y OTROS COMPONENTES
+   ========================================= */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+    background: rgba(0,0,0,0.75);
+    display: flex; align-items: center; justify-content: center; 
+    z-index: 2000; backdrop-filter: blur(6px);
+}
+
+.hidden { display: none !important; }
+
+/* =========================================
+   RESPONSIVO
+   ========================================= */
+@media (max-width: 1024px) {
+    .collage-grid-full { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .hero-logo-large h1 { font-size: 3rem; letter-spacing: 6px; }
+    .main-phrase { font-size: 1.8rem; }
+    .collage-grid-full { grid-template-columns: 1fr; }
+    .sidebar { width: 0; overflow: hidden; }
+    .main-content { margin-left: 0; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -8,62 +8,66 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="landing-body">
-
-    <header class="header-empleado landing-header">
-        <div class="header-left">
-            <span class="header-project-name" style="margin-left: 0;">FAS System</span>
+    <!-- Header Fijo (Mismo que el de Empleado) -->
+    <header class="header-empleado">
+        <div class="header-left" style="display: flex; align-items: center;">
+            <button class="menu-toggle"><i class="fas fa-bars"></i></button>
+            <span class="header-project-name">FAS RESTAURANT</span>
         </div>
-        
-        <div class="header-right-actions">
-            <button class="header-btn login-redirect" onclick="window.location.href='login.html'" title="Iniciar Sesión">
-                <i class="fas fa-sign-in-alt"></i>
-                <span>Iniciar Sesión</span>
-            </button>
+        <div class="header-right">
+            <div class="header-right-actions">
+                <a href="login.html" class="header-btn">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span>ACCEDER</span>
+                </a>
+            </div>
         </div>
     </header>
 
     <main class="landing-main">
-        
-        <section class="hero-section">
-            <div class="hero-overlay"></div>
+        <!-- SECCIÓN 1: HERO (Imagen Completa + Logo) -->
+        <section class="hero-full">
             <div class="hero-content">
-                <h1 class="hero-title">FAS RESTAURANT</h1>
-                <!-- Reemplaza el src con la ruta real de tu logo -->
-                <img src="ruta/a/tu/logo.png" alt="Logo FAS Restaurant" class="hero-logo">
-            </div>
-        </section>
-
-        <section class="welcome-section">
-            <div class="welcome-text">
-                <h2>Descubre la Experiencia FAS</h2>
-                <p>
-                    Bienvenido a un espacio donde la tradición culinaria se encuentra con la innovación. 
-                    En FAS Restaurant, cada platillo es una obra de arte diseñada para deleitar tus sentidos. 
-                    Sumérgete en una atmósfera única, disfruta de ingredientes de la más alta calidad y déjate 
-                    llevar por sabores inolvidables.
-                </p>
-            </div>
-
-            <div class="collage-grid">
-                <div class="collage-item collage-item-large">
-                    <img src="ruta/platillo1.jpg" alt="Platillo Especialidad">
-                </div>
-                <div class="collage-item">
-                    <img src="ruta/platillo2.jpg" alt="Entrada">
-                </div>
-                <div class="collage-item">
-                    <img src="ruta/platillo3.jpg" alt="Postre">
-                </div>
-                <div class="collage-item">
-                    <img src="ruta/platillo4.jpg" alt="Bebida">
-                </div>
-                <div class="collage-item">
-                    <img src="ruta/platillo5.jpg" alt="Platillo Principal">
+                <div class="hero-logo-large">
+                    <i class="fas fa-utensils"></i>
+                    <h1>FAS</h1>
+                    <p>RESTAURANT</p>
                 </div>
             </div>
         </section>
 
+        <!-- SECCIÓN 2: FRASE Y LINK (Fondo Sólido Verde) -->
+        <section class="phrase-banner">
+            <div class="phrase-container">
+                <h2 class="main-phrase">"SABORES QUE DESPIERTAN TUS SENTIDOS."</h2>
+                <a href="#" class="text-link-menu">DESCUBRE NUESTRO MENÚ</a>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 3: COLLAGE MODULAR (Sin Espacios) -->
+        <section class="collage-modular">
+            <div class="collage-grid-full">
+                <div class="collage-img-item"><img src="https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg" alt="Platillo 1"></div>
+                <div class="collage-img-item"><img src="https://images.pexels.com/photos/70497/pexels-photo-70497.jpeg" alt="Platillo 2"></div>
+                <div class="collage-img-item"><img src="https://images.pexels.com/photos/1279330/pexels-photo-1279330.jpeg" alt="Platillo 3"></div>
+                <div class="collage-img-item"><img src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg" alt="Platillo 4"></div>
+                <div class="collage-img-item"><img src="https://images.pexels.com/photos/376464/pexels-photo-376464.jpeg" alt="Platillo 5"></div>
+                <div class="collage-img-item"><img src="https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg" alt="Platillo 6"></div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN 4: RESEÑAS (Estilo Decorativo) -->
+        <section class="reviews-section">
+            <div class="review-card-decorated">
+                <span class="corner-top"></span>
+                <h3 class="section-subtitle">RESEÑAS</h3>
+                <p class="review-text">"UNA EXPERIENCIA INOLVIDABLE, LA CALIDAD DE LOS CORTES Y EL AMBIENTE SON EXCEPCIONALES."</p>
+                <div class="social-icons-footer">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <span class="corner-bottom"></span>
+            </div>
+        </section>
     </main>
-
 </body>
-</html>
