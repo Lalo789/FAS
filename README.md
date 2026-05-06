@@ -174,12 +174,14 @@ deactivate
 ## 👥 Autores
 
 - **Lalo789** - Desarrollador
+- **CHECHE** - Back-End/Api-Rest
+- **Leo** - Back-End/Base de Datos
+- **Hafid** - FrontEnd/Administrador
+- **Mayavi** -FrontEnd/Clientes
+- **Toño** -FrontEnd/Empleados
 
 ## 📝 Licencia
 
 Este proyecto está bajo licencia MIT.
 
-## 📞 Contacto
-
-Para preguntas o sugerencias, contacta a través de GitHub Issues.
 
