@@ -1,0 +1,32 @@
+{% extends 'app1/cliente_base.html' %}
+
+{% block title %}Menu | FAS{% endblock %}
+
+{% block content %}
+<div class="top-bar">
+    <div class="page-title">
+        <h2>Nuestro Menu</h2>
+        <p>Platillos, bebidas y postres disponibles.</p>
+    </div>
+</div>
+
+<div class="tables-grid">
+    {% for producto in productos %}
+        <div class="table-card" style="border-left: 4px solid #EB6C0C;">
+            {% if producto.imagen %}
+                <img src="{{ producto.imagen.url }}" alt="{{ producto.nombre }}" class="product-image" style="width:100%; height:140px; object-fit:cover; border-radius:12px; margin-bottom:12px;">
+            {% endif %}
+            <h3 style="color:#2B3B00; font-size:1.1rem; margin-bottom:4px;">{{ producto.nombre }}</h3>
+            <p class="table-detail">{{ producto.get_categoria_display }}</p>
+            <p style="font-size:0.85rem; color:#737F03; margin:8px 0;">{{ producto.descripcion }}</p>
+            <span class="badge badge-active" style="font-size:1rem;">${{ producto.precio }}</span>
+        </div>
+    {% empty %}
+        <div class="table-card">
+            <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto 10px; display:block;"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <h3>Menu no disponible</h3>
+            <p class="table-detail">Vuelve pronto.</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

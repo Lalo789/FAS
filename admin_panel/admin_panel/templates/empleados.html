@@ -1,0 +1,141 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestión de Empleados{% endblock %}
+
+{% block content %}
+<div class="employees-container">
+    <h2 class="page-title">Gestión de Empleados</h2>
+    <p class="section-subtitle">Estatus de Empleados:</p>
+
+    <div class="search-section">
+        <div class="search-bar">
+            <span class="search-icon">🔍</span>
+            <input type="text" placeholder="Buscar Empleado">
+            <span class="filter-icon">⚙️</span>
+        </div>
+    </div>
+
+    <div class="table-wrapper">
+        <table class="employee-table">
+            <thead>
+                <tr>
+                    <th>Empleado</th>
+                    <th>Puesto</th>
+                    <th>Turno</th>
+                    <th>Horario</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for empleado in empleados %}
+                <tr>
+                    <td>{{ empleado.nombre }}</td>
+                    <td>{{ empleado.puesto }}</td>
+                    <td>{{ empleado.turno }}</td>
+                    <td>{{ empleado.horario }}</td>
+                    <td><span class="dot green"></span> {{ empleado.estado }}</td>
+                    <td>
+                        <div class="row-actions">
+                            <a href="{% url 'editar_empleado' empleado.id %}" class="action-icon edit" title="Editar">📝</a>
+                            <button class="action-icon delete" title="Eliminar">🗑️</button>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" style="text-align: center; padding: 30px; color: #999;">
+                        No hay empleados registrados. Usa el botón de abajo para agregar el primero.
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="status-summary-card">
+        <div class="status-item"><span class="dot green"></span> Activos: <strong>3</strong></div>
+        <div class="status-item"><span class="dot yellow"></span> Descanso: <strong>2</strong></div>
+        <div class="status-item"><span class="dot red"></span> Ausentes: <strong>1</strong></div>
+    </div>
+
+    <div class="bottom-actions">
+        <div class="pill-buttons-group">
+            <a href="{% url 'agregar_empleado' %}" class="pill-btn btn-add">
+                <span class="icon">+</span> Agregar Empleado
+            </a>
+
+            {% if empleados %}
+                <a href="{% url 'editar_empleado' empleado.id %}" class="pill-btn btn-edit">📝 Editar</a>
+                    <span class="icon">📝</span> Editar Empleado
+                </a>
+                <button class="pill-btn btn-delete">
+                    <span class="icon">🗑️</span> Eliminar Empleado
+                </button>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Contenedor y Básicos */
+    .employees-container { animation: fadeIn 0.4s ease; padding: 10px; }
+    .page-title { margin-bottom: 5px; }
+    .section-subtitle { margin-bottom: 20px; color: #666; font-size: 0.9rem; }
+
+    /* Buscador */
+    .search-bar { display: flex; align-items: center; background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 8px 15px; width: 300px; margin-bottom: 25px; }
+    .search-bar input { border: none; outline: none; margin: 0 10px; width: 100%; font-size: 0.9rem; }
+
+    /* Tabla */
+    .table-wrapper { background: #fff; border-radius: 12px; border: 1px solid #eee; overflow: hidden; margin-bottom: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.02); }
+    .employee-table { width: 100%; border-collapse: collapse; text-align: left; }
+    .employee-table th { background: #f8f9fa; padding: 15px; color: #5f6368; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+    .employee-table td { padding: 12px 15px; border-bottom: 1px solid #f1f1f1; font-size: 0.9rem; }
+    
+    /* Iconos de fila */
+    .row-actions { display: flex; gap: 10px; }
+    .action-icon { text-decoration: none; opacity: 0.6; transition: 0.2s; cursor: pointer; border: none; background: none; }
+    .action-icon:hover { opacity: 1; transform: scale(1.2); }
+
+    /* Card de Resumen */
+    .status-summary-card { background: #FFF8E1; padding: 15px 25px; border-radius: 12px; border-left: 5px solid #FBBC04; width: fit-content; margin-bottom: 30px; }
+    .status-item { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; font-size: 0.85rem; }
+    .dot { height: 8px; width: 8px; border-radius: 50%; display: inline-block; }
+    .dot.green { background: #34A853; }
+    .dot.yellow { background: #FBBC04; }
+    .dot.red { background: #EA4335; }
+
+    /* --- CORRECCIÓN DE BOTONES (PROPORCIÓN) --- */
+    .pill-buttons-group { 
+        display: flex; 
+        gap: 15px; 
+        justify-content: flex-start; /* Alinea al inicio, no estira */
+    }
+
+    .pill-btn { 
+        text-decoration: none; 
+        border: none; 
+        padding: 10px 20px; /* Tamaño controlado por padding */
+        border-radius: 25px; 
+        font-weight: bold; 
+        display: inline-flex; /* Cambiado a inline-flex */
+        align-items: center; 
+        gap: 8px; 
+        font-size: 0.85rem; 
+        width: fit-content; /* El botón solo ocupa lo que necesita su contenido */
+        white-space: nowrap; /* Evita que el texto se amontone */
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        transition: 0.2s;
+        cursor: pointer;
+    }
+
+    .pill-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0,0,0,0.15); }
+    
+    .btn-add { background-color: #A5D6A7; color: #1B5E20; }
+    .btn-edit { background-color: #FFE082; color: #7F6E00; }
+    .btn-delete { background-color: #EF9A9A; color: #B71C1C; }
+
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+</style>
+{% endblock %}

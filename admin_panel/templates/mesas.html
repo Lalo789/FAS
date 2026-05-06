@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestion de Mesas | FAS{% endblock %}
+
+{% block content %}
+<div class="tables-management-container fade-in">
+    <div class="tables-header">
+        <h2 class="page-title">Gestion de Mesas</h2>
+
+        <div class="search-bar">
+            <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" placeholder="Buscar mesa (M1, M2...)" id="tableSearch">
+        </div>
+
+        <div class="summary-badges">
+            <div class="badge-item badge-green"><span>OK</span> <strong>{{ stats.disponibles }}</strong> <small>Libres</small></div>
+            <div class="badge-item badge-red"><span>X</span> <strong>{{ stats.ocupadas }}</strong> <small>Ocupadas</small></div>
+            <div class="badge-item badge-yellow"><span>R</span> <strong>{{ stats.reservadas }}</strong> <small>Reserva</small></div>
+        </div>
+    </div>
+
+    <div class="tables-grid">
+        {% for mesa in mesas %}
+        <div class="table-card">
+            <div class="card-quick-actions">
+                <a href="{% url 'editar_mesa' mesa.id %}" class="action-btn action-btn-edit">Editar</a>
+                <form method="post" action="{% url 'eliminar_mesa' mesa.id %}" class="inline-delete" onsubmit="return confirm('Eliminar esta mesa?');">
+                    {% csrf_token %}
+                    <button type="submit" class="action-btn action-btn-delete">Eliminar</button>
+                </form>
+            </div>
+            <h3>M{{ mesa.numero_mesa }}</h3>
+            <p class="status-text {% if mesa.estado == 'Disponible' %}status-available{% elif mesa.estado == 'Ocupada' %}status-occupied{% else %}status-reserved{% endif %}">
+                <span class="dot {% if mesa.estado == 'Disponible' %}green{% elif mesa.estado == 'Ocupada' %}red{% else %}yellow{% endif %}"></span>
+                {{ mesa.estado }}
+            </p>
+            <p class="table-detail">Capacidad: {{ mesa.capacidad }} personas</p>
+        </div>
+        {% empty %}
+            <div class="table-card">
+                <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="7" width="20" height="4" rx="1"/><path d="M4 11v8"/><path d="M20 11v8"/></svg>
+                <h3>Sin mesas</h3>
+                <p class="table-detail">Agrega una mesa para comenzar.</p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="tables-actions">
+        <div class="pill-buttons-group">
+            <a href="{% url 'agregar_mesa' %}" class="pill-btn btn-add">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Agregar Mesa
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

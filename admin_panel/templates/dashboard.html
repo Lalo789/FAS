@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard | FAS Admin{% endblock %}
+
+{% block content %}
+<div class="dashboard-container fade-in">
+    <h2 class="page-title">Panel de Control</h2>
+
+    <div class="stats-grid">
+        <div class="stat-card card-green">
+            <div class="stat-card-header">
+                <span class="stat-label">Ventas de Hoy</span>
+                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            </div>
+            <span class="stat-value">$0.00</span>
+            <span class="stat-trend">Pendiente de modulo de ventas</span>
+        </div>
+
+        <div class="stat-card card-yellow">
+            <div class="stat-card-header">
+                <span class="stat-label">Mesas Ocupadas</span>
+                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="4" rx="1"/><path d="M4 11v8"/><path d="M20 11v8"/></svg>
+            </div>
+            <span class="stat-value">{{ mesas_ocupadas }}/{{ mesas_total }}</span>
+            <span class="stat-status">Estado actual</span>
+        </div>
+
+        <div class="stat-card card-blue">
+            <div class="stat-card-header">
+                <span class="stat-label">Reservaciones Hoy</span>
+                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            </div>
+            <span class="stat-value">{{ reservas_hoy }}</span>
+            <span class="stat-subtitle">Programadas para hoy</span>
+        </div>
+
+        <div class="stat-card card-red">
+            <div class="stat-card-header">
+                <span class="stat-label">Alertas de Stock</span>
+                <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <span class="stat-value">{{ alertas_stock }}</span>
+            <span class="stat-status-alert">Stock bajo</span>
+        </div>
+    </div>
+
+    <div class="dashboard-lower-grid">
+        <div class="content-card chart-box">
+            <div class="card-header"><h3>Actividad del sistema</h3></div>
+            <p class="section-subtitle">El CRUD ya se alimenta desde la base de datos Django.</p>
+        </div>
+
+        <div class="content-card activity-box">
+            <div class="card-header"><h3>Accesos rapidos</h3></div>
+            <ul class="activity-list">
+                <li>
+                    <div class="act-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                    </div>
+                    <div class="act-info"><p><a href="{% url 'empleados' %}">Gestionar empleados</a></p></div>
+                </li>
+                <li>
+                    <div class="act-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="2" y="7" width="20" height="4" rx="1"/><path d="M4 11v8"/><path d="M20 11v8"/></svg>
+                    </div>
+                    <div class="act-info"><p><a href="{% url 'mesas' %}">Gestionar mesas</a></p></div>
+                </li>
+                <li>
+                    <div class="act-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>
+                    </div>
+                    <div class="act-info"><p><a href="{% url 'reservaciones' %}">Gestionar reservaciones</a></p></div>
+                </li>
+                <li>
+                    <div class="act-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                    </div>
+                    <div class="act-info"><p><a href="{% url 'inventario' %}">Gestionar inventario</a></p></div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}

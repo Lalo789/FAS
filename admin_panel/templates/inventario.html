@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Inventario | FAS Admin{% endblock %}
+
+{% block content %}
+<div class="inventory-container fade-in">
+    <div class="page-header-flex">
+        <h2 class="page-title">Gestion de Almacen</h2>
+        <a href="{% url 'agregar_inventario' %}" class="pill-btn btn-add">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Agregar Insumo
+        </a>
+    </div>
+
+    <div class="search-section">
+        <div class="search-bar">
+            <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="inventorySearch" placeholder="Buscar insumo o categoria...">
+        </div>
+    </div>
+
+    <div class="content-card table-wrapper">
+        <table class="fas-table" id="inventoryTable">
+            <thead>
+                <tr>
+                    <th>Insumo</th>
+                    <th>Categoria</th>
+                    <th>Stock</th>
+                    <th>Precio Unit.</th>
+                    <th>Estatus</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in inventario %}
+                <tr id="inv-row-{{ item.id }}">
+                    <td><strong>{{ item.nombre }}</strong></td>
+                    <td>{{ item.categoria }}</td>
+                    <td>{{ item.cantidad }} {{ item.unidad }}</td>
+                    <td class="price-format">${{ item.precio }}</td>
+                    <td>
+                        {% if item.cantidad > 10 %}
+                            <span class="badge success">En Stock</span>
+                        {% elif item.cantidad > 0 %}
+                            <span class="badge warning">Bajo Stock</span>
+                        {% else %}
+                            <span class="badge danger">Agotado</span>
+                        {% endif %}
+                    </td>
+                    <td class="actions-cell">
+                        <div class="row-actions">
+                            <a href="{% url 'editar_inventario' item.id %}" class="action-btn action-btn-edit">Editar</a>
+                            <form method="post" action="{% url 'eliminar_inventario' item.id %}" class="inline-delete" onsubmit="return confirm('Eliminar este insumo?');">
+                                {% csrf_token %}
+                                <button type="submit" class="action-btn action-btn-delete">Eliminar</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="6" class="empty-state">
+                        <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+                        <p class="empty-state-text">No hay insumos en el almacen.</p>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

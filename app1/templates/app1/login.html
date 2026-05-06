@@ -1,0 +1,96 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAS Restaurant - Acceso</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'admin_panel/css/styles.css' %}">
+  <link rel="stylesheet" href="{% static 'admin_panel/css/improvements.css' %}">
+</head>
+<body class="login-body">
+<div class="auth-container">
+  <div id="loginCard" class="auth-card login-card">
+    <h1 class="fas-restaurant-title">FAS Restaurant</h1>
+    <div class="welcome-text">Bienvenido de nuevo</div>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="message {{ message.tags }}">
+          <span class="message-text">{{ message }}</span>
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <form method="POST" action="{% url 'login' %}">
+      {% csrf_token %}
+      <div class="input-group">
+        <label>Correo electronico</label>
+        <input class="input-field" type="email" name="email" placeholder="tu@email.com" required>
+      </div>
+
+      <div class="input-group">
+        <label>Contrasena</label>
+        <input class="input-field" type="password" name="password" placeholder="********" required>
+      </div>
+
+      <button type="submit" class="btn-login">Iniciar Sesion</button>
+    </form>
+
+    <div class="divider"><span>o</span></div>
+
+    <p style="text-align: center; color: #4B7001; font-weight: 600; font-size: 0.9rem;">
+      No tienes una cuenta? <a href="#" id="goToRegisterLink" style="color: #EB6C0C; font-weight: 700; text-decoration: none;">Registrate aqui</a>
+    </p>
+  </div>
+
+  <div id="registerCard" class="auth-card login-card hidden">
+    <a href="#" id="backToLoginFromRegister" style="color: #EB6C0C; font-weight: 700; text-decoration: none; font-size: 0.9rem;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14" style="vertical-align: middle;"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+      Volver
+    </a>
+    <h1 class="fas-restaurant-title" style="margin-top: 12px;">Crear Cuenta</h1>
+    <div class="welcome-text">Registro de cliente</div>
+
+    <form method="POST" action="{% url 'registrar_cliente' %}">
+      {% csrf_token %}
+      <div class="input-group">
+        <label>Nombre completo</label>
+        <input class="input-field" type="text" name="full_name" required>
+      </div>
+      <div class="input-group">
+        <label>Correo electronico</label>
+        <input class="input-field" type="email" name="email" required>
+      </div>
+      <div class="input-group">
+        <label>Telefono</label>
+        <input class="input-field" type="tel" name="phone">
+      </div>
+      <div class="input-group">
+        <label>Contrasena</label>
+        <input class="input-field" type="password" name="password" required>
+      </div>
+      <button type="submit" class="btn-login">Crear Cuenta</button>
+    </form>
+  </div>
+</div>
+
+<script>
+  const loginCard = document.getElementById('loginCard');
+  const registerCard = document.getElementById('registerCard');
+  document.getElementById('goToRegisterLink')?.addEventListener('click', (event) => {
+    event.preventDefault();
+    loginCard.classList.add('hidden');
+    registerCard.classList.remove('hidden');
+  });
+  document.getElementById('backToLoginFromRegister')?.addEventListener('click', (event) => {
+    event.preventDefault();
+    registerCard.classList.add('hidden');
+    loginCard.classList.remove('hidden');
+  });
+</script>
+</body>
+</html>

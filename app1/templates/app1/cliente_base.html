@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Cliente | FAS{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'admin_panel/css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'admin_panel/css/improvements.css' %}">
+</head>
+<body class="empleado-body">
+    <div class="app-container">
+        <aside class="sidebar" id="sidebar-cliente">
+            <div class="sidebar-brand">
+                <span class="sidebar-logo">Restaurante FAS</span>
+                <span class="sidebar-subtitle">Portal de Cliente</span>
+            </div>
+            <nav class="nav-menu">
+                <a href="{% url 'cliente_inicio' %}" class="nav-item {% if request.resolver_match.url_name == 'cliente_inicio' %}active{% endif %}">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    Inicio
+                </a>
+                <a href="{% url 'cliente_menu' %}" class="nav-item {% if request.resolver_match.url_name == 'cliente_menu' %}active{% endif %}">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    Menu
+                </a>
+                <a href="{% url 'cliente_reservar' %}" class="nav-item {% if request.resolver_match.url_name == 'cliente_reservar' %}active{% endif %}">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    Reservar Mesa
+                </a>
+                <a href="{% url 'cliente_perfil' %}" class="nav-item {% if request.resolver_match.url_name == 'cliente_perfil' %}active{% endif %}">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    Mi Perfil
+                </a>
+                <a href="{% url 'logout' %}" class="nav-item logout-link">
+                    <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                    Cerrar Sesion
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <span>FAS Restaurant v1.0</span>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="top-header">
+                <div class="brand-info">
+                    <h1>Restaurante FAS</h1>
+                    <span class="user-role">Cliente</span>
+                </div>
+            </header>
+            {% if messages %}
+                <div class="message-stack" style="padding: 20px 20px 0;">
+                    {% for message in messages %}
+                        <div class="message {{ message.tags }}">
+                            <span class="message-text">{{ message }}</span>
+                            <button class="message-close" aria-label="Cerrar">&times;</button>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="page-container">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+    <script src="{% static 'admin_panel/js/main.js' %}"></script>
+</body>
+</html>

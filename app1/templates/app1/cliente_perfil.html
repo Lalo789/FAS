@@ -1,0 +1,58 @@
+{% extends 'app1/cliente_base.html' %}
+
+{% block title %}Mi Perfil | FAS{% endblock %}
+
+{% block content %}
+<div class="top-bar">
+    <div class="page-title">
+        <h2>Mi Perfil</h2>
+        <p>Datos de cuenta y reservaciones.</p>
+    </div>
+</div>
+
+<div class="stats-grid">
+    <div class="data-section profile-card" style="margin: 0; text-align: left; border-top: 5px solid #EB6C0C;">
+        <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;">
+            <div class="avatar" style="width: 60px; height: 60px; font-size: 1.5rem;">
+                {{ cliente.nombre_completo|truncatechars:1 }}
+            </div>
+            <div>
+                <h3 style="color: #640E09;">{{ cliente.nombre_completo }}</h3>
+                <p style="color: #737F03; font-size: 0.85rem;">Cliente Registrado</p>
+            </div>
+        </div>
+        <p style="margin-bottom: 0.8rem;"><strong>Correo:</strong> {{ cliente.correo }}</p>
+        <p style="margin-bottom: 0.8rem;"><strong>Telefono:</strong> {{ cliente.telefono|default:"Sin telefono" }}</p>
+        <p><strong>Rol:</strong> {{ cliente.rol.nombre }}</p>
+    </div>
+
+    <div class="data-section" style="margin: 0; grid-column: span 2;">
+        <div class="section-header"><h3>Mis Reservaciones</h3></div>
+        {% if reservaciones %}
+            <table>
+                <thead><tr><th>Mesa</th><th>Fecha</th><th>Hora</th><th>Personas</th><th>Estado</th></tr></thead>
+                <tbody>
+                    {% for reserva in reservaciones %}
+                        <tr>
+                            <td>M{{ reserva.mesa.numero_mesa }}</td>
+                            <td>{{ reserva.fecha }}</td>
+                            <td>{{ reserva.hora }}</td>
+                            <td>{{ reserva.num_personas }}</td>
+                            <td>
+                                <span class="badge {% if reserva.estado_reserva == 'Confirmada' %}badge-active{% elif reserva.estado_reserva == 'Pendiente' %}badge-descanso{% else %}badge-ausente{% endif %}">
+                                    {{ reserva.estado_reserva }}
+                                </span>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="empty-state">
+                <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/></svg>
+                <p class="empty-state-text">No tienes reservaciones activas.</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

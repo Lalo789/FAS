@@ -1,0 +1,45 @@
+{% extends 'app1/cliente_base.html' %}
+
+{% block title %}Reservar Mesa | FAS{% endblock %}
+
+{% block content %}
+<div class="top-bar">
+    <div class="page-title">
+        <h2>Reservar Mesa</h2>
+        <p>Selecciona una mesa disponible y confirma tu horario.</p>
+    </div>
+</div>
+
+<div class="tables-grid">
+    {% for mesa in mesas %}
+        <div class="table-card" style="border-left: 4px solid #4B7001;">
+            <h3 style="color: #640E09; font-size: 1.5rem;">M{{ mesa.numero_mesa }}</h3>
+            <p class="status-text status-available"><span class="dot green"></span> {{ mesa.estado }}</p>
+            <p class="table-detail" style="margin-bottom: 12px;">Capacidad: {{ mesa.capacidad }} personas</p>
+            <form method="post" class="fas-form">
+                {% csrf_token %}
+                <input type="hidden" name="mesa_id" value="{{ mesa.id }}">
+                <p>
+                    <label>Fecha</label>
+                    <input type="date" name="fecha" min="{{ fecha_minima|date:'Y-m-d' }}" required>
+                </p>
+                <p>
+                    <label>Hora</label>
+                    <input type="time" name="hora" required>
+                </p>
+                <p>
+                    <label>Personas</label>
+                    <input type="number" name="personas" min="1" max="{{ mesa.capacidad }}" value="{{ mesa.capacidad }}" required>
+                </p>
+                <button type="submit" class="pill-btn btn-add" style="width: 100%; justify-content: center; margin-top: 8px;">Confirmar Reserva</button>
+            </form>
+        </div>
+    {% empty %}
+        <div class="table-card">
+            <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" style="margin:0 auto 10px; display:block;"><rect x="2" y="7" width="20" height="4" rx="1"/><path d="M4 11v8"/><path d="M20 11v8"/></svg>
+            <h3>Sin mesas disponibles</h3>
+            <p class="table-detail">Por ahora todas las mesas estan ocupadas o reservadas.</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

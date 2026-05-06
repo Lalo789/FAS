@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block title %}Gestion de Empleados | FAS{% endblock %}
+
+{% block content %}
+<div class="employees-container fade-in">
+    <div class="page-header-flex">
+        <div>
+            <h2 class="page-title">Gestion de Empleados</h2>
+            <p class="section-subtitle">Estatus actual del personal</p>
+        </div>
+        <a href="{% url 'agregar_empleado' %}" class="pill-btn btn-add">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Agregar Empleado
+        </a>
+    </div>
+
+    <div class="status-summary-card">
+        <div class="status-item"><span class="dot green"></span> Activos: <strong>{{ stats.activos|default:"0" }}</strong></div>
+        <div class="status-item"><span class="dot yellow"></span> Descanso: <strong>{{ stats.descanso|default:"0" }}</strong></div>
+        <div class="status-item"><span class="dot red"></span> Ausentes: <strong>{{ stats.ausentes|default:"0" }}</strong></div>
+    </div>
+
+    <div class="search-section">
+        <div class="search-bar">
+            <svg class="search-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="employeeSearch" placeholder="Buscar por nombre o puesto...">
+        </div>
+    </div>
+
+    <div class="content-card table-wrapper">
+        <table class="fas-table" id="employeeTable">
+            <thead>
+                <tr>
+                    <th>Empleado</th>
+                    <th>Puesto</th>
+                    <th>Turno</th>
+                    <th>Horario</th>
+                    <th>Correo</th>
+                    <th>Estado</th>
+                    <th class="text-center">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for empleado in empleados %}
+                <tr id="emp-row-{{ empleado.id }}">
+                    <td><strong>{{ empleado.nombre }}</strong></td>
+                    <td>{{ empleado.puesto }}</td>
+                    <td>{{ empleado.turno }}</td>
+                    <td>{{ empleado.horario }}</td>
+                    <td>{{ empleado.usuario.correo|default:"Sin acceso" }}</td>
+                    <td><span class="dot {% if empleado.estado == 'Activo' %}green{% elif empleado.estado == 'Descanso' %}yellow{% else %}red{% endif %}"></span> {{ empleado.estado }}</td>
+                    <td class="actions-cell">
+                        <div class="row-actions">
+                            <a href="{% url 'editar_empleado' empleado.id %}" class="action-btn action-btn-edit" title="Editar">Editar</a>
+                            <form method="post" action="{% url 'eliminar_empleado' empleado.id %}" class="inline-delete" onsubmit="return confirm('Eliminar este empleado?');">
+                                {% csrf_token %}
+                                <button type="submit" class="action-btn action-btn-delete" title="Eliminar">Eliminar</button>
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="7" class="empty-state">
+                        <svg class="empty-state-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                        <p class="empty-state-text">No hay empleados registrados.</p>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

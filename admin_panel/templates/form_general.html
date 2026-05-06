@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ modo }} {{ entidad }} | FAS Admin{% endblock %}
+
+{% block content %}
+<div class="form-container fade-in">
+    <div class="form-card">
+        <div class="form-header">
+            <h2 class="page-title">{{ modo }} {{ entidad }}</h2>
+            <p class="section-subtitle">Ingresa los datos correspondientes en el sistema.</p>
+        </div>
+
+        <form method="POST" class="fas-form" id="universalForm">
+            {% csrf_token %}
+            
+            <div class="form-fields">
+                {% if form %}
+                    {{ form.as_p }}
+                {% else %}
+                    <p class="form-group">
+                        <label>Nombre / Identificador</label>
+                        <input type="text" name="nombre" placeholder="Ej. Mesa 5 o Juan Perez">
+                    </p>
+                    <p class="form-group">
+                        <label>Descripcion / Detalles</label>
+                        <textarea name="descripcion" rows="3"></textarea>
+                    </p>
+                {% endif %}
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="pill-btn btn-add">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                    Guardar {{ entidad }}
+                </button>
+                <a href="{% if url_cancelar %}{% url url_cancelar %}{% else %}javascript:history.back(){% endif %}" class="pill-btn btn-cancel">
+                    Cancelar
+                </a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
